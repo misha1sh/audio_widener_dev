@@ -1,0 +1,7 @@
+D:\program_files\Jetbrains\apps\CLion\ch-0\203.6682.181\bin\cmake\win\bin\cmake.exe -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - MinGW Makefiles" D:\data\progr\audio_widener\stereo_plugin
+-- Configuring juceaide
+-- Building juceaide
+-- Exporting juceaide
+-- Configuring done
+-- Generating done
+-- Build files have been written to: D:/data/progr/audio_widener/stereo_plugin/cmake-build-debug

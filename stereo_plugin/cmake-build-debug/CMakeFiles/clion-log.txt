@@ -1,0 +1,1 @@
+CMakeLists.txt not found in D:\data\progr\audio_widener\stereo_plugin Select CMakeLists.txt

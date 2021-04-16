@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="JUCE"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;CMake Files\JUCE\;CMake Files\JUCE\extras\;CMake Files\JUCE\extras\Build\;CMake Files\JUCE\extras\Build\CMake\;CMake Files\JUCE\extras\Build\juceaide\;CMake Files\JUCE\modules\;CMake Files\cmake-build-debug\;CMake Files\cmake-build-debug\JUCE\;CMake Files\cmake-build-debug\JUCE\tools\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="D:/data/progr/audio_widener/stereo_plugin/cmake-build-debug/JUCE"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="D:/program_files/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;D:/data/progr/audio_widener/stereo_plugin/cmake-build-debug/JUCE/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="D:/program_files/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;D:/data/progr/audio_widener/stereo_plugin/cmake-build-debug/JUCE/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/program_files/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;D:/data/progr/audio_widener/stereo_plugin/cmake-build-debug/JUCE/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/program_files/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;D:/data/progr/audio_widener/stereo_plugin/cmake-build-debug/JUCE/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="D:/data/progr/audio_widener/stereo_plugin/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="D:/data/progr/audio_widener/stereo_plugin/JUCE/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\JUCE\"/>
+		</Unit>
+		<Unit filename="D:/data/progr/audio_widener/stereo_plugin/JUCE/extras/Build/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\JUCE\extras\Build\"/>
+		</Unit>
+		<Unit filename="D:/data/progr/audio_widener/stereo_plugin/JUCE/extras/Build/CMake/JUCECheckAtomic.cmake">
+			<Option virtualFolder="CMake Files\JUCE\extras\Build\CMake\"/>
+		</Unit>
+		<Unit filename="D:/data/progr/audio_widener/stereo_plugin/JUCE/extras/Build/CMake/JUCEConfig.cmake.in">
+			<Option virtualFolder="CMake Files\JUCE\extras\Build\CMake\"/>
+		</Unit>
+		<Unit filename="D:/data/progr/audio_widener/stereo_plugin/JUCE/extras/Build/CMake/JUCEHelperTargets.cmake">
+			<Option virtualFolder="CMake Files\JUCE\extras\Build\CMake\"/>
+		</Unit>
+		<Unit filename="D:/data/progr/audio_widener/stereo_plugin/JUCE/extras/Build/CMake/JUCEUtils.cmake">
+			<Option virtualFolder="CMake Files\JUCE\extras\Build\CMake\"/>
+		</Unit>
+		<Unit filename="D:/data/progr/audio_widener/stereo_plugin/JUCE/extras/Build/juceaide/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\JUCE\extras\Build\juceaide\"/>
+		</Unit>
+		<Unit filename="D:/data/progr/audio_widener/stereo_plugin/JUCE/modules/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\JUCE\modules\"/>
+		</Unit>
+		<Unit filename="D:/data/progr/audio_widener/stereo_plugin/cmake-build-debug/JUCE/tools/JUCEToolsExport.cmake">
+			<Option virtualFolder="CMake Files\cmake-build-debug\JUCE\tools\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

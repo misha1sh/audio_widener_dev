@@ -1,0 +1,2 @@
+# Hashes of file build rules.
+42702221119806e942a882fd19c80bad A_STEREO_PLUGIN_artefacts/JuceLibraryCode/resources.rc

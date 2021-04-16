@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<JUCERPROJECT id="jyJ6Ov" name="StereoPlugin" projectType="audioplug" useAppConfig="0"
+              addUsingNamespaceToJuceHeader="0" displaySplashScreen="1" jucerFormatVersion="1"
+              cppLanguageStandard="latest" compilerFlagSchemes="NewScheme">
+  <MAINGROUP id="yJl6KP" name="StereoPlugin">
+    <GROUP id="{15550D7A-8E8B-EC52-A6DC-784A6B0C7DAC}" name="Source">
+      <FILE id="IYMxmP" name="PluginEditor.cpp" compile="1" resource="0"
+            file="Source/PluginEditor.cpp"/>
+      <FILE id="GKozC4" name="PluginEditor.h" compile="0" resource="0" file="Source/PluginEditor.h"/>
+      <FILE id="u3lTZ3" name="PluginProcessor.cpp" compile="1" resource="0"
+            file="Source/PluginProcessor.cpp"/>
+      <FILE id="dBiuxU" name="PluginProcessor.h" compile="0" resource="0"
+            file="Source/PluginProcessor.h"/>
+      <FILE id="Xv07Ed" name="test.py.zip" compile="0" resource="1" file="test.py.zip"/>
+      <FILE id="Kzbadv" name="test.txt" compile="0" resource="1" file="Source/test.txt"/>
+    </GROUP>
+    <FILE id="kIzgon" name="TestComponent.cpp" compile="1" resource="0"
+          file="Source/TestComponent.cpp"/>
+    <FILE id="gzOcRv" name="TestComponent.h" compile="0" resource="0" file="Source/TestComponent.h"/>
+  </MAINGROUP>
+  <JUCEOPTIONS JUCE_STRICT_REFCOUNTEDPOINTER="1" JUCE_VST3_CAN_REPLACE_VST2="0"/>
+  <EXPORTFORMATS>
+    <CLION targetFolder="Builds/CLion" clionMakefileEnabled="1">
+      <MODULEPATHS>
+        <MODULEPATH id="juce_audio_basics" path="../../../../program_files/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_devices" path="../../../../program_files/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_formats" path="../../../../program_files/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_plugin_client" path="../../../../program_files/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_processors" path="../../../../program_files/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_utils" path="../../../../program_files/JUCE/modules"/>
+        <MODULEPATH id="juce_core" path="../../../../program_files/JUCE/modules"/>
+        <MODULEPATH id="juce_data_structures" path="../../../../program_files/JUCE/modules"/>
+        <MODULEPATH id="juce_dsp" path="../../../../program_files/JUCE/modules"/>
+        <MODULEPATH id="juce_events" path="../../../../program_files/JUCE/modules"/>
+        <MODULEPATH id="juce_graphics" path="../../../../program_files/JUCE/modules"/>
+        <MODULEPATH id="juce_gui_basics" path="../../../../program_files/JUCE/modules"/>
+        <MODULEPATH id="juce_gui_extra" path="../../../../program_files/JUCE/modules"/>
+        <MODULEPATH id="juce_opengl" path="../../../../program_files/JUCE/modules"/>
+      </MODULEPATHS>
+    </CLION>
+    <LINUX_MAKE targetFolder="Builds/LinuxMakefile">
+      <CONFIGURATIONS>
+        <CONFIGURATION isDebug="1" name="Debug" targetName="stereo_plugin"/>
+        <CONFIGURATION isDebug="0" name="Release" targetName="stereo_plugin"/>
+      </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="juce_audio_basics" path="../../../../program_files/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_devices" path="../../../../program_files/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_formats" path="../../../../program_files/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_plugin_client" path="../../../../program_files/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_processors" path="../../../../program_files/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_utils" path="../../../../program_files/JUCE/modules"/>
+        <MODULEPATH id="juce_core" path="../../../../program_files/JUCE/modules"/>
+        <MODULEPATH id="juce_data_structures" path="../../../../program_files/JUCE/modules"/>
+        <MODULEPATH id="juce_dsp" path="../../../../program_files/JUCE/modules"/>
+        <MODULEPATH id="juce_events" path="../../../../program_files/JUCE/modules"/>
+        <MODULEPATH id="juce_graphics" path="../../../../program_files/JUCE/modules"/>
+        <MODULEPATH id="juce_gui_basics" path="../../../../program_files/JUCE/modules"/>
+        <MODULEPATH id="juce_gui_extra" path="../../../../program_files/JUCE/modules"/>
+        <MODULEPATH id="juce_opengl" path="../../../../program_files/JUCE/modules"/>
+      </MODULEPATHS>
+    </LINUX_MAKE>
+    <VS2019 targetFolder="Builds/VisualStudio2019" externalLibraries="python38.lib">
+      <CONFIGURATIONS>
+        <CONFIGURATION isDebug="1" name="Debug" targetName="stereo_plugin" libraryPath="C:\conda\envs\ds\libs"
+                       headerPath="C:\conda\envs\ds\include"/>
+        <CONFIGURATION isDebug="0" name="Release" targetName="stereo_plugin" headerPath="C:\conda\envs\ds\include"
+                       libraryPath="C:\conda\envs\ds\libs"/>
+      </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="juce_audio_basics" path="../../../../program_files/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_devices" path="../../../../program_files/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_formats" path="../../../../program_files/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_plugin_client" path="../../../../program_files/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_processors" path="../../../../program_files/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_utils" path="../../../../program_files/JUCE/modules"/>
+        <MODULEPATH id="juce_core" path="../../../../program_files/JUCE/modules"/>
+        <MODULEPATH id="juce_data_structures" path="../../../../program_files/JUCE/modules"/>
+        <MODULEPATH id="juce_dsp" path="../../../../program_files/JUCE/modules"/>
+        <MODULEPATH id="juce_events" path="../../../../program_files/JUCE/modules"/>
+        <MODULEPATH id="juce_graphics" path="../../../../program_files/JUCE/modules"/>
+        <MODULEPATH id="juce_gui_basics" path="../../../../program_files/JUCE/modules"/>
+        <MODULEPATH id="juce_gui_extra" path="../../../../program_files/JUCE/modules"/>
+        <MODULEPATH id="juce_opengl" path="../../../../program_files/JUCE/modules"/>
+      </MODULEPATHS>
+    </VS2019>
+  </EXPORTFORMATS>
+  <MODULES>
+    <MODULE id="juce_audio_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_devices" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_formats" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_plugin_client" showAllCode="1" useLocalCopy="0"
+            useGlobalPath="1"/>
+    <MODULE id="juce_audio_processors" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_utils" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_core" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_data_structures" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_dsp" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_events" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_graphics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_gui_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_gui_extra" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_opengl" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+  </MODULES>
+  <LIVE_SETTINGS>
+    <WINDOWS buildEnabled="1" systemHeaderPath="C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt;"
+             continuousRebuildEnabled="0"/>
+  </LIVE_SETTINGS>
+</JUCERPROJECT>

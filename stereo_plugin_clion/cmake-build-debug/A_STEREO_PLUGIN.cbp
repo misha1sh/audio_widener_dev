@@ -1,0 +1,565 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="A_STEREO_PLUGIN"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;CMake Files\JUCE\;CMake Files\JUCE\extras\;CMake Files\JUCE\extras\Build\;CMake Files\JUCE\extras\Build\CMake\;CMake Files\JUCE\extras\Build\juceaide\;CMake Files\JUCE\modules\;CMake Files\cmake-build-debug\;CMake Files\cmake-build-debug\JUCE\;CMake Files\cmake-build-debug\JUCE\tools\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="D:/data/progr/audio_widener/stereo_plugin/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="D:/program_files/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;D:/data/progr/audio_widener/stereo_plugin/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="D:/program_files/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;D:/data/progr/audio_widener/stereo_plugin/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/program_files/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;D:/data/progr/audio_widener/stereo_plugin/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/program_files/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;D:/data/progr/audio_widener/stereo_plugin/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="A_STEREO_PLUGIN_All">
+				<Option working_dir="D:/data/progr/audio_widener/stereo_plugin/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="D:/program_files/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;D:/data/progr/audio_widener/stereo_plugin/cmake-build-debug/Makefile&quot;  VERBOSE=1 A_STEREO_PLUGIN_All"/>
+					<CompileFile command="D:/program_files/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;D:/data/progr/audio_widener/stereo_plugin/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/program_files/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;D:/data/progr/audio_widener/stereo_plugin/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/program_files/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;D:/data/progr/audio_widener/stereo_plugin/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="D:/data/progr/audio_widener/stereo_plugin/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="D:/program_files/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;D:/data/progr/audio_widener/stereo_plugin/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="D:/program_files/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;D:/data/progr/audio_widener/stereo_plugin/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/program_files/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;D:/data/progr/audio_widener/stereo_plugin/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/program_files/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;D:/data/progr/audio_widener/stereo_plugin/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="A_STEREO_PLUGIN_Standalone">
+				<Option output="D:/data/progr/audio_widener/stereo_plugin/cmake-build-debug/A_STEREO_PLUGIN_artefacts/Debug/Standalone/A STEREO PLUGIN.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="D:/data/progr/audio_widener/stereo_plugin/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="0"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DJUCE_GLOBAL_MODULE_SETTINGS_INCLUDED=1"/>
+					<Add option="-DDEBUG=1"/>
+					<Add option="-D_DEBUG=1"/>
+					<Add option="-DJucePlugin_IsSynth=0"/>
+					<Add option="-DJucePlugin_ManufacturerCode=0x4a756365"/>
+					<Add option="-DJucePlugin_Manufacturer=&quot;TEST &quot;"/>
+					<Add option="-DJucePlugin_ManufacturerWebsite=&quot;&quot;"/>
+					<Add option="-DJucePlugin_ManufacturerEmail=&quot;&quot;"/>
+					<Add option="-DJucePlugin_PluginCode=0x44656d30"/>
+					<Add option="-DJucePlugin_ProducesMidiOutput=0"/>
+					<Add option="-DJucePlugin_IsMidiEffect=1"/>
+					<Add option="-DJucePlugin_WantsMidiInput=0"/>
+					<Add option="-DJucePlugin_EditorRequiresKeyboardFocus=0"/>
+					<Add option="-DJucePlugin_Name=&quot;A STEREO PLUGIN&quot;"/>
+					<Add option="-DJucePlugin_Desc=&quot;A STEREO PLUGIN&quot;"/>
+					<Add option="-DJucePlugin_Version=0.1.0"/>
+					<Add option="-DJucePlugin_VersionString=&quot;0.1.0&quot;"/>
+					<Add option="-DJucePlugin_VersionCode=0x100"/>
+					<Add option="-DJucePlugin_VSTUniqueID=JucePlugin_PluginCode"/>
+					<Add option="-DJucePlugin_VSTCategory=kPlugCategEffect"/>
+					<Add option="-DJucePlugin_Vst3Category=&quot;Fx&quot;"/>
+					<Add option="-DJucePlugin_AUMainType=&apos;aumi&apos;"/>
+					<Add option="-DJucePlugin_AUSubType=JucePlugin_PluginCode"/>
+					<Add option="-DJucePlugin_AUExportPrefix=A_STEREO_PLUGINAU"/>
+					<Add option="-DJucePlugin_AUExportPrefixQuoted=&quot;A_STEREO_PLUGINAU&quot;"/>
+					<Add option="-DJucePlugin_AUManufacturerCode=JucePlugin_ManufacturerCode"/>
+					<Add option="-DJucePlugin_CFBundleIdentifier=com.TEST .A_STEREO_PLUGIN"/>
+					<Add option="-DJucePlugin_AAXIdentifier=com.TEST .A_STEREO_PLUGIN"/>
+					<Add option="-DJucePlugin_AAXManufacturerCode=JucePlugin_ManufacturerCode"/>
+					<Add option="-DJucePlugin_AAXProductId=JucePlugin_PluginCode"/>
+					<Add option="-DJucePlugin_AAXCategory=0x00000000"/>
+					<Add option="-DJucePlugin_AAXDisableBypass=0"/>
+					<Add option="-DJucePlugin_AAXDisableMultiMono=0"/>
+					<Add option="-DJucePlugin_VSTNumMidiInputs=16"/>
+					<Add option="-DJucePlugin_VSTNumMidiOutputs=16"/>
+					<Add option="-DJUCE_WEB_BROWSER=0"/>
+					<Add option="-DJUCE_USE_CURL=0"/>
+					<Add option="-DJUCE_VST3_CAN_REPLACE_VST2=0"/>
+					<Add option="-DJUCE_MODULE_AVAILABLE_juce_audio_utils=1"/>
+					<Add option="-DJUCE_MODULE_AVAILABLE_juce_audio_processors=1"/>
+					<Add option="-DJUCE_MODULE_AVAILABLE_juce_gui_extra=1"/>
+					<Add option="-DJUCE_MODULE_AVAILABLE_juce_gui_basics=1"/>
+					<Add option="-DJUCE_MODULE_AVAILABLE_juce_graphics=1"/>
+					<Add option="-DJUCE_MODULE_AVAILABLE_juce_events=1"/>
+					<Add option="-DJUCE_MODULE_AVAILABLE_juce_core=1"/>
+					<Add option="-DJUCE_MODULE_AVAILABLE_juce_data_structures=1"/>
+					<Add option="-DJUCE_MODULE_AVAILABLE_juce_audio_basics=1"/>
+					<Add option="-DJUCE_MODULE_AVAILABLE_juce_audio_formats=1"/>
+					<Add option="-DJUCE_MODULE_AVAILABLE_juce_audio_devices=1"/>
+					<Add option="-DJUCE_STANDALONE_APPLICATION=JucePlugin_Build_Standalone"/>
+					<Add option="-DJucePlugin_Build_AU=0"/>
+					<Add option="-DJucePlugin_Build_AUv3=0"/>
+					<Add option="-DJucePlugin_Build_AAX=0"/>
+					<Add option="-DJucePlugin_Build_Standalone=1"/>
+					<Add option="-DJucePlugin_Build_Unity=0"/>
+					<Add option="-DJucePlugin_Build_VST=0"/>
+					<Add option="-DJucePlugin_Build_VST3=0"/>
+					<Add directory="D:/data/progr/audio_widener/stereo_plugin/cmake-build-debug/A_STEREO_PLUGIN_artefacts/JuceLibraryCode"/>
+					<Add directory="D:/data/progr/audio_widener/stereo_plugin/JUCE/modules"/>
+					<Add directory="D:/data/progr/audio_widener/stereo_plugin/JUCE/modules/juce_audio_processors/format_types/VST3_SDK"/>
+					<Add directory="D:/program_files/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include/c++"/>
+					<Add directory="D:/program_files/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include/c++/i686-w64-mingw32"/>
+					<Add directory="D:/program_files/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include/c++/backward"/>
+					<Add directory="D:/program_files/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include"/>
+					<Add directory="D:/program_files/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include-fixed"/>
+					<Add directory="D:/program_files/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/../../../../i686-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="D:/program_files/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;D:/data/progr/audio_widener/stereo_plugin/cmake-build-debug/Makefile&quot;  VERBOSE=1 A_STEREO_PLUGIN_Standalone"/>
+					<CompileFile command="D:/program_files/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;D:/data/progr/audio_widener/stereo_plugin/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/program_files/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;D:/data/progr/audio_widener/stereo_plugin/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/program_files/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;D:/data/progr/audio_widener/stereo_plugin/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="A_STEREO_PLUGIN_Standalone/fast">
+				<Option output="D:/data/progr/audio_widener/stereo_plugin/cmake-build-debug/A_STEREO_PLUGIN_artefacts/Debug/Standalone/A STEREO PLUGIN.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="D:/data/progr/audio_widener/stereo_plugin/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="0"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DJUCE_GLOBAL_MODULE_SETTINGS_INCLUDED=1"/>
+					<Add option="-DDEBUG=1"/>
+					<Add option="-D_DEBUG=1"/>
+					<Add option="-DJucePlugin_IsSynth=0"/>
+					<Add option="-DJucePlugin_ManufacturerCode=0x4a756365"/>
+					<Add option="-DJucePlugin_Manufacturer=&quot;TEST &quot;"/>
+					<Add option="-DJucePlugin_ManufacturerWebsite=&quot;&quot;"/>
+					<Add option="-DJucePlugin_ManufacturerEmail=&quot;&quot;"/>
+					<Add option="-DJucePlugin_PluginCode=0x44656d30"/>
+					<Add option="-DJucePlugin_ProducesMidiOutput=0"/>
+					<Add option="-DJucePlugin_IsMidiEffect=1"/>
+					<Add option="-DJucePlugin_WantsMidiInput=0"/>
+					<Add option="-DJucePlugin_EditorRequiresKeyboardFocus=0"/>
+					<Add option="-DJucePlugin_Name=&quot;A STEREO PLUGIN&quot;"/>
+					<Add option="-DJucePlugin_Desc=&quot;A STEREO PLUGIN&quot;"/>
+					<Add option="-DJucePlugin_Version=0.1.0"/>
+					<Add option="-DJucePlugin_VersionString=&quot;0.1.0&quot;"/>
+					<Add option="-DJucePlugin_VersionCode=0x100"/>
+					<Add option="-DJucePlugin_VSTUniqueID=JucePlugin_PluginCode"/>
+					<Add option="-DJucePlugin_VSTCategory=kPlugCategEffect"/>
+					<Add option="-DJucePlugin_Vst3Category=&quot;Fx&quot;"/>
+					<Add option="-DJucePlugin_AUMainType=&apos;aumi&apos;"/>
+					<Add option="-DJucePlugin_AUSubType=JucePlugin_PluginCode"/>
+					<Add option="-DJucePlugin_AUExportPrefix=A_STEREO_PLUGINAU"/>
+					<Add option="-DJucePlugin_AUExportPrefixQuoted=&quot;A_STEREO_PLUGINAU&quot;"/>
+					<Add option="-DJucePlugin_AUManufacturerCode=JucePlugin_ManufacturerCode"/>
+					<Add option="-DJucePlugin_CFBundleIdentifier=com.TEST .A_STEREO_PLUGIN"/>
+					<Add option="-DJucePlugin_AAXIdentifier=com.TEST .A_STEREO_PLUGIN"/>
+					<Add option="-DJucePlugin_AAXManufacturerCode=JucePlugin_ManufacturerCode"/>
+					<Add option="-DJucePlugin_AAXProductId=JucePlugin_PluginCode"/>
+					<Add option="-DJucePlugin_AAXCategory=0x00000000"/>
+					<Add option="-DJucePlugin_AAXDisableBypass=0"/>
+					<Add option="-DJucePlugin_AAXDisableMultiMono=0"/>
+					<Add option="-DJucePlugin_VSTNumMidiInputs=16"/>
+					<Add option="-DJucePlugin_VSTNumMidiOutputs=16"/>
+					<Add option="-DJUCE_WEB_BROWSER=0"/>
+					<Add option="-DJUCE_USE_CURL=0"/>
+					<Add option="-DJUCE_VST3_CAN_REPLACE_VST2=0"/>
+					<Add option="-DJUCE_MODULE_AVAILABLE_juce_audio_utils=1"/>
+					<Add option="-DJUCE_MODULE_AVAILABLE_juce_audio_processors=1"/>
+					<Add option="-DJUCE_MODULE_AVAILABLE_juce_gui_extra=1"/>
+					<Add option="-DJUCE_MODULE_AVAILABLE_juce_gui_basics=1"/>
+					<Add option="-DJUCE_MODULE_AVAILABLE_juce_graphics=1"/>
+					<Add option="-DJUCE_MODULE_AVAILABLE_juce_events=1"/>
+					<Add option="-DJUCE_MODULE_AVAILABLE_juce_core=1"/>
+					<Add option="-DJUCE_MODULE_AVAILABLE_juce_data_structures=1"/>
+					<Add option="-DJUCE_MODULE_AVAILABLE_juce_audio_basics=1"/>
+					<Add option="-DJUCE_MODULE_AVAILABLE_juce_audio_formats=1"/>
+					<Add option="-DJUCE_MODULE_AVAILABLE_juce_audio_devices=1"/>
+					<Add option="-DJUCE_STANDALONE_APPLICATION=JucePlugin_Build_Standalone"/>
+					<Add option="-DJucePlugin_Build_AU=0"/>
+					<Add option="-DJucePlugin_Build_AUv3=0"/>
+					<Add option="-DJucePlugin_Build_AAX=0"/>
+					<Add option="-DJucePlugin_Build_Standalone=1"/>
+					<Add option="-DJucePlugin_Build_Unity=0"/>
+					<Add option="-DJucePlugin_Build_VST=0"/>
+					<Add option="-DJucePlugin_Build_VST3=0"/>
+					<Add directory="D:/data/progr/audio_widener/stereo_plugin/cmake-build-debug/A_STEREO_PLUGIN_artefacts/JuceLibraryCode"/>
+					<Add directory="D:/data/progr/audio_widener/stereo_plugin/JUCE/modules"/>
+					<Add directory="D:/data/progr/audio_widener/stereo_plugin/JUCE/modules/juce_audio_processors/format_types/VST3_SDK"/>
+					<Add directory="D:/program_files/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include/c++"/>
+					<Add directory="D:/program_files/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include/c++/i686-w64-mingw32"/>
+					<Add directory="D:/program_files/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include/c++/backward"/>
+					<Add directory="D:/program_files/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include"/>
+					<Add directory="D:/program_files/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include-fixed"/>
+					<Add directory="D:/program_files/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/../../../../i686-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="D:/program_files/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;D:/data/progr/audio_widener/stereo_plugin/cmake-build-debug/Makefile&quot;  VERBOSE=1 A_STEREO_PLUGIN_Standalone/fast"/>
+					<CompileFile command="D:/program_files/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;D:/data/progr/audio_widener/stereo_plugin/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/program_files/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;D:/data/progr/audio_widener/stereo_plugin/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/program_files/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;D:/data/progr/audio_widener/stereo_plugin/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="A_STEREO_PLUGIN">
+				<Option output="D:/data/progr/audio_widener/stereo_plugin/cmake-build-debug/A_STEREO_PLUGIN_artefacts/Debug/libA STEREO PLUGIN_SharedCode.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="D:/data/progr/audio_widener/stereo_plugin/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DJucePlugin_Build_AU=0"/>
+					<Add option="-DJucePlugin_Build_AUv3=0"/>
+					<Add option="-DJucePlugin_Build_AAX=0"/>
+					<Add option="-DJucePlugin_Build_Standalone=1"/>
+					<Add option="-DJucePlugin_Build_Unity=0"/>
+					<Add option="-DJucePlugin_Build_VST=0"/>
+					<Add option="-DJucePlugin_Build_VST3=0"/>
+					<Add option="-DJUCE_SHARED_CODE=1"/>
+					<Add option="-DJUCE_STANDALONE_APPLICATION=JucePlugin_Build_Standalone"/>
+					<Add option="-DJucePlugin_IsSynth=0"/>
+					<Add option="-DJucePlugin_ManufacturerCode=0x4a756365"/>
+					<Add option="-DJucePlugin_Manufacturer=&quot;TEST &quot;"/>
+					<Add option="-DJucePlugin_ManufacturerWebsite=&quot;&quot;"/>
+					<Add option="-DJucePlugin_ManufacturerEmail=&quot;&quot;"/>
+					<Add option="-DJucePlugin_PluginCode=0x44656d30"/>
+					<Add option="-DJucePlugin_ProducesMidiOutput=0"/>
+					<Add option="-DJucePlugin_IsMidiEffect=1"/>
+					<Add option="-DJucePlugin_WantsMidiInput=0"/>
+					<Add option="-DJucePlugin_EditorRequiresKeyboardFocus=0"/>
+					<Add option="-DJucePlugin_Name=&quot;A STEREO PLUGIN&quot;"/>
+					<Add option="-DJucePlugin_Desc=&quot;A STEREO PLUGIN&quot;"/>
+					<Add option="-DJucePlugin_Version=0.1.0"/>
+					<Add option="-DJucePlugin_VersionString=&quot;0.1.0&quot;"/>
+					<Add option="-DJucePlugin_VersionCode=0x100"/>
+					<Add option="-DJucePlugin_VSTUniqueID=JucePlugin_PluginCode"/>
+					<Add option="-DJucePlugin_VSTCategory=kPlugCategEffect"/>
+					<Add option="-DJucePlugin_Vst3Category=&quot;Fx&quot;"/>
+					<Add option="-DJucePlugin_AUMainType=&apos;aumi&apos;"/>
+					<Add option="-DJucePlugin_AUSubType=JucePlugin_PluginCode"/>
+					<Add option="-DJucePlugin_AUExportPrefix=A_STEREO_PLUGINAU"/>
+					<Add option="-DJucePlugin_AUExportPrefixQuoted=&quot;A_STEREO_PLUGINAU&quot;"/>
+					<Add option="-DJucePlugin_AUManufacturerCode=JucePlugin_ManufacturerCode"/>
+					<Add option="-DJucePlugin_CFBundleIdentifier=com.TEST .A_STEREO_PLUGIN"/>
+					<Add option="-DJucePlugin_AAXIdentifier=com.TEST .A_STEREO_PLUGIN"/>
+					<Add option="-DJucePlugin_AAXManufacturerCode=JucePlugin_ManufacturerCode"/>
+					<Add option="-DJucePlugin_AAXProductId=JucePlugin_PluginCode"/>
+					<Add option="-DJucePlugin_AAXCategory=0x00000000"/>
+					<Add option="-DJucePlugin_AAXDisableBypass=0"/>
+					<Add option="-DJucePlugin_AAXDisableMultiMono=0"/>
+					<Add option="-DJucePlugin_VSTNumMidiInputs=16"/>
+					<Add option="-DJucePlugin_VSTNumMidiOutputs=16"/>
+					<Add option="-DJUCE_WEB_BROWSER=0"/>
+					<Add option="-DJUCE_USE_CURL=0"/>
+					<Add option="-DJUCE_VST3_CAN_REPLACE_VST2=0"/>
+					<Add option="-DJUCE_MODULE_AVAILABLE_juce_audio_utils=1"/>
+					<Add option="-DJUCE_MODULE_AVAILABLE_juce_audio_processors=1"/>
+					<Add option="-DJUCE_MODULE_AVAILABLE_juce_gui_extra=1"/>
+					<Add option="-DJUCE_MODULE_AVAILABLE_juce_gui_basics=1"/>
+					<Add option="-DJUCE_MODULE_AVAILABLE_juce_graphics=1"/>
+					<Add option="-DJUCE_MODULE_AVAILABLE_juce_events=1"/>
+					<Add option="-DJUCE_GLOBAL_MODULE_SETTINGS_INCLUDED=1"/>
+					<Add option="-DDEBUG=1"/>
+					<Add option="-D_DEBUG=1"/>
+					<Add option="-DJUCE_MODULE_AVAILABLE_juce_core=1"/>
+					<Add option="-DJUCE_MODULE_AVAILABLE_juce_data_structures=1"/>
+					<Add option="-DJUCE_MODULE_AVAILABLE_juce_audio_basics=1"/>
+					<Add option="-DJUCE_MODULE_AVAILABLE_juce_audio_formats=1"/>
+					<Add option="-DJUCE_MODULE_AVAILABLE_juce_audio_devices=1"/>
+					<Add directory="D:/data/progr/audio_widener/stereo_plugin/cmake-build-debug/A_STEREO_PLUGIN_artefacts/JuceLibraryCode"/>
+					<Add directory="D:/data/progr/audio_widener/stereo_plugin/JUCE/modules"/>
+					<Add directory="D:/data/progr/audio_widener/stereo_plugin/JUCE/modules/juce_audio_processors/format_types/VST3_SDK"/>
+					<Add directory="D:/program_files/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include/c++"/>
+					<Add directory="D:/program_files/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include/c++/i686-w64-mingw32"/>
+					<Add directory="D:/program_files/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include/c++/backward"/>
+					<Add directory="D:/program_files/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include"/>
+					<Add directory="D:/program_files/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include-fixed"/>
+					<Add directory="D:/program_files/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/../../../../i686-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="D:/program_files/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;D:/data/progr/audio_widener/stereo_plugin/cmake-build-debug/Makefile&quot;  VERBOSE=1 A_STEREO_PLUGIN"/>
+					<CompileFile command="D:/program_files/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;D:/data/progr/audio_widener/stereo_plugin/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/program_files/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;D:/data/progr/audio_widener/stereo_plugin/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/program_files/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;D:/data/progr/audio_widener/stereo_plugin/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="A_STEREO_PLUGIN/fast">
+				<Option output="D:/data/progr/audio_widener/stereo_plugin/cmake-build-debug/A_STEREO_PLUGIN_artefacts/Debug/libA STEREO PLUGIN_SharedCode.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="D:/data/progr/audio_widener/stereo_plugin/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DJucePlugin_Build_AU=0"/>
+					<Add option="-DJucePlugin_Build_AUv3=0"/>
+					<Add option="-DJucePlugin_Build_AAX=0"/>
+					<Add option="-DJucePlugin_Build_Standalone=1"/>
+					<Add option="-DJucePlugin_Build_Unity=0"/>
+					<Add option="-DJucePlugin_Build_VST=0"/>
+					<Add option="-DJucePlugin_Build_VST3=0"/>
+					<Add option="-DJUCE_SHARED_CODE=1"/>
+					<Add option="-DJUCE_STANDALONE_APPLICATION=JucePlugin_Build_Standalone"/>
+					<Add option="-DJucePlugin_IsSynth=0"/>
+					<Add option="-DJucePlugin_ManufacturerCode=0x4a756365"/>
+					<Add option="-DJucePlugin_Manufacturer=&quot;TEST &quot;"/>
+					<Add option="-DJucePlugin_ManufacturerWebsite=&quot;&quot;"/>
+					<Add option="-DJucePlugin_ManufacturerEmail=&quot;&quot;"/>
+					<Add option="-DJucePlugin_PluginCode=0x44656d30"/>
+					<Add option="-DJucePlugin_ProducesMidiOutput=0"/>
+					<Add option="-DJucePlugin_IsMidiEffect=1"/>
+					<Add option="-DJucePlugin_WantsMidiInput=0"/>
+					<Add option="-DJucePlugin_EditorRequiresKeyboardFocus=0"/>
+					<Add option="-DJucePlugin_Name=&quot;A STEREO PLUGIN&quot;"/>
+					<Add option="-DJucePlugin_Desc=&quot;A STEREO PLUGIN&quot;"/>
+					<Add option="-DJucePlugin_Version=0.1.0"/>
+					<Add option="-DJucePlugin_VersionString=&quot;0.1.0&quot;"/>
+					<Add option="-DJucePlugin_VersionCode=0x100"/>
+					<Add option="-DJucePlugin_VSTUniqueID=JucePlugin_PluginCode"/>
+					<Add option="-DJucePlugin_VSTCategory=kPlugCategEffect"/>
+					<Add option="-DJucePlugin_Vst3Category=&quot;Fx&quot;"/>
+					<Add option="-DJucePlugin_AUMainType=&apos;aumi&apos;"/>
+					<Add option="-DJucePlugin_AUSubType=JucePlugin_PluginCode"/>
+					<Add option="-DJucePlugin_AUExportPrefix=A_STEREO_PLUGINAU"/>
+					<Add option="-DJucePlugin_AUExportPrefixQuoted=&quot;A_STEREO_PLUGINAU&quot;"/>
+					<Add option="-DJucePlugin_AUManufacturerCode=JucePlugin_ManufacturerCode"/>
+					<Add option="-DJucePlugin_CFBundleIdentifier=com.TEST .A_STEREO_PLUGIN"/>
+					<Add option="-DJucePlugin_AAXIdentifier=com.TEST .A_STEREO_PLUGIN"/>
+					<Add option="-DJucePlugin_AAXManufacturerCode=JucePlugin_ManufacturerCode"/>
+					<Add option="-DJucePlugin_AAXProductId=JucePlugin_PluginCode"/>
+					<Add option="-DJucePlugin_AAXCategory=0x00000000"/>
+					<Add option="-DJucePlugin_AAXDisableBypass=0"/>
+					<Add option="-DJucePlugin_AAXDisableMultiMono=0"/>
+					<Add option="-DJucePlugin_VSTNumMidiInputs=16"/>
+					<Add option="-DJucePlugin_VSTNumMidiOutputs=16"/>
+					<Add option="-DJUCE_WEB_BROWSER=0"/>
+					<Add option="-DJUCE_USE_CURL=0"/>
+					<Add option="-DJUCE_VST3_CAN_REPLACE_VST2=0"/>
+					<Add option="-DJUCE_MODULE_AVAILABLE_juce_audio_utils=1"/>
+					<Add option="-DJUCE_MODULE_AVAILABLE_juce_audio_processors=1"/>
+					<Add option="-DJUCE_MODULE_AVAILABLE_juce_gui_extra=1"/>
+					<Add option="-DJUCE_MODULE_AVAILABLE_juce_gui_basics=1"/>
+					<Add option="-DJUCE_MODULE_AVAILABLE_juce_graphics=1"/>
+					<Add option="-DJUCE_MODULE_AVAILABLE_juce_events=1"/>
+					<Add option="-DJUCE_GLOBAL_MODULE_SETTINGS_INCLUDED=1"/>
+					<Add option="-DDEBUG=1"/>
+					<Add option="-D_DEBUG=1"/>
+					<Add option="-DJUCE_MODULE_AVAILABLE_juce_core=1"/>
+					<Add option="-DJUCE_MODULE_AVAILABLE_juce_data_structures=1"/>
+					<Add option="-DJUCE_MODULE_AVAILABLE_juce_audio_basics=1"/>
+					<Add option="-DJUCE_MODULE_AVAILABLE_juce_audio_formats=1"/>
+					<Add option="-DJUCE_MODULE_AVAILABLE_juce_audio_devices=1"/>
+					<Add directory="D:/data/progr/audio_widener/stereo_plugin/cmake-build-debug/A_STEREO_PLUGIN_artefacts/JuceLibraryCode"/>
+					<Add directory="D:/data/progr/audio_widener/stereo_plugin/JUCE/modules"/>
+					<Add directory="D:/data/progr/audio_widener/stereo_plugin/JUCE/modules/juce_audio_processors/format_types/VST3_SDK"/>
+					<Add directory="D:/program_files/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include/c++"/>
+					<Add directory="D:/program_files/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include/c++/i686-w64-mingw32"/>
+					<Add directory="D:/program_files/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include/c++/backward"/>
+					<Add directory="D:/program_files/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include"/>
+					<Add directory="D:/program_files/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include-fixed"/>
+					<Add directory="D:/program_files/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/../../../../i686-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="D:/program_files/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;D:/data/progr/audio_widener/stereo_plugin/cmake-build-debug/Makefile&quot;  VERBOSE=1 A_STEREO_PLUGIN/fast"/>
+					<CompileFile command="D:/program_files/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;D:/data/progr/audio_widener/stereo_plugin/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/program_files/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;D:/data/progr/audio_widener/stereo_plugin/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/program_files/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;D:/data/progr/audio_widener/stereo_plugin/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="install">
+				<Option working_dir="D:/data/progr/audio_widener/stereo_plugin/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="D:/program_files/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;D:/data/progr/audio_widener/stereo_plugin/cmake-build-debug/Makefile&quot;  VERBOSE=1 install"/>
+					<CompileFile command="D:/program_files/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;D:/data/progr/audio_widener/stereo_plugin/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/program_files/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;D:/data/progr/audio_widener/stereo_plugin/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/program_files/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;D:/data/progr/audio_widener/stereo_plugin/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="install/local">
+				<Option working_dir="D:/data/progr/audio_widener/stereo_plugin/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="D:/program_files/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;D:/data/progr/audio_widener/stereo_plugin/cmake-build-debug/Makefile&quot;  VERBOSE=1 install/local"/>
+					<CompileFile command="D:/program_files/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;D:/data/progr/audio_widener/stereo_plugin/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/program_files/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;D:/data/progr/audio_widener/stereo_plugin/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/program_files/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;D:/data/progr/audio_widener/stereo_plugin/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="D:/data/progr/audio_widener/stereo_plugin/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="D:/program_files/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;D:/data/progr/audio_widener/stereo_plugin/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="D:/program_files/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;D:/data/progr/audio_widener/stereo_plugin/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/program_files/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;D:/data/progr/audio_widener/stereo_plugin/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/program_files/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;D:/data/progr/audio_widener/stereo_plugin/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="list_install_components">
+				<Option working_dir="D:/data/progr/audio_widener/stereo_plugin/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="D:/program_files/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;D:/data/progr/audio_widener/stereo_plugin/cmake-build-debug/Makefile&quot;  VERBOSE=1 list_install_components"/>
+					<CompileFile command="D:/program_files/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;D:/data/progr/audio_widener/stereo_plugin/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/program_files/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;D:/data/progr/audio_widener/stereo_plugin/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/program_files/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;D:/data/progr/audio_widener/stereo_plugin/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="install/strip">
+				<Option working_dir="D:/data/progr/audio_widener/stereo_plugin/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="D:/program_files/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;D:/data/progr/audio_widener/stereo_plugin/cmake-build-debug/Makefile&quot;  VERBOSE=1 install/strip"/>
+					<CompileFile command="D:/program_files/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;D:/data/progr/audio_widener/stereo_plugin/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/program_files/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;D:/data/progr/audio_widener/stereo_plugin/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/program_files/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;D:/data/progr/audio_widener/stereo_plugin/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="D:/data/progr/audio_widener/stereo_plugin/JUCE/modules/juce_audio_basics/juce_audio_basics.cpp">
+			<Option target="A_STEREO_PLUGIN"/>
+		</Unit>
+		<Unit filename="D:/data/progr/audio_widener/stereo_plugin/JUCE/modules/juce_audio_basics/juce_audio_basics.h">
+			<Option target="A_STEREO_PLUGIN"/>
+		</Unit>
+		<Unit filename="D:/data/progr/audio_widener/stereo_plugin/JUCE/modules/juce_audio_devices/juce_audio_devices.cpp">
+			<Option target="A_STEREO_PLUGIN"/>
+		</Unit>
+		<Unit filename="D:/data/progr/audio_widener/stereo_plugin/JUCE/modules/juce_audio_devices/juce_audio_devices.h">
+			<Option target="A_STEREO_PLUGIN"/>
+		</Unit>
+		<Unit filename="D:/data/progr/audio_widener/stereo_plugin/JUCE/modules/juce_audio_formats/juce_audio_formats.cpp">
+			<Option target="A_STEREO_PLUGIN"/>
+		</Unit>
+		<Unit filename="D:/data/progr/audio_widener/stereo_plugin/JUCE/modules/juce_audio_formats/juce_audio_formats.h">
+			<Option target="A_STEREO_PLUGIN"/>
+		</Unit>
+		<Unit filename="D:/data/progr/audio_widener/stereo_plugin/JUCE/modules/juce_audio_plugin_client/juce_audio_plugin_client_AAX.cpp">
+			<Option target="A_STEREO_PLUGIN_Standalone"/>
+		</Unit>
+		<Unit filename="D:/data/progr/audio_widener/stereo_plugin/JUCE/modules/juce_audio_plugin_client/juce_audio_plugin_client_RTAS_1.cpp">
+			<Option target="A_STEREO_PLUGIN_Standalone"/>
+		</Unit>
+		<Unit filename="D:/data/progr/audio_widener/stereo_plugin/JUCE/modules/juce_audio_plugin_client/juce_audio_plugin_client_RTAS_2.cpp">
+			<Option target="A_STEREO_PLUGIN_Standalone"/>
+		</Unit>
+		<Unit filename="D:/data/progr/audio_widener/stereo_plugin/JUCE/modules/juce_audio_plugin_client/juce_audio_plugin_client_RTAS_3.cpp">
+			<Option target="A_STEREO_PLUGIN_Standalone"/>
+		</Unit>
+		<Unit filename="D:/data/progr/audio_widener/stereo_plugin/JUCE/modules/juce_audio_plugin_client/juce_audio_plugin_client_RTAS_4.cpp">
+			<Option target="A_STEREO_PLUGIN_Standalone"/>
+		</Unit>
+		<Unit filename="D:/data/progr/audio_widener/stereo_plugin/JUCE/modules/juce_audio_plugin_client/juce_audio_plugin_client_RTAS_utils.cpp">
+			<Option target="A_STEREO_PLUGIN_Standalone"/>
+		</Unit>
+		<Unit filename="D:/data/progr/audio_widener/stereo_plugin/JUCE/modules/juce_audio_plugin_client/juce_audio_plugin_client_Standalone.cpp">
+			<Option target="A_STEREO_PLUGIN_Standalone"/>
+		</Unit>
+		<Unit filename="D:/data/progr/audio_widener/stereo_plugin/JUCE/modules/juce_audio_plugin_client/juce_audio_plugin_client_Unity.cpp">
+			<Option target="A_STEREO_PLUGIN_Standalone"/>
+		</Unit>
+		<Unit filename="D:/data/progr/audio_widener/stereo_plugin/JUCE/modules/juce_audio_plugin_client/juce_audio_plugin_client_VST2.cpp">
+			<Option target="A_STEREO_PLUGIN_Standalone"/>
+		</Unit>
+		<Unit filename="D:/data/progr/audio_widener/stereo_plugin/JUCE/modules/juce_audio_plugin_client/juce_audio_plugin_client_VST3.cpp">
+			<Option target="A_STEREO_PLUGIN_Standalone"/>
+		</Unit>
+		<Unit filename="D:/data/progr/audio_widener/stereo_plugin/JUCE/modules/juce_audio_plugin_client/juce_audio_plugin_client_utils.cpp">
+			<Option target="A_STEREO_PLUGIN"/>
+		</Unit>
+		<Unit filename="D:/data/progr/audio_widener/stereo_plugin/JUCE/modules/juce_audio_processors/juce_audio_processors.cpp">
+			<Option target="A_STEREO_PLUGIN"/>
+		</Unit>
+		<Unit filename="D:/data/progr/audio_widener/stereo_plugin/JUCE/modules/juce_audio_processors/juce_audio_processors.h">
+			<Option target="A_STEREO_PLUGIN"/>
+		</Unit>
+		<Unit filename="D:/data/progr/audio_widener/stereo_plugin/JUCE/modules/juce_audio_utils/juce_audio_utils.cpp">
+			<Option target="A_STEREO_PLUGIN"/>
+		</Unit>
+		<Unit filename="D:/data/progr/audio_widener/stereo_plugin/JUCE/modules/juce_audio_utils/juce_audio_utils.h">
+			<Option target="A_STEREO_PLUGIN"/>
+		</Unit>
+		<Unit filename="D:/data/progr/audio_widener/stereo_plugin/JUCE/modules/juce_core/juce_core.cpp">
+			<Option target="A_STEREO_PLUGIN"/>
+		</Unit>
+		<Unit filename="D:/data/progr/audio_widener/stereo_plugin/JUCE/modules/juce_core/juce_core.h">
+			<Option target="A_STEREO_PLUGIN"/>
+		</Unit>
+		<Unit filename="D:/data/progr/audio_widener/stereo_plugin/JUCE/modules/juce_data_structures/juce_data_structures.cpp">
+			<Option target="A_STEREO_PLUGIN"/>
+		</Unit>
+		<Unit filename="D:/data/progr/audio_widener/stereo_plugin/JUCE/modules/juce_data_structures/juce_data_structures.h">
+			<Option target="A_STEREO_PLUGIN"/>
+		</Unit>
+		<Unit filename="D:/data/progr/audio_widener/stereo_plugin/JUCE/modules/juce_events/juce_events.cpp">
+			<Option target="A_STEREO_PLUGIN"/>
+		</Unit>
+		<Unit filename="D:/data/progr/audio_widener/stereo_plugin/JUCE/modules/juce_events/juce_events.h">
+			<Option target="A_STEREO_PLUGIN"/>
+		</Unit>
+		<Unit filename="D:/data/progr/audio_widener/stereo_plugin/JUCE/modules/juce_graphics/juce_graphics.cpp">
+			<Option target="A_STEREO_PLUGIN"/>
+		</Unit>
+		<Unit filename="D:/data/progr/audio_widener/stereo_plugin/JUCE/modules/juce_graphics/juce_graphics.h">
+			<Option target="A_STEREO_PLUGIN"/>
+		</Unit>
+		<Unit filename="D:/data/progr/audio_widener/stereo_plugin/JUCE/modules/juce_gui_basics/juce_gui_basics.cpp">
+			<Option target="A_STEREO_PLUGIN"/>
+		</Unit>
+		<Unit filename="D:/data/progr/audio_widener/stereo_plugin/JUCE/modules/juce_gui_basics/juce_gui_basics.h">
+			<Option target="A_STEREO_PLUGIN"/>
+		</Unit>
+		<Unit filename="D:/data/progr/audio_widener/stereo_plugin/JUCE/modules/juce_gui_extra/juce_gui_extra.cpp">
+			<Option target="A_STEREO_PLUGIN"/>
+		</Unit>
+		<Unit filename="D:/data/progr/audio_widener/stereo_plugin/JUCE/modules/juce_gui_extra/juce_gui_extra.h">
+			<Option target="A_STEREO_PLUGIN"/>
+		</Unit>
+		<Unit filename="D:/data/progr/audio_widener/stereo_plugin/PluginEditor.cpp">
+			<Option target="A_STEREO_PLUGIN"/>
+		</Unit>
+		<Unit filename="D:/data/progr/audio_widener/stereo_plugin/PluginEditor.h">
+			<Option target="A_STEREO_PLUGIN"/>
+		</Unit>
+		<Unit filename="D:/data/progr/audio_widener/stereo_plugin/PluginProcessor.cpp">
+			<Option target="A_STEREO_PLUGIN"/>
+		</Unit>
+		<Unit filename="D:/data/progr/audio_widener/stereo_plugin/PluginProcessor.h">
+			<Option target="A_STEREO_PLUGIN"/>
+		</Unit>
+		<Unit filename="D:/data/progr/audio_widener/stereo_plugin/cmake-build-debug/A_STEREO_PLUGIN_artefacts/JuceLibraryCode/resources.rc">
+			<Option target="A_STEREO_PLUGIN_Standalone"/>
+		</Unit>
+		<Unit filename="D:/data/progr/audio_widener/stereo_plugin/cmake-build-debug/A_STEREO_PLUGIN_artefacts/JuceLibraryCode/resources.rc.rule">
+			<Option target="A_STEREO_PLUGIN_Standalone"/>
+		</Unit>
+		<Unit filename="D:/data/progr/audio_widener/stereo_plugin/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="D:/data/progr/audio_widener/stereo_plugin/JUCE/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\JUCE\"/>
+		</Unit>
+		<Unit filename="D:/data/progr/audio_widener/stereo_plugin/JUCE/extras/Build/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\JUCE\extras\Build\"/>
+		</Unit>
+		<Unit filename="D:/data/progr/audio_widener/stereo_plugin/JUCE/extras/Build/CMake/JUCECheckAtomic.cmake">
+			<Option virtualFolder="CMake Files\JUCE\extras\Build\CMake\"/>
+		</Unit>
+		<Unit filename="D:/data/progr/audio_widener/stereo_plugin/JUCE/extras/Build/CMake/JUCEConfig.cmake.in">
+			<Option virtualFolder="CMake Files\JUCE\extras\Build\CMake\"/>
+		</Unit>
+		<Unit filename="D:/data/progr/audio_widener/stereo_plugin/JUCE/extras/Build/CMake/JUCEHelperTargets.cmake">
+			<Option virtualFolder="CMake Files\JUCE\extras\Build\CMake\"/>
+		</Unit>
+		<Unit filename="D:/data/progr/audio_widener/stereo_plugin/JUCE/extras/Build/CMake/JUCEUtils.cmake">
+			<Option virtualFolder="CMake Files\JUCE\extras\Build\CMake\"/>
+		</Unit>
+		<Unit filename="D:/data/progr/audio_widener/stereo_plugin/JUCE/extras/Build/juceaide/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\JUCE\extras\Build\juceaide\"/>
+		</Unit>
+		<Unit filename="D:/data/progr/audio_widener/stereo_plugin/JUCE/modules/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\JUCE\modules\"/>
+		</Unit>
+		<Unit filename="D:/data/progr/audio_widener/stereo_plugin/cmake-build-debug/JUCE/tools/JUCEToolsExport.cmake">
+			<Option virtualFolder="CMake Files\cmake-build-debug\JUCE\tools\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
