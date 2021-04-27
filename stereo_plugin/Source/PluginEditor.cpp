@@ -59,20 +59,22 @@ PluginEditor::PluginEditor (PluginProcessor& processor)
 
     strengthLabel->setBounds (24, 40, 88, 24);
 
-    juce__component.reset (new juce::Slider());
-    addAndMakeVisible (juce__component.get());
-    juce__component->setName ("ttets");
+    spectrum_canvas.reset (new SpectrumCanvas());
+    addAndMakeVisible (spectrum_canvas.get());
+    spectrum_canvas->setName ("spectrum_canvas");
 
-    juce__component->setBounds (184, 120, 150, 24);
+    spectrum_canvas->setBounds (248, 96, 368, 256);
 
 
     //[UserPreSize]
     //[/UserPreSize]
 
-    setSize (300, 200);
+    setSize (700, 400);
 
 
     //[Constructor] You can add your own custom stuff here..
+    setResizable(true, true);
+    setResizeLimits(100, 100, 1000, 1000);
     //[/Constructor]
 }
 
@@ -83,7 +85,7 @@ PluginEditor::~PluginEditor()
 
     juce__slider = nullptr;
     strengthLabel = nullptr;
-    juce__component = nullptr;
+    spectrum_canvas = nullptr;
 
 
     //[Destructor]. You can add your own custom destruction code here..
@@ -99,7 +101,7 @@ void PluginEditor::paint (juce::Graphics& g)
     g.fillAll (juce::Colour (0xff323e44));
 
     {
-        int x = 0, y = 0, width = 300, height = 200;
+        int x = 0, y = 0, width = 700, height = 400;
         juce::Colour fillColour = juce::Colour (0x21ffffff);
         //[UserPaintCustomArguments] Customize the painting arguments here..
         //[/UserPaintCustomArguments]
@@ -154,9 +156,9 @@ BEGIN_JUCER_METADATA
                  parentClasses="public juce::AudioProcessorEditor" constructorParams="PluginProcessor&amp; processor"
                  variableInitialisers="juce::AudioProcessorEditor(processor), audioProcessor(processor)"
                  snapPixels="8" snapActive="1" snapShown="1" overlayOpacity="0.330"
-                 fixedSize="0" initialWidth="300" initialHeight="200">
+                 fixedSize="0" initialWidth="700" initialHeight="400">
   <BACKGROUND backgroundColour="ff323e44">
-    <RECT pos="0 0 300 200" fill="solid: 21ffffff" hasStroke="0"/>
+    <RECT pos="0 0 700 400" fill="solid: 21ffffff" hasStroke="0"/>
   </BACKGROUND>
   <SLIDER name="new slider" id="d357a1623f016aeb" memberName="juce__slider"
           virtualName="juce::Slider" explicitFocusOrder="0" pos="144 16 80 80"
@@ -168,8 +170,8 @@ BEGIN_JUCER_METADATA
          edTextCol="ff000000" edBkgCol="0" labelText="label text" editableSingleClick="0"
          editableDoubleClick="0" focusDiscardsChanges="0" fontname="Default font"
          fontsize="15.0" kerning="0.0" bold="0" italic="0" justification="33"/>
-  <GENERICCOMPONENT name="ttets" id="7cc1dc834f04d7c1" memberName="juce__component"
-                    virtualName="" explicitFocusOrder="0" pos="184 120 150 24" class="juce::Slider"
+  <GENERICCOMPONENT name="spectrum_canvas" id="c28ba59d3075a746" memberName="spectrum_canvas"
+                    virtualName="" explicitFocusOrder="0" pos="248 96 368 256" class="SpectrumCanvas"
                     params=""/>
 </JUCER_COMPONENT>
 

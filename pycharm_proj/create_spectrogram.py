@@ -4,7 +4,7 @@ from imports import *
 def create_spectrogram(sound, sample_rate, mode):
     drawing_params = {
         "NFFT": 1024,#64, # 1024,
-        "noverlap": 412,#32, #512,
+        "noverlap": 512,#412,#32, #512,
         "Fs": sample_rate
     }
     window = signal.windows.hann(drawing_params["NFFT"])

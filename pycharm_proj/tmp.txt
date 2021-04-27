@@ -1,0 +1,233 @@
+ 0:02.00:   50M    0G   3L  12/ 14S - Build Drone
+ 0:10.52:  100M    0G   2L  13/ 14S - Build Overlord
+ 0:14.78:   50M    0G   2L  13/ 14S - Build Drone
+ 0:28.52:  173M    0G   2L  14/ 22S - Build Drone
+ 0:28.52:  123M    0G   1L  15/ 22S - Build Drone
+ 0:35.00:  162M    0G   1L  16/ 22S - Build Drone
+ 0:48.01:  300M    0G   1L  17/ 22S - Build Hatchery
+ 0:51.49:   50M    0G   1L  16/ 22S - Build Drone
+ 0:57.00:   81M    0G   1L  17/ 22S - Build Drone
+ 0:57.00:   31M    0G   0L  18/ 22S - Build Extractor
+ 1:10.61:  200M    0G   1L  17/ 22S - Build Spawning Pool
+ 1:14.05:   50M    0G   1L  16/ 22S - Build Drone
+ 1:19.00:   76M    0G   1L  17/ 22S - Build Drone
+ 1:19.00:   26M    0G   0L  18/ 22S - Move Drone To Gas
+ 1:30.00:  189M    9G   1L  18/ 22S - Build Drone
+ 1:30.00:  139M    9G   0L  19/ 22S - Move Drone To Gas
+ 1:30.00:  139M    9G   0L  19/ 22S - Move Drone To Gas
+ 1:41.00:  297M   36G   1L  19/ 22S - Build Overlord
+ 1:52.00:  365M   66G   1L  19/ 22S - Build Drone
+ 1:59.01:  425M   85G   1L  20/ 36S - Build Zergling
+ 2:03.00:  437M   96G   1L  21/ 36S - Build Zergling
+ 2:03.00:  387M   96G   0L  22/ 36S - Build Queen
+ 2:03.00:  237M   96G   0L  24/ 36S - Build Queen
+ 2:03.00:   87M   96G   0L  26/ 36S - Move Drone To Minerals
+ 2:03.00:   87M   96G   0L  26/ 36S - Move Drone To Minerals
+ 2:10.01:  211M  103G   1L  26/ 36S - Build Drone
+ 2:10.01:  161M  103G   0L  27/ 36S - Move Drone To Minerals
+ 2:14.00:  237M  103G   1L  27/ 36S - Build Drone
+ 2:21.01:  324M  103G   1L  28/ 36S - Build Drone
+ 2:22.34:  300M  103G   0L  29/ 36S - Build Hatchery
+ 2:25.12:   50M  103G   1L  28/ 36S - Build Drone
+ 2:32.01:  132M  103G   1L  29/ 36S - Build Drone
+ 2:39.00:  224M  103G   1L  30/ 36S - Build Queen
+ 2:40.15:  100M  103G   1L  32/ 36S - Research Metabolic Boost
+ 2:40.15:    0M    3G   1L  32/ 36S - Queen Spawn Larvae
+ 2:40.15:    0M    3G   1L  32/ 36S - Queen Spawn Larvae
+ 2:46.78:  150M    3G   2L  32/ 36S - Build Queen
+ 2:48.91:   50M    3G   3L  34/ 36S - Build Drone
+ 2:51.04:   50M    3G   2L  35/ 36S - Build Drone
+ 2:55.31:  100M    3G   2L  36/ 36S - Build Overlord
+ 2:59.57:  100M    3G   2L  36/ 36S - Build Overlord
+ 3:10.75:  275M    3G   9L  36/ 36S - Queen Spawn Larvae
+ 3:10.75:  275M    3G   9L  36/ 36S - Queen Spawn Larvae
+ 3:13.31:  340M    3G   9L  36/ 44S - Build Drone
+ 3:13.31:  290M    3G   8L  37/ 44S - Move Drone To Gas
+ 3:13.31:  290M    3G   8L  37/ 44S - Build Drone
+ 3:13.31:  240M    3G   7L  38/ 44S - Build Drone
+ 3:13.31:  190M    3G   6L  39/ 44S - Build Drone
+ 3:13.31:  140M    3G   5L  40/ 44S - Build Drone
+ 3:13.31:   90M    3G   4L  41/ 44S - Build Drone
+ 3:17.79:  150M    6G   3L  42/ 52S - Build Queen
+ 3:23.93:  150M   12G   3L  44/ 52S - Build Queen
+ 3:25.98:   50M   14G   5L  46/ 52S - Build Drone
+ 3:27.88:   50M   16G   4L  47/ 52S - Build Drone
+ 3:29.54:   50M   18G   3L  48/ 52S - Build Drone
+ 3:32.85:  100M   21G   2L  49/ 52S - Build Overlord
+ 3:33.34:   15M   22G   2L  49/ 58S - Queen Spawn Larvae
+ 3:34.50:   50M   23G   2L  49/ 58S - Build Drone
+ 3:36.14:   50M   25G   2L  50/ 58S - Build Drone
+ 3:37.79:   50M   26G   2L  51/ 58S - Build Drone
+ 3:37.79:    0M   26G   1L  52/ 58S - Move Drone To Gas
+ 3:39.75:   57M   28G   7L  52/ 58S - Queen Spawn Larvae
+ 3:39.75:   57M   28G   7L  52/ 58S - Build Drone
+ 3:41.16:   50M   31G   6L  53/ 58S - Build Drone
+ 3:42.78:   50M   35G   5L  54/ 58S - Build Drone
+ 3:44.35:   50M   38G   5L  55/ 58S - Build Drone
+ 3:45.90:   50M   41G   4L  56/ 58S - Build Drone
+ 3:45.90:    0M   41G   3L  57/ 58S - Queen Spawn Larvae
+ 3:47.45:   50M   44G   3L  57/ 58S - Build Drone
+ 3:50.85:  113M   52G   3L  58/ 66S - Build Drone
+ 3:50.85:   63M   52G   2L  59/ 66S - Build Drone
+ 3:51.94:   50M   54G   1L  60/ 66S - Build Drone
+ 3:53.36:   50M   57G   1L  61/ 66S - Build Drone
+ 3:56.11:  100M   62G   1L  62/ 66S - Build Overlord
+
+Milestone 1 reached:
+ 3:59.93:  146M   70G   0L  62/ 66S
+Income:   2402M  125G
+Buildings:  3 Hatchery 1 Extractor 1 Spawning Pool
+Units:      44 Drone 6 Overlord 4 Zergling 6 Queen
+Research:   Metabolic Boost
+
+ 4:01.75:  220M   74G   1L  62/ 66S - Build Drone
+ 4:02.34:  194M   75G   3L  63/ 66S - Queen Spawn Larvae
+ 4:02.34:  194M   75G   3L  63/ 66S - Build Drone
+ 4:02.34:  144M   75G   2L  64/ 66S - Build Drone
+ 4:02.34:   94M   75G   1L  65/ 66S - Build Drone
+ 4:08.34:  300M   88G   1L  66/ 66S - Build Hatchery
+ 4:08.75:   17M   89G   4L  65/ 66S - Queen Spawn Larvae
+ 4:09.51:   50M   90G   4L  65/ 66S - Build Drone
+ 4:14.12:  198M  100G   4L  66/ 74S - Build Lair
+ 4:14.16:   50M    0G   5L  66/ 74S - Build Drone
+ 4:15.33:   50M    3G   7L  67/ 74S - Build Drone
+ 4:16.47:   50M    5G   6L  68/ 74S - Build Drone
+ 4:17.54:   50M    7G   5L  69/ 74S - Build Drone
+ 4:18.61:   50M    9G   4L  70/ 74S - Build Drone
+ 4:19.67:   50M   12G   3L  71/ 74S - Build Drone
+ 4:20.74:   50M   14G   3L  72/ 74S - Build Drone
+ 4:21.28:   25M   15G   2L  73/ 74S - Build Extractor
+ 4:22.39:   50M   17G   2L  72/ 74S - Build Drone
+ 4:22.39:    0M   17G   1L  73/ 74S - Queen Spawn Larvae
+ 4:23.50:   50M   20G   1L  73/ 74S - Build Drone
+ 4:25.63:  100M   24G   1L  74/ 74S - Build Overlord
+ 4:26.16:   25M   25G   0L  74/ 74S - Build Extractor
+ 4:31.34:  243M   36G   4L  73/ 74S - Queen Spawn Larvae
+ 4:31.34:  243M   36G   4L  73/ 74S - Build Drone
+ 4:31.34:  193M   36G   3L  74/ 74S - Build Roach Warren
+ 4:31.34:   43M   36G   3L  73/ 74S - Build Extractor
+ 4:37.21:  300M   48G   4L  72/ 74S - Build Hatchery
+ 4:37.75:   26M   49G   7L  71/ 74S - Queen Spawn Larvae
+ 4:38.22:   50M   50G   7L  71/ 74S - Build Drone
+ 4:40.24:  100M   54G   7L  72/ 74S - Build Overlord
+ 4:40.24:    0M   54G   6L  72/ 74S - Move Drone To Gas
+ 4:40.75:   25M   55G   6L  72/ 74S - Build Extractor
+ 4:40.75:    0M   55G   6L  71/ 74S - Move Drone To Gas
+ 4:41.80:   50M   58G   6L  71/ 74S - Build Drone
+ 4:42.86:   50M   60G   6L  72/ 74S - Build Drone
+ 4:42.86:    0M   60G   5L  73/ 74S - Move Drone To Gas
+ 4:43.93:   50M   65G   5L  73/ 82S - Build Drone
+ 4:44.99:   50M   69G   4L  74/ 82S - Build Drone
+ 4:44.99:    0M   69G   3L  75/ 82S - Move Drone To Gas
+ 4:46.05:   50M   74G   3L  75/ 82S - Build Drone
+ 4:46.05:    0M   74G   2L  76/ 82S - Move Drone To Gas
+ 4:47.12:   50M   80G   2L  76/ 82S - Build Drone
+ 4:48.19:   50M   86G   1L  77/ 82S - Build Drone
+ 4:50.54:  110M  102G   1L  78/ 82S - Build Overlord
+ 4:50.54:   10M  102G   0L  78/ 82S - Move Drone To Gas
+ 4:51.41:   50M  108G   4L  78/ 82S - Build Drone
+ 4:51.41:    0M  108G   3L  79/ 82S - Move Drone To Gas
+ 4:52.51:   50M  115G   3L  79/ 82S - Build Drone
+ 4:52.51:    0M  115G   2L  80/ 82S - Move Drone To Gas
+ 4:53.60:   50M  125G   2L  80/ 82S - Build Drone
+ 4:54.70:   50M  135G   2L  81/ 82S - Build Drone
+ 4:58.24:  166M  169G   1L  82/ 90S - Build Drone
+ 4:58.24:  116M  169G   0L  83/ 90S - Move Drone To Gas
+ 4:58.24:  116M  169G   0L  83/ 90S - Move Drone To Gas
+ 4:58.24:  116M  169G   0L  83/ 90S - Queen Spawn Larvae
+ 5:00.34:  215M  189G   3L  83/ 90S - Build Drone
+ 5:01.75:  233M  204G   2L  84/ 90S - Move Drone To Gas
+ 5:01.75:  233M  204G   2L  84/ 90S - Move Drone To Gas
+ 5:01.75:  233M  204G   2L  84/ 90S - Build Drone
+ 5:01.75:  183M  204G   1L  85/ 90S - Build Drone
+ 5:02.24:  156M  209G   1L  86/ 90S - Build Drone
+ 5:02.24:  106M  209G   0L  87/ 90S - Queen Spawn Larvae
+ 5:02.41:  114M  211G   1L  87/ 90S - Build Drone
+ 5:06.75:  273M  265G   3L  88/ 90S - Queen Spawn Larvae
+ 5:06.75:  273M  265G   3L  88/ 90S - Build Drone
+ 5:06.75:  223M  265G   2L  89/ 90S - Build Drone
+ 5:08.54:  261M  288G   1L  90/ 98S - Build Drone
+ 5:11.12:  341M  321G   0L  91/ 98S - Research Glial Reconstitution
+ 5:11.34:  252M  224G   1L  91/ 98S - Build Drone
+ 5:13.41:  306M  251G   1L  92/ 98S - Build Drone
+ 5:17.75:  482M  307G   1L  93/ 98S - Build Drone
+ 5:19.34:  517M  328G   1L  94/104S - Queen Spawn Larvae
+ 5:19.34:  517M  328G   1L  94/104S - Build Overlord
+ 5:22.34:  596M  367G   1L  94/104S - Build Overlord
+ 5:24.41:  623M  393G   1L  94/104S - Build Overlord
+ 5:27.24:  698M  430G   3L  94/104S - Build Overlord
+ 5:27.24:  598M  430G   2L  94/104S - Build Overlord
+ 5:27.24:  498M  430G   1L  94/104S - Build Overlord
+ 5:28.75:  493M  450G   1L  94/104S - Build Overlord
+ 5:30.34:  494M  470G   1L  94/104S - Build Overlord
+ 5:31.24:  450M  482G   3L  94/104S - Build Overlord
+ 5:31.24:  350M  482G   2L  94/104S - Queen Spawn Larvae
+ 5:31.24:  350M  482G   2L  94/104S - Queen Spawn Larvae
+ 5:31.24:  350M  482G   2L  94/104S - Build Roach
+ 5:31.24:  275M  457G   1L  96/104S - Build Roach
+ 5:35.75:  486M  490G   3L  98/104S - Build Roach
+ 5:35.75:  411M  465G   2L 100/104S - Build Roach
+ 5:35.75:  336M  440G   1L 102/104S - Build Roach
+ 5:38.24:  419M  448G   1L 104/112S - Build Roach
+ 5:41.34:  541M  463G   1L 106/120S - Build Roach
+ 5:41.34:  466M  438G   0L 108/120S - Queen Spawn Larvae
+ 5:48.21:  903M  527G   3L 108/166S - Queen Spawn Larvae
+ 5:48.21:  903M  527G   3L 108/166S - Move Drone To Minerals
+ 5:48.34:  911M  528G   6L 108/174S - Queen Spawn Larvae
+ 5:48.34:  911M  528G   6L 108/174S - Move Drone To Minerals
+ 5:48.34:  911M  528G   6L 108/174S - Build Roach
+ 5:48.34:  836M  503G   5L 110/174S - Build Roach
+ 5:48.34:  761M  478G   4L 112/174S - Build Roach
+ 5:48.34:  686M  453G   3L 114/174S - Build Roach
+ 5:48.34:  611M  428G   2L 116/174S - Build Roach
+ 5:48.34:  536M  403G   1L 118/174S - Build Roach
+ 6:00.24: 1247M  517G  12L 120/182S - Queen Spawn Larvae
+ 6:00.24: 1247M  517G  12L 120/182S - Move Drone To Minerals
+ 6:00.24: 1247M  517G  12L 120/182S - Queen Spawn Larvae
+ 6:00.24: 1247M  517G  12L 120/182S - Build Queen
+ 6:00.24: 1097M  517G  12L 122/182S - Build Queen
+ 6:00.24:  947M  517G  12L 124/182S - Build Queen
+ 6:00.24:  797M  517G  12L 126/182S - Build Roach
+ 6:00.24:  722M  492G  11L 128/182S - Build Roach
+ 6:00.24:  647M  467G  10L 130/182S - Build Roach
+ 6:00.24:  572M  442G   9L 132/182S - Build Roach
+ 6:00.24:  497M  417G   8L 134/182S - Build Roach
+ 6:00.24:  422M  392G   7L 136/182S - Build Roach
+ 6:00.24:  347M  367G   6L 138/182S - Build Roach
+ 6:00.24:  272M  342G   5L 140/182S - Build Roach
+ 6:00.24:  197M  317G   4L 142/182S - Build Roach
+ 6:00.24:  122M  292G   3L 144/182S - Build Roach
+ 6:00.65:   75M  272G   2L 146/182S - Build Roach
+ 6:01.78:   75M  259G   1L 148/182S - Build Roach
+ 6:08.75:  469M  311G   1L 150/182S - Build Roach
+ 6:10.21:  492M  302G   1L 152/182S - Build Roach
+ 6:10.34:  426M  279G   4L 154/182S - Build Roach
+ 6:10.34:  351M  254G   3L 156/182S - Build Roach
+ 6:10.34:  276M  229G   2L 158/182S - Build Roach
+ 6:10.34:  201M  204G   1L 160/182S - Build Roach
+ 6:11.24:  186M  189G   2L 162/182S - Build Overlord
+ 6:11.44:  100M  191G   1L 162/182S - Build Overlord
+ 6:17.21:  389M  255G   3L 162/182S - Build Roach
+ 6:17.21:  314M  230G   2L 164/182S - Build Roach
+ 6:17.21:  239M  205G   1L 166/182S - Build Roach
+ 6:17.34:  173M  181G   3L 168/182S - Build Roach
+ 6:17.34:   98M  156G   2L 170/182S - Build Roach
+ 6:18.12:   75M  140G   1L 172/182S - Build Roach
+ 6:21.34:  217M  150G   1L 174/182S - Build Drone
+ 6:22.24:  227M  160G   2L 175/182S - Build Roach
+ 6:22.24:  152M  135G   1L 177/182S - Build Roach
+ 6:28.21:  480M  176G   1L 179/182S - Build Roach
+ 6:29.24:  474M  163G   7L 181/190S - Build Roach
+ 6:29.24:  399M  138G   6L 183/190S - Build Roach
+ 6:29.24:  324M  113G   5L 185/190S - Build Roach
+ 6:29.24:  249M   88G   4L 187/190S - Build Roach
+ 6:29.44:  188M   65G   3L 189/198S - Build Roach
+ 6:29.44:  113M   40G   2L 191/198S - Build Roach
+ 6:30.35:   99M   25G   1L 193/198S - Build Roach
+
+Target reached:
+ 6:30.35:   24M    0G   0L 195/198S
+Income:   4042M  663G
+Buildings:  4 Hatchery 1 Lair 5 Extractor 1 Spawning Pool 1 Roach Warren
+Units:      80 Drone 21 Overlord 4 Zergling 6 Queen 31 Roach
+Research:   Metabolic Boost Glial Reconstitution

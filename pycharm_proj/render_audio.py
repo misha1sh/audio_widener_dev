@@ -1,5 +1,5 @@
 from imports import *
-
+from audio_processing import *
 
 #
 # def show_phase(sound1, sound2, sample_rate):
@@ -62,6 +62,8 @@ def create_phase_figure(sound, sample_rate):
 
     return fig, Sxx, apply_params_to_phase_figure
 
+
+
 # returns figure and new Sxx
 def create_spectrogram_figure(Sxx, drawing_params, title, colorscale="Bluered"):
     t = drawing_params["t"]
@@ -86,6 +88,195 @@ def create_spectrogram_figure(Sxx, drawing_params, title, colorscale="Bluered"):
         )
     return go.Figure(data=trace, layout=layout), Sxx
 
+
+
+
+
+def create_dashed_method_with_mask():
+    def create_layout(id: str):
+        return [
+            html.Div([
+                html.B("Smooth"),
+                dcc.Slider(
+                    id="smooth_coeff" + id,
+                    min=2,
+                    max=100,
+                    step=1,
+                    value=30
+                )
+            ], style={'width': '300px', 'display': 'inline-block'}),
+            html.Br(),
+            dcc.RadioItems(
+                id="smooth_type" + id,
+                options=[
+                    {'label': 'Sin', 'value': 'sin'},
+                    {'label': 'Gaussian', 'value': 'gaussian'},
+                ],
+                value='gaussian',
+                labelStyle={'display': 'inline-block'}
+            ),
+
+            html.Br(),
+
+            html.Div([
+                html.B("Effect strength (up to 500%)"),
+                dcc.Slider(
+                    id="weight_effect_strength" + id,
+                    min=0,
+                    max=500,
+                    step=1,
+                    value=100
+                )
+            ], style={'width': '1000px', 'display': 'inline-block'}),
+            html.Br(),
+
+            dcc.Checklist(
+                id="maximum_strength" + id,
+                options=[
+                    {'label': 'Maximum strength', 'value': 'maximum_strength'},
+                ],
+                value=['maximum_strength']
+            ),
+
+            html.Div([
+                html.B("Weight splitter"),
+                dcc.Slider(
+                    id="weight_split_by_parts" + id,
+                    min=0,
+                    max=100,
+                    step=1,
+                    value=30
+                )
+            ], style={'width': '300px', 'display': 'inline-block'}),
+
+            html.Br(),
+            dcc.RadioItems(
+                id="split_type" + id,
+                options=[
+                    {'label': 'Simple spilt', 'value': 'by_parts'},
+                    {'label': 'Split by volume', 'value': 'by_volume'},
+                ],
+                value='by_volume',
+                labelStyle={'display': 'inline-block'}
+            ),
+            html.Br(),
+
+            dcc.Checklist(
+                id="dynamic" + id,
+                options=[
+                    {'label': 'dynamic', 'value': 'dynamic'},
+                ],
+                value=['dynamic']
+            ),
+
+            html.Div([
+                "Dynamic time period",
+                dcc.Slider(
+                    id="dynamic_time_period" + id,
+                    min=2,
+                    max=100,
+                    step=1,
+                    value=30
+                )
+            ], style={'width': '300px', 'display': 'inline-block'}),
+            html.Br(),
+
+            html.Div([
+                "Split by volume number of parts",
+                dcc.Slider(
+                    id="split_by_volume_numbands" + id,
+                    min=0,
+                    max=35,
+                    step=1,
+                    value=30
+                )
+            ], style={'width': '300px', 'display': 'inline-block'}),
+            html.Br(),
+
+
+            html.Div([
+                html.B("Weight horizontal random"),
+                dcc.Slider(
+                    id="weight_horizontal_random" + id,
+                    min=0,
+                    max=100,
+                    step=1,
+                    value=30
+                )
+            ], style={'width': '300px', 'display': 'inline-block'}),
+
+            html.Div([
+                "Horizontal stretch",
+                dcc.Slider(
+                    id="horizontal_random_stretch" + id,
+                    min=0,
+                    max=35,
+                    step=1,
+                    value=30
+                )
+            ], style={'width': '300px', 'display': 'inline-block'}),
+        ]
+
+    def create_callback_inputs(id: str):
+        return [Input('smooth_coeff' + id, "value"),
+                Input('smooth_type' + id, "value"),
+                Input("weight_effect_strength" + id, "value"),
+                Input("weight_split_by_parts" + id, "value"),
+                Input("split_type" + id, "value"),
+                Input("dynamic" + id, "value"),
+                Input("dynamic_time_period" + id, "value"),
+                Input("split_by_volume_numbands" + id, "value"),
+                Input("weight_horizontal_random" + id, "value"),
+                Input("horizontal_random_stretch" + id, "value"),
+                ]
+
+    def method(sound, sample_rate, smooth_coeff, smooth_type, weight_effect_strength,
+               weight_split_by_parts, split_type,
+               dynamic_options, dynamic_time_period, split_by_volume_numbands, weight_horizontal_random,
+               horizontal_random_stretch):
+        def mask_func(Zxx):
+            if split_type == "by_parts":
+                split_by_parts_mask = split_into_bands_by_parts()(Zxx)
+            else:
+                split_by_parts_mask = split_into_bands_by_volume(numbands=split_by_volume_numbands)(Zxx)
+
+            if "dynamic" in dynamic_options:
+                split_by_parts_mask = apply_horizontal_split(split_by_parts_mask, dynamic_time_period=dynamic_time_period)
+
+            split_by_random_horizontal_mask = split_into_bands_by_random_horizontal(horizontal_random_stretch)(Zxx)
+
+            mask = multiply_masks_with_weights([split_by_parts_mask, split_by_random_horizontal_mask],
+                                               [weight_split_by_parts, weight_horizontal_random])
+
+            mask = apply_convolution_to_mask(mask, type=smooth_type, strength=smooth_coeff)
+
+
+            if np.min(mask) + 0.01 < 0 or np.max(mask) - 0.01 > 1:
+                raise Exception("Invalid mask " + str(mask))
+
+            real_strength = calc_real_mask_strength(mask)
+            mask = dry_wet_mask(mask, weight_effect_strength / 100 / real_strength)
+            mask[mask > 1] = 1
+            mask[mask < 0] = 0
+
+            return mask
+
+        sound1, sound2, (mask, f, t, Zxx) = m2s_with_mask(sound, sample_rate, mask_func)
+
+
+
+        mmask = mask.copy()
+        mmask[0, 0] = 0
+        mmask[0, 1] = 1
+        layout_addition = [
+            "min: " + str(np.min(mask)) + " max: " + str(np.max(mask)) + " mean: " + str(np.mean(mask)) +
+            "mean diff: " + str(np.mean(np.abs(mask - 0.5))),
+            dcc.Graph(figure= create_spectrogram_figure(mmask, {"t": t, "freqs": f}, "mask")[0])
+        ]
+        return sound1 * 2, sound2 * 2, layout_addition
+
+
+    return (method, create_layout, create_callback_inputs)
 
 
 # data = [(fig, Sxx), ...]

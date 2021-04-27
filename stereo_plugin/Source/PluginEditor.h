@@ -21,6 +21,10 @@
 
 //[Headers]     -- You can add your own extra header files here --
 #include <JuceHeader.h>
+
+
+#include "SpectrumCanvas.h"
+#include "TestComponent.h"
 //[/Headers]
 
 
@@ -59,7 +63,7 @@ private:
     //==============================================================================
     std::unique_ptr<juce::Slider> juce__slider;
     std::unique_ptr<juce::Label> strengthLabel;
-    std::unique_ptr<juce::Slider> juce__component;
+    std::unique_ptr<SpectrumCanvas> spectrum_canvas;
 
 
     //==============================================================================

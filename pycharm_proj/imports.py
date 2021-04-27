@@ -7,16 +7,20 @@ import matplotlib.pyplot as plt
 import matplotlib.mlab as mlab
 import matplotlib.patches as mpatches
 import librosa
+import scipy.ndimage.filters as ndfilters
 
 
 import chart_studio.plotly as py
 import plotly.graph_objects as go
 import plotly.express as px
 from ipywidgets import widgets
+import dash_html_components as html
+import dash_core_components as dcc
+from dash.dependencies import Input, Output
 
 from create_spectrogram import *
-from render_audio import *
 from audio_processing import *
+from render_audio import *
 
 
 guitar_sample, guitar_sample_rate = librosa.load("samples/guitar.wav")
@@ -32,6 +36,7 @@ jazz_sample /= np.max(np.abs(jazz_sample))
 guitar_wd1 = guitar_wd1[:len(guitar_fl1)]
 guitar_wd2 = guitar_wd2[:len(guitar_fl2)]
 
+ghostbusters_sample, ghostbusters_sample_rate = librosa.load("samples/ghostbusters.wav")
 # Audio(guitar_sample, rate=guitar_sample_rate, autoplay=True)
 # Audio(electro_sample, rate=electro_sample_rate, autoplay=True)
 # Audio(jazz_sample, rate=jazz_sample_rate, autoplay=True)

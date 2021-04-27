@@ -115,7 +115,7 @@ void TestComponent::resized()
     //[UserPreResize] Add your own custom resize code here..
     //[/UserPreResize]
 
-    juce__slider->setBounds (proportionOfWidth (0.0700f), 24, 168, 56);
+    juce__slider->setBounds (proportionOfWidth (0.0699f), 24, 168, 56);
     //[UserResized] Add your own custom resize handling here..
     //[/UserResized]
 }
@@ -173,13 +173,13 @@ BEGIN_JUCER_METADATA
 <JUCER_COMPONENT documentType="Component" className="TestComponent" componentName=""
                  parentClasses="public juce::Component" constructorParams="" variableInitialisers=""
                  snapPixels="8" snapActive="1" snapShown="1" overlayOpacity="0.330"
-                 fixedSize="1" initialWidth="600" initialHeight="400">
+                 fixedSize="0" initialWidth="600" initialHeight="400">
   <BACKGROUND backgroundColour="ff323e44">
     <IMAGE pos="152 -4 192 180" resource="_120_degrees_png" opacity="1.0"
            mode="0"/>
   </BACKGROUND>
   <SLIDER name="new slider" id="f2512e5f1689e104" memberName="juce__slider"
-          virtualName="juce::Slider" explicitFocusOrder="0" pos="7% 24 168 56"
+          virtualName="juce::Slider" explicitFocusOrder="0" pos="6.992% 24 168 56"
           min="0.0" max="10.0" int="0.0" style="RotaryHorizontalVerticalDrag"
           textBoxPos="TextBoxLeft" textBoxEditable="1" textBoxWidth="80"
           textBoxHeight="20" skewFactor="1.0" needsCallback="1"/>

@@ -6,17 +6,6 @@
   ==============================================================================
 */
 
-#ifdef _DEBUG
-#undef _DEBUG
-#include <python.h>
-#define _DEBUG
-#else
-#include <python.h>
-#endif
-#include "pybind11-global/pybind11/embed.h"
-#include "pybind11-global/pybind11/numpy.h"
-
-
 #include "PluginProcessor.h"
 
 #include <comcat.h>
@@ -24,7 +13,6 @@
 #include "PluginEditor.h"
 
 
-namespace py = pybind11;
 
 
 //==============================================================================
@@ -40,33 +28,10 @@ PluginProcessor::PluginProcessor()
                        )
 #endif
 {
-  /*  PyConfig config;
-    PyConfig_InitPythonConfig(&config);
-  /*  PyConfig_SetString(&config, &config.pythonpath_env,
-        L"C:/conda/bin");
-    PyConfig_SetString(&config, &config.home,
-        L"C:/conda/envs/ds");
-    Py_InitializeFromConfig(&config);*/
-    Py_SetPythonHome(L"C:/conda/envs/ds");
-    Py_Initialize();
-    try {
-        py::module_ calc = py::module_::import("process_data");
-
-        py::object result = calc.attr("add")(1, 5);
-        DBG(result.cast<int>());
-    } catch(py::error_already_set& e)
-    {
-        std::cout << e.what() << std::endl;
-        DBG(e.what());
-    }
-	//res.cast<int>() << std::endl;
-   /* 
-    PyRun_SimpleString("print('kek')");*/
 }
 
 PluginProcessor::~PluginProcessor()
 {
-	Py_FinalizeEx();
 }
 
 //==============================================================================
