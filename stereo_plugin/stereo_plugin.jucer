@@ -1,10 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <JUCERPROJECT id="jyJ6Ov" name="StereoPlugin" projectType="audioplug" useAppConfig="0"
-              addUsingNamespaceToJuceHeader="0" displaySplashScreen="1" jucerFormatVersion="1"
-              cppLanguageStandard="latest" compilerFlagSchemes="NewScheme">
+              addUsingNamespaceToJuceHeader="0" jucerFormatVersion="1" cppLanguageStandard="latest"
+              compilerFlagSchemes="NewScheme">
   <MAINGROUP id="yJl6KP" name="StereoPlugin">
     <GROUP id="{15550D7A-8E8B-EC52-A6DC-784A6B0C7DAC}" name="Source">
+      <GROUP id="{CC59BD83-479C-3ADA-9DCD-36DA37B11858}" name="SpectrumCanvas">
+        <FILE id="ZNyfAW" name="Attributes.cpp" compile="1" resource="0" file="Source/SpectrumCanvas/Attributes.cpp"/>
+        <FILE id="NyI0Wh" name="Attributes.h" compile="0" resource="0" file="Source/SpectrumCanvas/Attributes.h"/>
+        <FILE id="T6WwJ2" name="SpectrumRenderer.cpp" compile="1" resource="0"
+              file="Source/SpectrumCanvas/SpectrumRenderer.cpp"/>
+        <FILE id="ArUfaZ" name="SpectrumRenderer.h" compile="0" resource="0"
+              file="Source/SpectrumCanvas/SpectrumRenderer.h"/>
+        <FILE id="Ti47X8" name="SpectrumShaders.h" compile="0" resource="0"
+              file="Source/SpectrumCanvas/SpectrumShaders.h"/>
+        <FILE id="bugW8N" name="Texture.cpp" compile="1" resource="0" file="Source/SpectrumCanvas/Texture.cpp"/>
+        <FILE id="rnncni" name="Texture.h" compile="0" resource="0" file="Source/SpectrumCanvas/Texture.h"/>
+        <FILE id="odmY17" name="VertexBuffer.cpp" compile="1" resource="0"
+              file="Source/SpectrumCanvas/VertexBuffer.cpp"/>
+        <FILE id="zgD6bg" name="VertexBuffer.h" compile="0" resource="0" file="Source/SpectrumCanvas/VertexBuffer.h"/>
+      </GROUP>
       <FILE id="IYMxmP" name="PluginEditor.cpp" compile="1" resource="0"
             file="Source/PluginEditor.cpp"/>
       <FILE id="GKozC4" name="PluginEditor.h" compile="0" resource="0" file="Source/PluginEditor.h"/>
