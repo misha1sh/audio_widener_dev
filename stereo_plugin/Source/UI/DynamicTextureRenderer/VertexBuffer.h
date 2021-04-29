@@ -2,7 +2,7 @@
 #include "JuceHeader.h"
 
 
-namespace SpectrumOpenGL
+namespace DynamicTextureOpenGL
 {
 	class VertexBuffer
 	{

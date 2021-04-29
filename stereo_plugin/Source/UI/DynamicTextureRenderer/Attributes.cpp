@@ -1,7 +1,7 @@
 #include "Attributes.h"
 
 
-using namespace SpectrumOpenGL;
+using namespace DynamicTextureOpenGL;
 
 Attributes::Attributes(juce::OpenGLContext& context, juce::OpenGLShaderProgram& shader)
 {
@@ -36,3 +36,5 @@ juce::OpenGLShaderProgram::Attribute* Attributes::createAttribute(juce::OpenGLCo
 
 	return new juce::OpenGLShaderProgram::Attribute(shader, attributeName.toRawUTF8());
 }
+
+

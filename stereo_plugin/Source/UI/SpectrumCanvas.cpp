@@ -16,7 +16,7 @@
 SpectrumCanvas::SpectrumCanvas()
 {
     setOpaque(true);
-    renderer.reset(new SpectrumOpenGL::SpectrumRenderer(*this));
+    renderer.reset(new DynamicTextureOpenGL::DynamicTextureRenderer(*this));
 }
 
 SpectrumCanvas::~SpectrumCanvas()

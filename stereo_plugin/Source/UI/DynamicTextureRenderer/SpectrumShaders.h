@@ -2,16 +2,18 @@
 
 #include <JuceHeader.h>
 
-namespace SpectrumOpenGL
+namespace DynamicTextureOpenGL
 {
 	inline juce::String VertexShader = R"(
 		#version 150 core
 	    in vec2 position;
 	
+		uniform float offsetX;
+	
 	    out vec2 texturePosition;
 	    void main()
 	    {
-	        texturePosition = vec2( (position.y + 1.0) / 2.0, (position.x + 1.0) / 2.0);
+	        texturePosition = vec2( (position.y + 1.0) / 2.0, (position.x + 1.0) / 2.0 + offsetX);
 	        gl_Position = vec4(position, 0.0, 1.0);
 	    }
 	)";

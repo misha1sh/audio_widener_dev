@@ -2,7 +2,7 @@
 
 #include "Attributes.h"
 
-using namespace SpectrumOpenGL;
+using namespace DynamicTextureOpenGL;
 
 Vertex verts[]
 {

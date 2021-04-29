@@ -5,20 +5,28 @@
               compilerFlagSchemes="NewScheme">
   <MAINGROUP id="yJl6KP" name="StereoPlugin">
     <GROUP id="{15550D7A-8E8B-EC52-A6DC-784A6B0C7DAC}" name="Source">
-      <GROUP id="{CC59BD83-479C-3ADA-9DCD-36DA37B11858}" name="SpectrumCanvas">
-        <FILE id="ZNyfAW" name="Attributes.cpp" compile="1" resource="0" file="Source/SpectrumCanvas/Attributes.cpp"/>
-        <FILE id="NyI0Wh" name="Attributes.h" compile="0" resource="0" file="Source/SpectrumCanvas/Attributes.h"/>
-        <FILE id="T6WwJ2" name="SpectrumRenderer.cpp" compile="1" resource="0"
-              file="Source/SpectrumCanvas/SpectrumRenderer.cpp"/>
-        <FILE id="ArUfaZ" name="SpectrumRenderer.h" compile="0" resource="0"
-              file="Source/SpectrumCanvas/SpectrumRenderer.h"/>
-        <FILE id="Ti47X8" name="SpectrumShaders.h" compile="0" resource="0"
-              file="Source/SpectrumCanvas/SpectrumShaders.h"/>
-        <FILE id="bugW8N" name="Texture.cpp" compile="1" resource="0" file="Source/SpectrumCanvas/Texture.cpp"/>
-        <FILE id="rnncni" name="Texture.h" compile="0" resource="0" file="Source/SpectrumCanvas/Texture.h"/>
-        <FILE id="odmY17" name="VertexBuffer.cpp" compile="1" resource="0"
-              file="Source/SpectrumCanvas/VertexBuffer.cpp"/>
-        <FILE id="zgD6bg" name="VertexBuffer.h" compile="0" resource="0" file="Source/SpectrumCanvas/VertexBuffer.h"/>
+      <GROUP id="{045DDBE1-EE56-5B9F-4F3E-A2B0F9B466B1}" name="UI">
+        <GROUP id="{CC59BD83-479C-3ADA-9DCD-36DA37B11858}" name="DynamicTextureRenderer">
+          <FILE id="ZNyfAW" name="Attributes.cpp" compile="1" resource="0" file="Source/SpectrumCanvas/Attributes.cpp"/>
+          <FILE id="NyI0Wh" name="Attributes.h" compile="0" resource="0" file="Source/SpectrumCanvas/Attributes.h"/>
+          <FILE id="fwDzFm" name="DynamicTextureRenderer.cpp" compile="1" resource="0"
+                file="Source/SpectrumCanvas/DynamicTextureRenderer.cpp"/>
+          <FILE id="fZNSIt" name="DynamicTextureRenderer.h" compile="0" resource="0"
+                file="Source/SpectrumCanvas/DynamicTextureRenderer.h"/>
+          <FILE id="Ti47X8" name="SpectrumShaders.h" compile="0" resource="0"
+                file="Source/SpectrumCanvas/SpectrumShaders.h"/>
+          <FILE id="bugW8N" name="Texture.cpp" compile="1" resource="0" file="Source/SpectrumCanvas/Texture.cpp"/>
+          <FILE id="rnncni" name="Texture.h" compile="0" resource="0" file="Source/SpectrumCanvas/Texture.h"/>
+          <FILE id="M6lSNz" name="Uniforms.cpp" compile="1" resource="0" file="Source/SpectrumCanvas/Uniforms.cpp"/>
+          <FILE id="xETagV" name="Uniforms.h" compile="0" resource="0" file="Source/SpectrumCanvas/Uniforms.h"/>
+          <FILE id="odmY17" name="VertexBuffer.cpp" compile="1" resource="0"
+                file="Source/SpectrumCanvas/VertexBuffer.cpp"/>
+          <FILE id="zgD6bg" name="VertexBuffer.h" compile="0" resource="0" file="Source/SpectrumCanvas/VertexBuffer.h"/>
+        </GROUP>
+        <FILE id="CHd7Kr" name="SpectrumCanvas.cpp" compile="1" resource="0"
+              file="Source/SpectrumCanvas.cpp"/>
+        <FILE id="BqaVyU" name="SpectrumCanvas.h" compile="0" resource="0"
+              file="Source/SpectrumCanvas.h"/>
       </GROUP>
       <FILE id="IYMxmP" name="PluginEditor.cpp" compile="1" resource="0"
             file="Source/PluginEditor.cpp"/>
@@ -27,10 +35,6 @@
             file="Source/PluginProcessor.cpp"/>
       <FILE id="dBiuxU" name="PluginProcessor.h" compile="0" resource="0"
             file="Source/PluginProcessor.h"/>
-      <FILE id="CHd7Kr" name="SpectrumCanvas.cpp" compile="1" resource="0"
-            file="Source/SpectrumCanvas.cpp"/>
-      <FILE id="BqaVyU" name="SpectrumCanvas.h" compile="0" resource="0"
-            file="Source/SpectrumCanvas.h"/>
     </GROUP>
     <FILE id="kIzgon" name="TestComponent.cpp" compile="1" resource="0"
           file="Source/TestComponent.cpp"/>

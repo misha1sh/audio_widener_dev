@@ -5,27 +5,21 @@
 #include "Attributes.h"
 #include "Texture.h"
 #include "VertexBuffer.h"
+#include "Uniforms.h"
 
-namespace SpectrumOpenGL
+namespace DynamicTextureOpenGL
 {
-
-
-	struct Uniforms
-	{
-		Uniforms(juce::OpenGLContext& context, juce::OpenGLShaderProgram& shader);
-	};
-
-	class SpectrumRenderer : private juce::OpenGLRenderer
+	class DynamicTextureRenderer final : private juce::OpenGLRenderer
 	{
 	public:
-		explicit SpectrumRenderer(juce::Component& component);
-		~SpectrumRenderer();
+		explicit DynamicTextureRenderer(juce::Component& component);
+		~DynamicTextureRenderer() override;
 
 		
 		void newOpenGLContextCreated() override;
 		void renderOpenGL() override;
 		void openGLContextClosing() override;
-		
+
 	private:
 		std::unique_ptr<Texture> texture;
 		std::unique_ptr<VertexBuffer> vertexBuffer;

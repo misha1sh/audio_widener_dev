@@ -4,7 +4,7 @@
 
 
 
-namespace SpectrumOpenGL
+namespace DynamicTextureOpenGL
 {
 
 	struct Vertex
@@ -12,8 +12,9 @@ namespace SpectrumOpenGL
 		GLfloat position[2];
 	};
 
-	struct Attributes
+	class Attributes
 	{
+	public:
 		std::unique_ptr<juce::OpenGLShaderProgram::Attribute> position;
 		Attributes(juce::OpenGLContext& context, juce::OpenGLShaderProgram& shader);
 
@@ -24,7 +25,8 @@ namespace SpectrumOpenGL
 		static juce::OpenGLShaderProgram::Attribute* createAttribute(juce::OpenGLContext& context,
 			juce::OpenGLShaderProgram& shader,
 			const juce::String& attributeName);
-	};
+		
 
+	};
 }
 
