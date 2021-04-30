@@ -28,6 +28,7 @@ PluginProcessor::PluginProcessor()
                        )
 #endif
 {
+    setLatencySamples(26000);
 }
 
 PluginProcessor::~PluginProcessor()
@@ -133,6 +134,7 @@ bool PluginProcessor::isBusesLayoutSupported (const BusesLayout& layouts) const
 }
 #endif
 
+
 void PluginProcessor::processBlock (juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midiMessages)
 {
     juce::ScopedNoDenormals noDenormals;
@@ -157,9 +159,21 @@ void PluginProcessor::processBlock (juce::AudioBuffer<float>& buffer, juce::Midi
     for (int channel = 0; channel < totalNumInputChannels; ++channel)
     {
         auto* channelData = buffer.getWritePointer (channel);
-
+        for (int j = 0; j < buffer.getNumSamples(); j++)
+        {
+            if (channelData[j] > 1) channelData[j] = 1;
+            if (channelData[j] < -1) channelData[j] = -1;
+        }
+    
         // ..do something to the data...
     }
+    lastSamplesCount = buffer.getNumSamples();
+    sendChangeMessage();
+}
+
+void PluginProcessor::processBlockBypassed(juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midiMessages)
+{
+	
 }
 
 //==============================================================================

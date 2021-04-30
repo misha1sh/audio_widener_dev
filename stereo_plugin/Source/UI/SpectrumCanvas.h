@@ -2,8 +2,7 @@
 
 #include <JuceHeader.h>
 
-#include "SpectrumCanvas/DynamicTextureRenderer.h"
-
+#include "DynamicTextureRenderer/DynamicTextureRenderer.h"
 
 class SpectrumCanvas : public juce::Component
 {

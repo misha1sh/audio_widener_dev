@@ -38,6 +38,7 @@
                                                                     //[/Comments]
 */
 class PluginEditor  : public juce::AudioProcessorEditor,
+                      public juce::ChangeListener,
                       public juce::Slider::Listener
 {
 public:
@@ -47,6 +48,7 @@ public:
 
     //==============================================================================
     //[UserMethods]     -- You can add your own custom methods in this section.
+    void changeListenerCallback(juce::ChangeBroadcaster* source) override;
     //[/UserMethods]
 
     void paint (juce::Graphics& g) override;
@@ -64,6 +66,7 @@ private:
     std::unique_ptr<juce::Slider> juce__slider;
     std::unique_ptr<juce::Label> strengthLabel;
     std::unique_ptr<SpectrumCanvas> spectrum_canvas;
+    std::unique_ptr<juce::Label> blockSize;
 
 
     //==============================================================================

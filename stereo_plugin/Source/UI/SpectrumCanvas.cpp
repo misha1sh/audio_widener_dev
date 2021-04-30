@@ -12,11 +12,12 @@
 #include "SpectrumCanvas.h"
 
 
+
 //==============================================================================
 SpectrumCanvas::SpectrumCanvas()
 {
     setOpaque(true);
-    renderer.reset(new DynamicTextureOpenGL::DynamicTextureRenderer(*this));
+    renderer.reset(new DynamicTextureOpenGL::DynamicTextureRenderer(*this, 128, 128));
 }
 
 SpectrumCanvas::~SpectrumCanvas()

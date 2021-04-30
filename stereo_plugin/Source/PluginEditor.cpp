@@ -65,6 +65,17 @@ PluginEditor::PluginEditor (PluginProcessor& processor)
 
     spectrum_canvas->setBounds (248, 96, 368, 256);
 
+    blockSize.reset (new juce::Label ("new label",
+                                      TRANS("label text")));
+    addAndMakeVisible (blockSize.get());
+    blockSize->setFont (juce::Font (15.00f, juce::Font::plain).withTypefaceStyle ("Regular"));
+    blockSize->setJustificationType (juce::Justification::centredLeft);
+    blockSize->setEditable (false, false, false);
+    blockSize->setColour (juce::TextEditor::textColourId, juce::Colours::black);
+    blockSize->setColour (juce::TextEditor::backgroundColourId, juce::Colour (0x00000000));
+
+    blockSize->setBounds (56, 160, 150, 24);
+
 
     //[UserPreSize]
     //[/UserPreSize]
@@ -75,6 +86,7 @@ PluginEditor::PluginEditor (PluginProcessor& processor)
     //[Constructor] You can add your own custom stuff here..
     setResizable(true, true);
     setResizeLimits(100, 100, 1000, 1000);
+    audioProcessor.addChangeListener(this);
     //[/Constructor]
 }
 
@@ -86,9 +98,11 @@ PluginEditor::~PluginEditor()
     juce__slider = nullptr;
     strengthLabel = nullptr;
     spectrum_canvas = nullptr;
+    blockSize = nullptr;
 
 
     //[Destructor]. You can add your own custom destruction code here..
+    audioProcessor.removeChangeListener(this);
     //[/Destructor]
 }
 
@@ -140,6 +154,11 @@ void PluginEditor::sliderValueChanged (juce::Slider* sliderThatWasMoved)
 
 
 //[MiscUserCode] You can add your own definitions of your custom methods or any other code here...
+void PluginEditor::changeListenerCallback(juce::ChangeBroadcaster* source)
+{
+    blockSize->setText(juce::String(audioProcessor.lastSamplesCount.get()), juce::sendNotificationAsync);
+}
+
 //[/MiscUserCode]
 
 
@@ -153,8 +172,8 @@ void PluginEditor::sliderValueChanged (juce::Slider* sliderThatWasMoved)
 BEGIN_JUCER_METADATA
 
 <JUCER_COMPONENT documentType="Component" className="PluginEditor" componentName=""
-                 parentClasses="public juce::AudioProcessorEditor" constructorParams="PluginProcessor&amp; processor"
-                 variableInitialisers="juce::AudioProcessorEditor(processor), audioProcessor(processor)"
+                 parentClasses="public juce::AudioProcessorEditor, public juce::ChangeListener"
+                 constructorParams="PluginProcessor&amp; processor" variableInitialisers="juce::AudioProcessorEditor(processor), audioProcessor(processor)"
                  snapPixels="8" snapActive="1" snapShown="1" overlayOpacity="0.330"
                  fixedSize="0" initialWidth="700" initialHeight="400">
   <BACKGROUND backgroundColour="ff323e44">
@@ -173,6 +192,11 @@ BEGIN_JUCER_METADATA
   <GENERICCOMPONENT name="spectrum_canvas" id="c28ba59d3075a746" memberName="spectrum_canvas"
                     virtualName="" explicitFocusOrder="0" pos="248 96 368 256" class="SpectrumCanvas"
                     params=""/>
+  <LABEL name="new label" id="41486794b98566e2" memberName="blockSize"
+         virtualName="" explicitFocusOrder="0" pos="56 160 150 24" edTextCol="ff000000"
+         edBkgCol="0" labelText="label text" editableSingleClick="0" editableDoubleClick="0"
+         focusDiscardsChanges="0" fontname="Default font" fontsize="15.0"
+         kerning="0.0" bold="0" italic="0" justification="33"/>
 </JUCER_COMPONENT>
 
 END_JUCER_METADATA
