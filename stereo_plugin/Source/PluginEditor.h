@@ -7,7 +7,7 @@
   the "//[xyz]" and "//[/xyz]" sections will be retained when the file is loaded
   and re-saved.
 
-  Created with Projucer version: 6.0.5
+  Created with Projucer version: 6.0.8
 
   ------------------------------------------------------------------------------
 
@@ -23,7 +23,7 @@
 #include <JuceHeader.h>
 
 
-#include "SpectrumCanvas.h"
+#include "UI/SpectrumCanvas.h"
 #include "TestComponent.h"
 //[/Headers]
 
@@ -67,6 +67,7 @@ private:
     std::unique_ptr<juce::Label> strengthLabel;
     std::unique_ptr<SpectrumCanvas> spectrum_canvas;
     std::unique_ptr<juce::Label> blockSize;
+    std::unique_ptr<juce::Label> blockSize2;
 
 
     //==============================================================================

@@ -14,7 +14,7 @@
 
 
 
-
+#define latency 26000
 //==============================================================================
 PluginProcessor::PluginProcessor()
 #ifndef JucePlugin_PreferredChannelConfigurations
@@ -28,7 +28,7 @@ PluginProcessor::PluginProcessor()
                        )
 #endif
 {
-    setLatencySamples(26000);
+    setLatencySamples(latency);
 }
 
 PluginProcessor::~PluginProcessor()
@@ -96,10 +96,12 @@ const juce::String PluginProcessor::getProgramName (int index)
 void PluginProcessor::changeProgramName (int index, const juce::String& newName)
 {
 }
+std::vector<std::queue<float>> lastValues;
 
 //==============================================================================
 void PluginProcessor::prepareToPlay (double sampleRate, int samplesPerBlock)
 {
+    lastValues.resize(0);
     // Use this method as the place to do any pre-playback
     // initialisation that you need..
 }
@@ -134,7 +136,6 @@ bool PluginProcessor::isBusesLayoutSupported (const BusesLayout& layouts) const
 }
 #endif
 
-
 void PluginProcessor::processBlock (juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midiMessages)
 {
     juce::ScopedNoDenormals noDenormals;
@@ -149,7 +150,7 @@ void PluginProcessor::processBlock (juce::AudioBuffer<float>& buffer, juce::Midi
     // this code if your algorithm always overwrites all the output channels.
     for (auto i = totalNumInputChannels; i < totalNumOutputChannels; ++i)
         buffer.clear (i, 0, buffer.getNumSamples());
-
+    lastValues.resize(buffer.getNumChannels());
     // This is the place where you'd normally do the guts of your plugin's
     // audio processing...
     // Make sure to reset the state if your inner loop is processing
@@ -159,21 +160,36 @@ void PluginProcessor::processBlock (juce::AudioBuffer<float>& buffer, juce::Midi
     for (int channel = 0; channel < totalNumInputChannels; ++channel)
     {
         auto* channelData = buffer.getWritePointer (channel);
-        for (int j = 0; j < buffer.getNumSamples(); j++)
-        {
-            if (channelData[j] > 1) channelData[j] = 1;
-            if (channelData[j] < -1) channelData[j] = -1;
-        }
-    
-        // ..do something to the data...
+    	for (int j = 0; j < buffer.getNumSamples(); j++)
+    	{
+            lastValues[channel].push(channelData[j]);
+    		if (lastValues[channel].size() >= latency)
+    		{
+                channelData[j] = lastValues[channel].front();
+                lastValues[channel].pop();
+    		} else
+    		{
+                channelData[j] = 0;
+    		}
+    	}
     }
     lastSamplesCount = buffer.getNumSamples();
     sendChangeMessage();
 }
 
+#include "kfr/all.hpp"
 void PluginProcessor::processBlockBypassed(juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midiMessages)
 {
-	
+    juce::ScopedNoDenormals noDenormals;
+    lastBypassedSamplesCount.set(buffer.getNumSamples());
+    sendChangeMessage();
+
+    univector<complex<double>, 256> data = cexp(
+        linspace(0, c_pi<double, 2>, 256) * make_complex(0, 1));
+    univector<complex<double>, 256> freq;
+
+    // do the forward FFT
+    freq = dft(data);
 }
 
 //==============================================================================

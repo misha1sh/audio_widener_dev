@@ -7,7 +7,7 @@
   the "//[xyz]" and "//[/xyz]" sections will be retained when the file is loaded
   and re-saved.
 
-  Created with Projucer version: 6.0.5
+  Created with Projucer version: 6.0.8
 
   ------------------------------------------------------------------------------
 
@@ -76,6 +76,17 @@ PluginEditor::PluginEditor (PluginProcessor& processor)
 
     blockSize->setBounds (56, 160, 150, 24);
 
+    blockSize2.reset (new juce::Label ("new label",
+                                       TRANS("label text")));
+    addAndMakeVisible (blockSize2.get());
+    blockSize2->setFont (juce::Font (15.00f, juce::Font::plain).withTypefaceStyle ("Regular"));
+    blockSize2->setJustificationType (juce::Justification::centredLeft);
+    blockSize2->setEditable (false, false, false);
+    blockSize2->setColour (juce::TextEditor::textColourId, juce::Colours::black);
+    blockSize2->setColour (juce::TextEditor::backgroundColourId, juce::Colour (0x00000000));
+
+    blockSize2->setBounds (56, 192, 150, 24);
+
 
     //[UserPreSize]
     //[/UserPreSize]
@@ -99,6 +110,7 @@ PluginEditor::~PluginEditor()
     strengthLabel = nullptr;
     spectrum_canvas = nullptr;
     blockSize = nullptr;
+    blockSize2 = nullptr;
 
 
     //[Destructor]. You can add your own custom destruction code here..
@@ -157,6 +169,7 @@ void PluginEditor::sliderValueChanged (juce::Slider* sliderThatWasMoved)
 void PluginEditor::changeListenerCallback(juce::ChangeBroadcaster* source)
 {
     blockSize->setText(juce::String(audioProcessor.lastSamplesCount.get()), juce::sendNotificationAsync);
+    blockSize2->setText(juce::String(audioProcessor.lastBypassedSamplesCount.get()), juce::sendNotificationAsync);
 }
 
 //[/MiscUserCode]
@@ -194,6 +207,11 @@ BEGIN_JUCER_METADATA
                     params=""/>
   <LABEL name="new label" id="41486794b98566e2" memberName="blockSize"
          virtualName="" explicitFocusOrder="0" pos="56 160 150 24" edTextCol="ff000000"
+         edBkgCol="0" labelText="label text" editableSingleClick="0" editableDoubleClick="0"
+         focusDiscardsChanges="0" fontname="Default font" fontsize="15.0"
+         kerning="0.0" bold="0" italic="0" justification="33"/>
+  <LABEL name="new label" id="fd9332144ef16970" memberName="blockSize2"
+         virtualName="" explicitFocusOrder="0" pos="56 192 150 24" edTextCol="ff000000"
          edBkgCol="0" labelText="label text" editableSingleClick="0" editableDoubleClick="0"
          focusDiscardsChanges="0" fontname="Default font" fontsize="15.0"
          kerning="0.0" bold="0" italic="0" justification="33"/>
