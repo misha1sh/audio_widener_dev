@@ -177,19 +177,18 @@ void PluginProcessor::processBlock (juce::AudioBuffer<float>& buffer, juce::Midi
     sendChangeMessage();
 }
 
-#include "kfr/all.hpp"
 void PluginProcessor::processBlockBypassed(juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midiMessages)
 {
     juce::ScopedNoDenormals noDenormals;
     lastBypassedSamplesCount.set(buffer.getNumSamples());
     sendChangeMessage();
 
-    univector<complex<double>, 256> data = cexp(
+  /*  univector<complex<double>, 256> data = cexp(
         linspace(0, c_pi<double, 2>, 256) * make_complex(0, 1));
     univector<complex<double>, 256> freq;
 
     // do the forward FFT
-    freq = dft(data);
+    freq = dft(data);*/
 }
 
 //==============================================================================

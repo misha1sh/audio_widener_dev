@@ -1,3 +1,0 @@
-D:\program_files\Jetbrains\apps\CLion\ch-0\203.6682.181\bin\cmake\win\bin\cmake.exe -E rm -f CMakeFiles\juceaide.dir/objects.a
-D:\program_files\mingw-w64\i686-8.1.0-posix-dwarf-rt_v6-rev0\mingw32\bin\ar.exe cr CMakeFiles\juceaide.dir/objects.a @CMakeFiles\juceaide.dir\objects1.rsp
-D:\program_files\mingw-w64\i686-8.1.0-posix-dwarf-rt_v6-rev0\mingw32\bin\g++.exe    -Wl,--whole-archive CMakeFiles\juceaide.dir/objects.a -Wl,--no-whole-archive  -o juceaide_artefacts\Debug\juceaide.exe -Wl,--out-implib,juceaide_artefacts\Debug\libjuceaide.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\juceaide.dir\linklibs.rsp
