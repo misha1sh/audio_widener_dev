@@ -1,4 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CMakeWorkspace" PROJECT_DIR="$PROJECT_DIR$" />
+  <component name="CidrRootsConfiguration">
+    <sourceRoots>
+      <file path="$PROJECT_DIR$/Source" />
+      <file path="$PROJECT_DIR$/ThirdParty/kfr/include" />
+      <file path="$PROJECT_DIR$/cmake-build-debug/_deps/juce-src" />
+    </sourceRoots>
+    <excludeRoots>
+      <file path="$PROJECT_DIR$/Builds" />
+      <file path="$PROJECT_DIR$/ThirdParty/kfr/docs" />
+      <file path="$PROJECT_DIR$/ThirdParty/kfr/dspplot" />
+      <file path="$PROJECT_DIR$/ThirdParty/kfr/examples" />
+      <file path="$PROJECT_DIR$/ThirdParty/kfr/img" />
+      <file path="$PROJECT_DIR$/ThirdParty/kfr/tests" />
+      <file path="$PROJECT_DIR$/ThirdParty/kfr/tools" />
+      <file path="$PROJECT_DIR$/cmake-build-debug/StereoPlugin_artefacts" />
+      <file path="$PROJECT_DIR$/cmake-build-debug/Testing" />
+      <file path="$PROJECT_DIR$/cmake-build-debug/ThirdParty" />
+      <file path="$PROJECT_DIR$/cmake-build-debug/_deps/juce-build" />
+      <file path="$PROJECT_DIR$/cmake-build-debug/_deps/juce-subbuild" />
+    </excludeRoots>
+  </component>
 </project>

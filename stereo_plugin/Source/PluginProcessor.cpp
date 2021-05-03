@@ -5,6 +5,7 @@
 
   ==============================================================================
 */
+#include "kfr/all.hpp"
 
 #include "PluginProcessor.h"
 
@@ -12,12 +13,8 @@
 
 #include "PluginEditor.h"
 
-
-
-#define latency 26000
 //==============================================================================
 PluginProcessor::PluginProcessor()
-#ifndef JucePlugin_PreferredChannelConfigurations
      : AudioProcessor (BusesProperties()
                      #if ! JucePlugin_IsMidiEffect
                       #if ! JucePlugin_IsSynth
@@ -25,10 +22,10 @@ PluginProcessor::PluginProcessor()
                       #endif
                        .withOutput ("Output", juce::AudioChannelSet::stereo(), true)
                      #endif
-                       )
-#endif
+                       ),
+                       params(*this)
 {
-    setLatencySamples(latency);
+    setLatencySamples(mainProcessor.getLatencyInSamples());
 }
 
 PluginProcessor::~PluginProcessor()
@@ -157,7 +154,7 @@ void PluginProcessor::processBlock (juce::AudioBuffer<float>& buffer, juce::Midi
     // the samples and the outer loop is handling the channels.
     // Alternatively, you can process the samples with the channels
     // interleaved by keeping the same state.
-    for (int channel = 0; channel < totalNumInputChannels; ++channel)
+ /*   for (int channel = 0; channel < totalNumInputChannels; ++channel)
     {
         auto* channelData = buffer.getWritePointer (channel);
     	for (int j = 0; j < buffer.getNumSamples(); j++)
@@ -172,7 +169,14 @@ void PluginProcessor::processBlock (juce::AudioBuffer<float>& buffer, juce::Midi
                 channelData[j] = 0;
     		}
     	}
-    }
+    }*/
+    kfr::univector<kfr::univector<kfr::f32, 0>, 2> data(
+            kfr::make_array_ref(buffer.getWritePointer(0),
+                                buffer.getNumSamples()));
+
+
+    mainProcessor.process(data);
+
     lastSamplesCount = buffer.getNumSamples();
     sendChangeMessage();
 }
@@ -183,15 +187,8 @@ void PluginProcessor::processBlockBypassed(juce::AudioBuffer<float>& buffer, juc
     lastBypassedSamplesCount.set(buffer.getNumSamples());
     sendChangeMessage();
 
-  /*  univector<complex<double>, 256> data = cexp(
-        linspace(0, c_pi<double, 2>, 256) * make_complex(0, 1));
-    univector<complex<double>, 256> freq;
-
-    // do the forward FFT
-    freq = dft(data);*/
 }
 
-//==============================================================================
 bool PluginProcessor::hasEditor() const
 {
     return true; // (change this to false if you choose to not supply an editor)
@@ -208,12 +205,18 @@ void PluginProcessor::getStateInformation (juce::MemoryBlock& destData)
     // You should use this method to store your parameters in the memory block.
     // You could do that either as raw data, or use the XML or ValueTree classes
     // as intermediaries to make it easy to save and load complex data.
+    juce::MemoryOutputStream out(destData, true);
+    out.writeFloat(*params.leftCutoff);
+    out.writeFloat(*params.rightCutoff);
 }
 
 void PluginProcessor::setStateInformation (const void* data, int sizeInBytes)
 {
     // You should use this method to restore your parameters from this memory block,
     // whose contents will have been created by the getStateInformation() call.
+    juce::MemoryInputStream in(data, static_cast<size_t> (sizeInBytes), false);
+    *params.leftCutoff = in.readFloat();
+    *params.rightCutoff = in.readFloat();
 }
 
 //==============================================================================

@@ -36,6 +36,8 @@ jazz_sample /= np.max(np.abs(jazz_sample))
 guitar_wd1 = guitar_wd1[:len(guitar_fl1)]
 guitar_wd2 = guitar_wd2[:len(guitar_fl2)]
 
+(wider_decomp1, wider_decomp2), sample_rate = librosa.load("samples/wider_decomp.wav", mono=False)
+
 ghostbusters_sample, ghostbusters_sample_rate = librosa.load("samples/ghostbusters.wav")
 # Audio(guitar_sample, rate=guitar_sample_rate, autoplay=True)
 # Audio(electro_sample, rate=electro_sample_rate, autoplay=True)

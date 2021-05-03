@@ -13,7 +13,31 @@ from audio_processing import *
 #
 #
 
+def create_magnitude_figure2(sound1, sound2, sample_rate):
+    Sxx1, drawing_params = create_spectrogram(sound1, sample_rate, "magnitude")
+    Sxx2, drawing_params = create_spectrogram(sound2, sample_rate, "magnitude")
+    fig, Sxx = create_spectrogram_figure(Sxx1 - Sxx2, drawing_params, title="Magnitude")
 
+    def apply_params_to_magnitude_figure(checklist_options, log_scale_coeff):
+        z = Sxx.copy()
+        if "need_filter_low_values" in checklist_options:
+            z[z < 0.005] = 0
+        if "need_norm_per_row_values" in checklist_options:
+            max_per_row = np.max(np.abs(z), axis=-1)[:, None]
+            z = np.divide(z, max_per_row, out=np.zeros_like(z), where=max_per_row != 0)
+            if np.max(z) != 0:
+                z /= np.max(z)
+        if "need_log_scale_values" in checklist_options:
+            z = np.log10(z * log_scale_coeff + 1)
+
+        fig.data[0].z = z
+
+        if "need_log_scale_frequency" in checklist_options:
+            fig.update_yaxes(type="log")
+        else:
+            fig.update_yaxes(type="linear")
+
+    return fig, Sxx, apply_params_to_magnitude_figure
 
 # returns tuple (figure, Sxx, apply_params_func)
 def create_magnitude_figure(sound, sample_rate):

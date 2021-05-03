@@ -68,6 +68,8 @@ private:
     std::unique_ptr<SpectrumCanvas> spectrum_canvas;
     std::unique_ptr<juce::Label> blockSize;
     std::unique_ptr<juce::Label> blockSize2;
+    std::unique_ptr<juce::Slider> leftCutoffSlider;
+    std::unique_ptr<juce::Slider> rightCutoffSlider;
 
 
     //==============================================================================

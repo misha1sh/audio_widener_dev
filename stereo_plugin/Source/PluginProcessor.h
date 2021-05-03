@@ -9,6 +9,7 @@
 #pragma once
 
 #include "JuceHeader.h"
+#include "Processing/MainProcessor.h"
 
 //==============================================================================
 /**
@@ -55,8 +56,9 @@ public:
 
     juce::Atomic<int> lastSamplesCount;
     juce::Atomic<int> lastBypassedSamplesCount;
+    ProcessingParams params;
 private:
-	
+	MainProcessor mainProcessor;
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (PluginProcessor)
 };
