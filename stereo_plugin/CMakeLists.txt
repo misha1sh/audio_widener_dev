@@ -92,7 +92,7 @@ target_link_libraries(${BaseTargetName} PRIVATE
         juce_opengl
         juce_recommended_config_flags
         juce_recommended_lto_flags
-        juce_recommended_warning_flags
+      #  juce_recommended_warning_flags
         kfr # Add header-only KFR to your executable or library, this sets include directories etc
         kfr_dft # Add KFR DFT to your executable or library, (cpp file will be built for this)
 #        ${IPP_LIBRARIES}

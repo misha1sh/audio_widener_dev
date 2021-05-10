@@ -60,16 +60,20 @@ public:
 private:
     //[UserVariables]   -- You can add your own custom variables in this section.
     PluginProcessor& audioProcessor;
+
+    typedef juce::AudioProcessorValueTreeState::SliderAttachment SliderAttachment;
+    typedef juce::AudioProcessorValueTreeState::ButtonAttachment ButtonAttachment;
+
+    std::unique_ptr<SliderAttachment> leftCutoffAttachment, rightCutoffAttachment, sineStretchAttachment;
     //[/UserVariables]
 
     //==============================================================================
-    std::unique_ptr<juce::Slider> juce__slider;
-    std::unique_ptr<juce::Label> strengthLabel;
     std::unique_ptr<SpectrumCanvas> spectrum_canvas;
     std::unique_ptr<juce::Label> blockSize;
     std::unique_ptr<juce::Label> blockSize2;
     std::unique_ptr<juce::Slider> leftCutoffSlider;
     std::unique_ptr<juce::Slider> rightCutoffSlider;
+    std::unique_ptr<juce::Slider> sineStretchSlider;
 
 
     //==============================================================================

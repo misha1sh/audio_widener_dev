@@ -1,13 +1,18 @@
 #pragma once
 
 #include <JuceHeader.h>
-#include "../PluginProcessor.h"
 
 class ProcessingParams {
 public:
     ProcessingParams(AudioProcessor& processor);
 
-    juce::AudioParameterFloat* leftCutoff;
-    juce::AudioParameterFloat* rightCutoff;
+    juce::AudioProcessorValueTreeState tree;
+
+    std::atomic<float>* leftCutoff;
+    std::atomic<float>* rightCutoff;
+    std::atomic<float>* sineStretch;
+
+    float sampleRate;
+    int maxSamplesPerBlock;
 };
 

@@ -6,10 +6,10 @@
   <MAINGROUP id="yJl6KP" name="StereoPlugin">
     <GROUP id="{15550D7A-8E8B-EC52-A6DC-784A6B0C7DAC}" name="Source">
       <GROUP id="{B04C339E-F791-F3A4-E99F-6AD198301892}" name="Processing">
-        <FILE id="BHpDLV" name="DataNormalizer.cpp" compile="1" resource="0"
-              file="Source/Processing/DataNormalizer.cpp"/>
-        <FILE id="Ejlqzb" name="DataNormalizer.h" compile="0" resource="0"
-              file="Source/Processing/DataNormalizer.h"/>
+        <FILE id="BHpDLV" name="DataAccumulator.cpp" compile="1" resource="0"
+              file="Source/Processing/DataAccumulator.cpp"/>
+        <FILE id="Ejlqzb" name="DataAccumulator.h" compile="0" resource="0"
+              file="Source/Processing/DataAccumulator.h"/>
       </GROUP>
       <GROUP id="{5CEA15BD-9627-B82A-EFEE-462C74C917CD}" name="Util"/>
       <GROUP id="{045DDBE1-EE56-5B9F-4F3E-A2B0F9B466B1}" name="UI">

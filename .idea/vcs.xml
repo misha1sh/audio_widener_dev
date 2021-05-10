@@ -3,5 +3,7 @@
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/stereo_plugin/ThirdParty/kfr" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/stereo_plugin/cmake-build-debug/_deps/juce-src" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/stereo_plugin/cmake-build-release/_deps/juce-src" vcs="Git" />
   </component>
 </project>

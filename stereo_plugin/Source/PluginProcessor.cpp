@@ -23,7 +23,8 @@ PluginProcessor::PluginProcessor()
                        .withOutput ("Output", juce::AudioChannelSet::stereo(), true)
                      #endif
                        ),
-                       params(*this)
+                       params(*this),
+                       mainProcessor(params)
 {
     setLatencySamples(mainProcessor.getLatencyInSamples());
 }
@@ -99,8 +100,9 @@ std::vector<std::queue<float>> lastValues;
 void PluginProcessor::prepareToPlay (double sampleRate, int samplesPerBlock)
 {
     lastValues.resize(0);
-    // Use this method as the place to do any pre-playback
-    // initialisation that you need..
+    params.sampleRate = sampleRate;
+    params.maxSamplesPerBlock = samplesPerBlock;
+    mainProcessor.reset();
 }
 
 void PluginProcessor::releaseResources()
@@ -170,12 +172,23 @@ void PluginProcessor::processBlock (juce::AudioBuffer<float>& buffer, juce::Midi
     		}
     	}
     }*/
-    kfr::univector<kfr::univector<kfr::f32, 0>, 2> data(
+    kfr::univector<kfr::univector<kfr::f32, 0>, 2> data({
             kfr::make_array_ref(buffer.getWritePointer(0),
-                                buffer.getNumSamples()));
+                                buffer.getNumSamples()),
+            kfr::make_array_ref(buffer.getWritePointer(1),
+                                buffer.getNumSamples())
+    });
 
+    kfr::univector<kfr::f32> dataCopy(data[0]);
 
     mainProcessor.process(data);
+
+   /* for (int i = 0; i + FFT_SZ < data[0].size(); i++) {
+        if (fabs(data[0][i + FFT_SZ] - dataCopy[i]) > 0.000001) {
+            DBG("kek");
+            jassertfalse;
+        }
+    }*/
 
     lastSamplesCount = buffer.getNumSamples();
     sendChangeMessage();
@@ -202,21 +215,18 @@ juce::AudioProcessorEditor* PluginProcessor::createEditor()
 //==============================================================================
 void PluginProcessor::getStateInformation (juce::MemoryBlock& destData)
 {
-    // You should use this method to store your parameters in the memory block.
-    // You could do that either as raw data, or use the XML or ValueTree classes
-    // as intermediaries to make it easy to save and load complex data.
-    juce::MemoryOutputStream out(destData, true);
-    out.writeFloat(*params.leftCutoff);
-    out.writeFloat(*params.rightCutoff);
+    auto state = params.tree.copyState();
+    std::unique_ptr<juce::XmlElement> xml (state.createXml());
+    copyXmlToBinary (*xml, destData);
 }
 
 void PluginProcessor::setStateInformation (const void* data, int sizeInBytes)
 {
-    // You should use this method to restore your parameters from this memory block,
-    // whose contents will have been created by the getStateInformation() call.
-    juce::MemoryInputStream in(data, static_cast<size_t> (sizeInBytes), false);
-    *params.leftCutoff = in.readFloat();
-    *params.rightCutoff = in.readFloat();
+    std::unique_ptr<juce::XmlElement> xmlState (getXmlFromBinary (data, sizeInBytes));
+
+    if (xmlState.get() != nullptr)
+        if (xmlState->hasTagName (params.tree.state.getType()))
+            params.tree.replaceState (juce::ValueTree::fromXml (*xmlState));
 }
 
 //==============================================================================

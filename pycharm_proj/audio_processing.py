@@ -34,7 +34,7 @@ def split_into_bands_by_volume(numbands):
             value += cur_val
             #         value += 1
             if value >= value_per_band:
-                band += 1
+                band += 1   
             while value >= value_per_band:
                 value -= value_per_band
         return mask % 2
