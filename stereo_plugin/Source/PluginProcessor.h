@@ -10,6 +10,7 @@
 
 #include "JuceHeader.h"
 #include "Processing/MainProcessor.h"
+#include "Processing/ProcessingRendering.h"
 
 //==============================================================================
 /**
@@ -54,8 +55,7 @@ public:
     void getStateInformation (juce::MemoryBlock& destData) override;
     void setStateInformation (const void* data, int sizeInBytes) override;
 
-    juce::Atomic<int> lastSamplesCount;
-    juce::Atomic<int> lastBypassedSamplesCount;
+    ProcessingRendering rendering;
     ProcessingParams params;
 private:
 	MainProcessor mainProcessor;

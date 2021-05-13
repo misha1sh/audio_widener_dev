@@ -7,7 +7,7 @@ DataAccumulator::DataAccumulator(): buffer_pos(0), buffer_size(-1), buffer(0) {
 void DataAccumulator::reset(int maxSamplesPerBlock, int maxRequestLength) {
     buffer_pos = 0;
     buffer_size = 0;
-    buffer.resize(std::max(maxSamplesPerBlock * 4, maxRequestLength * 4));
+    buffer.resize(std::max(maxSamplesPerBlock *8, maxRequestLength * 8));
 }
 
 void DataAccumulator::addDataSamples(const kfr::univector_ref<kfr::f32> &data) {

@@ -73,7 +73,7 @@ PluginEditor::PluginEditor (PluginProcessor& processor)
     leftCutoffSlider->setTextBoxStyle (juce::Slider::TextBoxLeft, false, 80, 20);
     leftCutoffSlider->addListener (this);
 
-    leftCutoffSlider->setBounds (88, 120, 279, 24);
+    leftCutoffSlider->setBounds (88, 80, 279, 24);
 
     rightCutoffSlider.reset (new juce::Slider ("rightCutoffSlider"));
     addAndMakeVisible (rightCutoffSlider.get());
@@ -82,16 +82,25 @@ PluginEditor::PluginEditor (PluginProcessor& processor)
     rightCutoffSlider->setTextBoxStyle (juce::Slider::TextBoxLeft, false, 80, 20);
     rightCutoffSlider->addListener (this);
 
-    rightCutoffSlider->setBounds (88, 152, 280, 24);
+    rightCutoffSlider->setBounds (88, 112, 280, 24);
 
     sineStretchSlider.reset (new juce::Slider ("sineStretchSlider"));
     addAndMakeVisible (sineStretchSlider.get());
-    sineStretchSlider->setRange (0, 3, 0);
+    sineStretchSlider->setRange (0.01, 10, 0);
     sineStretchSlider->setSliderStyle (juce::Slider::RotaryHorizontalVerticalDrag);
     sineStretchSlider->setTextBoxStyle (juce::Slider::TextBoxLeft, false, 80, 20);
     sineStretchSlider->addListener (this);
 
-    sineStretchSlider->setBounds (88, 184, 176, 104);
+    sineStretchSlider->setBounds (88, 144, 176, 104);
+
+    attackSlider.reset (new juce::Slider ("sineStretchSlider"));
+    addAndMakeVisible (attackSlider.get());
+    attackSlider->setRange (0, 0.999, 0);
+    attackSlider->setSliderStyle (juce::Slider::RotaryHorizontalVerticalDrag);
+    attackSlider->setTextBoxStyle (juce::Slider::TextBoxLeft, false, 80, 20);
+    attackSlider->addListener (this);
+
+    attackSlider->setBounds (88, 248, 176, 104);
 
 
     //[UserPreSize]
@@ -108,6 +117,7 @@ PluginEditor::PluginEditor (PluginProcessor& processor)
     leftCutoffAttachment = std::make_unique<SliderAttachment>(audioProcessor.params.tree, "leftCutoff", *leftCutoffSlider);
     rightCutoffAttachment = std::make_unique<SliderAttachment>(audioProcessor.params.tree, "rightCutoff", *rightCutoffSlider);
     sineStretchAttachment = std::make_unique<SliderAttachment>(audioProcessor.params.tree, "sineStretch", *sineStretchSlider);
+    attackAttachment = std::make_unique<SliderAttachment>(audioProcessor.params.tree, "attack", *attackSlider);
     //[/Constructor]
 }
 
@@ -116,6 +126,8 @@ PluginEditor::~PluginEditor()
     //[Destructor_pre]. You can add your own custom destruction code here..
     leftCutoffAttachment = nullptr;
     rightCutoffAttachment = nullptr;
+    sineStretchAttachment = nullptr;
+    attackAttachment = nullptr;
     //[/Destructor_pre]
 
     spectrum_canvas = nullptr;
@@ -124,6 +136,7 @@ PluginEditor::~PluginEditor()
     leftCutoffSlider = nullptr;
     rightCutoffSlider = nullptr;
     sineStretchSlider = nullptr;
+    attackSlider = nullptr;
 
 
     //[Destructor]. You can add your own custom destruction code here..
@@ -149,7 +162,7 @@ void PluginEditor::paint (juce::Graphics& g)
     }
 
     {
-        int x = -60, y = 116, width = 200, height = 30;
+        int x = -60, y = 76, width = 200, height = 30;
         juce::String text (TRANS("Left cutoff"));
         juce::Colour fillColour = juce::Colours::black;
         //[UserPaintCustomArguments] Customize the painting arguments here..
@@ -161,7 +174,7 @@ void PluginEditor::paint (juce::Graphics& g)
     }
 
     {
-        int x = -60, y = 148, width = 200, height = 30;
+        int x = -60, y = 108, width = 200, height = 30;
         juce::String text (TRANS("Right cutoff"));
         juce::Colour fillColour = juce::Colours::black;
         //[UserPaintCustomArguments] Customize the painting arguments here..
@@ -173,8 +186,20 @@ void PluginEditor::paint (juce::Graphics& g)
     }
 
     {
-        int x = -60, y = 220, width = 200, height = 30;
+        int x = -60, y = 180, width = 200, height = 30;
         juce::String text (TRANS("Sine stretch"));
+        juce::Colour fillColour = juce::Colours::black;
+        //[UserPaintCustomArguments] Customize the painting arguments here..
+        //[/UserPaintCustomArguments]
+        g.setColour (fillColour);
+        g.setFont (juce::Font (15.00f, juce::Font::plain).withTypefaceStyle ("Regular"));
+        g.drawText (text, x, y, width, height,
+                    juce::Justification::centred, true);
+    }
+
+    {
+        int x = -60, y = 276, width = 200, height = 30;
+        juce::String text (TRANS("Attack"));
         juce::Colour fillColour = juce::Colours::black;
         //[UserPaintCustomArguments] Customize the painting arguments here..
         //[/UserPaintCustomArguments]
@@ -217,6 +242,11 @@ void PluginEditor::sliderValueChanged (juce::Slider* sliderThatWasMoved)
         //[UserSliderCode_sineStretchSlider] -- add your slider handling code here..
         //[/UserSliderCode_sineStretchSlider]
     }
+    else if (sliderThatWasMoved == attackSlider.get())
+    {
+        //[UserSliderCode_attackSlider] -- add your slider handling code here..
+        //[/UserSliderCode_attackSlider]
+    }
 
     //[UsersliderValueChanged_Post]
     //[/UsersliderValueChanged_Post]
@@ -227,8 +257,8 @@ void PluginEditor::sliderValueChanged (juce::Slider* sliderThatWasMoved)
 //[MiscUserCode] You can add your own definitions of your custom methods or any other code here...
 void PluginEditor::changeListenerCallback(juce::ChangeBroadcaster* source)
 {
-    blockSize->setText(juce::String(audioProcessor.lastSamplesCount.get()), juce::sendNotificationAsync);
-    blockSize2->setText(juce::String(audioProcessor.lastBypassedSamplesCount.get()), juce::sendNotificationAsync);
+    blockSize->setText(juce::String(audioProcessor.rendering.lastSampleRate.get()), juce::sendNotificationAsync);
+    blockSize2->setText(juce::String(audioProcessor.rendering.lastMaskDiff.get()), juce::sendNotificationAsync);
 }
 
 //[/MiscUserCode]
@@ -250,13 +280,16 @@ BEGIN_JUCER_METADATA
                  fixedSize="0" initialWidth="700" initialHeight="400">
   <BACKGROUND backgroundColour="ff323e44">
     <RECT pos="0 0 700 400" fill="solid: 21ffffff" hasStroke="0"/>
-    <TEXT pos="-60 116 200 30" fill="solid: ff000000" hasStroke="0" text="Left cutoff"
+    <TEXT pos="-60 76 200 30" fill="solid: ff000000" hasStroke="0" text="Left cutoff"
           fontname="Default font" fontsize="15.0" kerning="0.0" bold="0"
           italic="0" justification="36"/>
-    <TEXT pos="-60 148 200 30" fill="solid: ff000000" hasStroke="0" text="Right cutoff"
+    <TEXT pos="-60 108 200 30" fill="solid: ff000000" hasStroke="0" text="Right cutoff"
           fontname="Default font" fontsize="15.0" kerning="0.0" bold="0"
           italic="0" justification="36"/>
-    <TEXT pos="-60 220 200 30" fill="solid: ff000000" hasStroke="0" text="Sine stretch"
+    <TEXT pos="-60 180 200 30" fill="solid: ff000000" hasStroke="0" text="Sine stretch"
+          fontname="Default font" fontsize="15.0" kerning="0.0" bold="0"
+          italic="0" justification="36"/>
+    <TEXT pos="-60 276 200 30" fill="solid: ff000000" hasStroke="0" text="Attack"
           fontname="Default font" fontsize="15.0" kerning="0.0" bold="0"
           italic="0" justification="36"/>
   </BACKGROUND>
@@ -274,18 +307,23 @@ BEGIN_JUCER_METADATA
          focusDiscardsChanges="0" fontname="Default font" fontsize="15.0"
          kerning="0.0" bold="0" italic="0" justification="33"/>
   <SLIDER name="leftCutoffSlider" id="110eb12e1151856" memberName="leftCutoffSlider"
-          virtualName="" explicitFocusOrder="0" pos="88 120 279 24" tooltip="ss"
+          virtualName="" explicitFocusOrder="0" pos="88 80 279 24" tooltip="ss"
           min="1.0" max="20000.0" int="0.0" style="LinearHorizontal" textBoxPos="TextBoxLeft"
           textBoxEditable="1" textBoxWidth="80" textBoxHeight="20" skewFactor="1.0"
           needsCallback="1"/>
   <SLIDER name="rightCutoffSlider" id="f5f11eb2404957fc" memberName="rightCutoffSlider"
-          virtualName="" explicitFocusOrder="0" pos="88 152 280 24" min="1.0"
+          virtualName="" explicitFocusOrder="0" pos="88 112 280 24" min="1.0"
           max="20000.0" int="0.0" style="LinearHorizontal" textBoxPos="TextBoxLeft"
           textBoxEditable="1" textBoxWidth="80" textBoxHeight="20" skewFactor="1.0"
           needsCallback="1"/>
   <SLIDER name="sineStretchSlider" id="f56ba4a089565a1e" memberName="sineStretchSlider"
-          virtualName="" explicitFocusOrder="0" pos="88 184 176 104" min="0.0"
-          max="3.0" int="0.0" style="RotaryHorizontalVerticalDrag" textBoxPos="TextBoxLeft"
+          virtualName="" explicitFocusOrder="0" pos="88 144 176 104" min="0.01"
+          max="10.0" int="0.0" style="RotaryHorizontalVerticalDrag" textBoxPos="TextBoxLeft"
+          textBoxEditable="1" textBoxWidth="80" textBoxHeight="20" skewFactor="1.0"
+          needsCallback="1"/>
+  <SLIDER name="sineStretchSlider" id="ab103c844f994ea3" memberName="attackSlider"
+          virtualName="" explicitFocusOrder="0" pos="88 248 176 104" min="0.0"
+          max="0.999" int="0.0" style="RotaryHorizontalVerticalDrag" textBoxPos="TextBoxLeft"
           textBoxEditable="1" textBoxWidth="80" textBoxHeight="20" skewFactor="1.0"
           needsCallback="1"/>
 </JUCER_COMPONENT>

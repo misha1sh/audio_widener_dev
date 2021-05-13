@@ -11,6 +11,7 @@ public:
     std::atomic<float>* leftCutoff;
     std::atomic<float>* rightCutoff;
     std::atomic<float>* sineStretch;
+    std::atomic<float>* attack;
 
     float sampleRate;
     int maxSamplesPerBlock;

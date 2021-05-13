@@ -9,22 +9,28 @@ ProcessingParams::ProcessingParams(AudioProcessor& processor) :
                                                         "leftCutoff", // parameter name
                                                         1,   // minimum value
                                                         22000,   // maximum value
-                                                        1000),
+                                                        1),
             std::make_unique<juce::AudioParameterFloat>("rightCutoff", // parameterID
                                                         "rightCutoff", // parameter name
                                                         1,   // minimum value
                                                         22000,   // maximum value
-                                                        3000),
+                                                        22000),
             std::make_unique<juce::AudioParameterFloat>("sineStretch", // parameterID
                                                         "sineStretch", // parameter name
+                                                        0.01,   // minimum value
+                                                        10,   // maximum value
+                                                        5),
+            std::make_unique<juce::AudioParameterFloat>("attack", // parameterID
+                                                        "attack", // parameter name
                                                         0,   // minimum value
-                                                        3,   // maximum value
-                                                        1),
+                                                        0.999,   // maximum value
+                                                        0.85),
 
          })
 {
     leftCutoff = tree.getRawParameterValue("leftCutoff");
     rightCutoff = tree.getRawParameterValue("rightCutoff");
     sineStretch = tree.getRawParameterValue("sineStretch");
+    attack = tree.getRawParameterValue("attack");
 }
 

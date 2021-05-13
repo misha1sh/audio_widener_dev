@@ -64,7 +64,8 @@ private:
     typedef juce::AudioProcessorValueTreeState::SliderAttachment SliderAttachment;
     typedef juce::AudioProcessorValueTreeState::ButtonAttachment ButtonAttachment;
 
-    std::unique_ptr<SliderAttachment> leftCutoffAttachment, rightCutoffAttachment, sineStretchAttachment;
+    std::unique_ptr<SliderAttachment> leftCutoffAttachment, rightCutoffAttachment,
+    sineStretchAttachment, attackAttachment;
     //[/UserVariables]
 
     //==============================================================================
@@ -74,6 +75,7 @@ private:
     std::unique_ptr<juce::Slider> leftCutoffSlider;
     std::unique_ptr<juce::Slider> rightCutoffSlider;
     std::unique_ptr<juce::Slider> sineStretchSlider;
+    std::unique_ptr<juce::Slider> attackSlider;
 
 
     //==============================================================================

@@ -24,7 +24,7 @@ PluginProcessor::PluginProcessor()
                      #endif
                        ),
                        params(*this),
-                       mainProcessor(params)
+                       mainProcessor(params, rendering)
 {
     setLatencySamples(mainProcessor.getLatencyInSamples());
 }
@@ -179,25 +179,37 @@ void PluginProcessor::processBlock (juce::AudioBuffer<float>& buffer, juce::Midi
                                 buffer.getNumSamples())
     });
 
-    kfr::univector<kfr::f32> dataCopy(data[0]);
+   /* for (int i = 0; i < data[0].size(); i++) {
+        data[0][i] = 0;
+        data[1][i] = 0;
+        if (0 <= i && i <= data[0].size()) {
+            float f = rand() % 100 / 100.f;
+            data[0][i] = f;
+            data[1][i] = f;
+        }
+    }
+
+    kfr::univector<kfr::f32> dataCopy(data[0]);*/
+
+
 
     mainProcessor.process(data);
+  /*  kfr::univector<kfr::f32> processedDataCopy(data[0]);
 
-   /* for (int i = 0; i + FFT_SZ < data[0].size(); i++) {
-        if (fabs(data[0][i + FFT_SZ] - dataCopy[i]) > 0.000001) {
-            DBG("kek");
+    for (int i = 0; i + FFT_SZ < data[0].size(); i++) {
+        if (fabs(data[0][i + FFT_SZ] - dataCopy[i]) > 0.0001) {
+            DBG("kek" + std::to_string(data[0][i + FFT_SZ]) + " " + std::to_string(dataCopy[i]));
             jassertfalse;
         }
-    }*/
-
-    lastSamplesCount = buffer.getNumSamples();
+    }
+*/
+    rendering.lastSampleRate = buffer.getNumSamples();
     sendChangeMessage();
 }
 
 void PluginProcessor::processBlockBypassed(juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midiMessages)
 {
     juce::ScopedNoDenormals noDenormals;
-    lastBypassedSamplesCount.set(buffer.getNumSamples());
     sendChangeMessage();
 
 }
