@@ -177,9 +177,9 @@ void MainProcessor::applyConversionsToFFT(vecfft& fftData, vecfft& res1, vecfft&
 
 void MainProcessor::processSplit(vecfft& data, vecfft& res1, vecfft& res2) {
     static univector<f32, FFT_RES_SZ> mask;
- //   generateMask(data, mask);
+    generateMask(data, mask);
 
-  /*  mask += 1;
+    mask += 1;
 
     static univector<f32, FFT_RES_SZ> oldMask;
     float diff = 0;
@@ -188,12 +188,12 @@ void MainProcessor::processSplit(vecfft& data, vecfft& res1, vecfft& res2) {
         oldMask[i] = mask[i];
     }
     rendering.lastMaskDiff = diff ;
-*/
-    for (int i = 0; i < mask.size(); i++) {
+
+  /*  for (int i = 0; i < mask.size(); i++) {
         mask[i] = sin(i / 512.f) + 1;
         //mask[i] = 1.0;
     }
-    mask = window_hann(mask.size()) * 2;
+    mask = window_hann(mask.size()) * 2;*/
     for (int i = 0; i < data.size(); i++) {
         res1[i] = {magnitude(data[i]) * mask[i], phase(data[i])};
         res2[i] = {magnitude(data[i]) * (2 - mask[i]), phase(data[i])};
@@ -206,14 +206,14 @@ void MainProcessor::generateMask(vecfft& data, univector<f32, 0> mask) {
     static univector<f32, FFT_RES_SZ> mediumMagnitude(0);
     float weight = *params.attack;
     float otherWeight = 1 - weight;
-   /*for (int i = 0; i < data.size(); i++) {
+   for (int i = 0; i < data.size(); i++) {
         mediumMagnitude[i] = weight * mediumMagnitude[i] + otherWeight * magnitude(data[i]);
-    }*/
-   if (weight < 0.5) {
+    }
+  /* if (weight < 0.5) {
        for (int i = 0; i < data.size(); i++) {
            mediumMagnitude[i] = magnitude(data[i]);
        }
-   }
+   }*/
 
     float sineX = 0.f;
     float sineStretch = *params.sineStretch;

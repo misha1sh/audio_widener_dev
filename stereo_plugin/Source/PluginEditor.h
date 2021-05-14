@@ -39,7 +39,8 @@
 */
 class PluginEditor  : public juce::AudioProcessorEditor,
                       public juce::ChangeListener,
-                      public juce::Slider::Listener
+                      public juce::Slider::Listener,
+                      public juce::Button::Listener
 {
 public:
     //==============================================================================
@@ -54,6 +55,7 @@ public:
     void paint (juce::Graphics& g) override;
     void resized() override;
     void sliderValueChanged (juce::Slider* sliderThatWasMoved) override;
+    void buttonClicked (juce::Button* buttonThatWasClicked) override;
 
 
 
@@ -76,6 +78,15 @@ private:
     std::unique_ptr<juce::Slider> rightCutoffSlider;
     std::unique_ptr<juce::Slider> sineStretchSlider;
     std::unique_ptr<juce::Slider> attackSlider;
+    std::unique_ptr<juce::ToggleButton> juce__toggleButton;
+    std::unique_ptr<juce::Slider> sineStretchSlider2;
+    std::unique_ptr<juce::Label> juce__label;
+    std::unique_ptr<juce::Label> juce__label2;
+    std::unique_ptr<juce::Label> juce__label3;
+    std::unique_ptr<juce::Label> juce__label4;
+    std::unique_ptr<juce::Label> juce__label5;
+    std::unique_ptr<juce::Slider> sineStretchSlider3;
+    std::unique_ptr<juce::Label> juce__label6;
 
 
     //==============================================================================
