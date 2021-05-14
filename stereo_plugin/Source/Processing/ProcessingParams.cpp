@@ -5,32 +5,49 @@
 ProcessingParams::ProcessingParams(AudioProcessor& processor) :
     tree(processor, nullptr, juce::Identifier("Stereo_plugin"),
          {
-            std::make_unique<juce::AudioParameterInt>("leftCutoff", // parameterID
-                                                        "leftCutoff", // parameter name
+            std::make_unique<juce::AudioParameterFloat>("leftCutoff", // parameterID
+                                                        "Left cutoff", // parameter name
                                                         1,   // minimum value
-                                                        22000,   // maximum value
+                                                        15000,   // maximum value
                                                         1),
             std::make_unique<juce::AudioParameterFloat>("rightCutoff", // parameterID
-                                                        "rightCutoff", // parameter name
+                                                        "Right cutoff", // parameter name
                                                         1,   // minimum value
-                                                        22000,   // maximum value
-                                                        22000),
-            std::make_unique<juce::AudioParameterFloat>("sineStretch", // parameterID
-                                                        "sineStretch", // parameter name
-                                                        0.01,   // minimum value
-                                                        10,   // maximum value
-                                                        5),
+                                                        15000,   // maximum value
+                                                        15000),
+            std::make_unique<juce::AudioParameterFloat>("strength", // parameterID
+                                                        "Strength", // parameter name
+                                                        0,   // minimum value
+                                                        2,   // maximum value
+                                                        1),
+            std::make_unique<juce::AudioParameterFloat>("frequencySpread", // parameterID
+                                                        "Frequency spread", // parameter name
+                                                        0.1,   // minimum value
+                                                        0.999,   // maximum value
+                                                        0.3),
             std::make_unique<juce::AudioParameterFloat>("attack", // parameterID
-                                                        "attack", // parameter name
+                                                        "Attack", // parameter name
                                                         0,   // minimum value
                                                         0.999,   // maximum value
-                                                        0.85),
-
+                                                        0.95),
+            std::make_unique<juce::AudioParameterFloat>("noise", // parameterID
+                                                        "Noise", // parameter name
+                                                        0,   // minimum value
+                                                        1,   // maximum value
+                                                        0),
+            std::make_unique<juce::AudioParameterFloat>("dynamicSplitEnabled", // parameterID
+                                                        "Dynamic split", // parameter name
+                                                        0,   // minimum value
+                                                        1,   // maximum value
+                                                        1),
          })
 {
     leftCutoff = tree.getRawParameterValue("leftCutoff");
     rightCutoff = tree.getRawParameterValue("rightCutoff");
-    sineStretch = tree.getRawParameterValue("sineStretch");
+    strength = tree.getRawParameterValue("strength");
+    frequencySpread = tree.getRawParameterValue("frequencySpread");
     attack = tree.getRawParameterValue("attack");
+    noise = tree.getRawParameterValue("noise");
+    dynamicSplitEnabled = tree.getRawParameterValue("dynamicSplitEnabled");
 }
 

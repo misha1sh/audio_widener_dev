@@ -38,9 +38,7 @@
                                                                     //[/Comments]
 */
 class PluginEditor  : public juce::AudioProcessorEditor,
-                      public juce::ChangeListener,
-                      public juce::Slider::Listener,
-                      public juce::Button::Listener
+                      public juce::ChangeListener
 {
 public:
     //==============================================================================
@@ -54,8 +52,6 @@ public:
 
     void paint (juce::Graphics& g) override;
     void resized() override;
-    void sliderValueChanged (juce::Slider* sliderThatWasMoved) override;
-    void buttonClicked (juce::Button* buttonThatWasClicked) override;
 
 
 
@@ -67,7 +63,9 @@ private:
     typedef juce::AudioProcessorValueTreeState::ButtonAttachment ButtonAttachment;
 
     std::unique_ptr<SliderAttachment> leftCutoffAttachment, rightCutoffAttachment,
-    sineStretchAttachment, attackAttachment;
+            strengthAttachment, frequencySpreadAttachment, attackAttachment, noiseAttachment;
+    std::unique_ptr<ButtonAttachment> dynamicSplitEnabledAttachment;
+    std::unique_ptr<TooltipWindow> tooltipWindow;
     //[/UserVariables]
 
     //==============================================================================
@@ -76,16 +74,16 @@ private:
     std::unique_ptr<juce::Label> blockSize2;
     std::unique_ptr<juce::Slider> leftCutoffSlider;
     std::unique_ptr<juce::Slider> rightCutoffSlider;
-    std::unique_ptr<juce::Slider> sineStretchSlider;
+    std::unique_ptr<juce::Slider> strengthSlider;
+    std::unique_ptr<juce::Slider> frequencySpreadSlider;
+    std::unique_ptr<juce::ToggleButton> dynamicSplitEnabledButton;
     std::unique_ptr<juce::Slider> attackSlider;
-    std::unique_ptr<juce::ToggleButton> juce__toggleButton;
-    std::unique_ptr<juce::Slider> sineStretchSlider2;
     std::unique_ptr<juce::Label> juce__label;
     std::unique_ptr<juce::Label> juce__label2;
     std::unique_ptr<juce::Label> juce__label3;
     std::unique_ptr<juce::Label> juce__label4;
     std::unique_ptr<juce::Label> juce__label5;
-    std::unique_ptr<juce::Slider> sineStretchSlider3;
+    std::unique_ptr<juce::Slider> noiseSlider;
     std::unique_ptr<juce::Label> juce__label6;
 
 

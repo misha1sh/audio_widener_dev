@@ -151,6 +151,11 @@ void MainProcessor::applyConversionsToFFT(vecfft& fftData, vecfft& res1, vecfft&
     }*/
 
     fftData = kfr::polar(fftData);
+
+    static univector<f32, FFT_RES_SZ> lastSound;
+    lastSound = magnitudes(fftData);
+    rendering.lastSound.addValues(lastSound.data(), lastSound.size());
+
     res1 = fftData;
     res2 = fftData;
 
@@ -181,19 +186,17 @@ void MainProcessor::processSplit(vecfft& data, vecfft& res1, vecfft& res2) {
 
     mask += 1;
 
-    static univector<f32, FFT_RES_SZ> oldMask;
+    /*static univector<f32, FFT_RES_SZ> oldMask;
     float diff = 0;
     for (int i = 0; i < data.size(); i++) {
         diff += fabs(oldMask[i] - mask[i]);
         oldMask[i] = mask[i];
     }
-    rendering.lastMaskDiff = diff ;
+    rendering.lastMaskDiff = diff ;*/
 
-  /*  for (int i = 0; i < mask.size(); i++) {
-        mask[i] = sin(i / 512.f) + 1;
-        //mask[i] = 1.0;
-    }
-    mask = window_hann(mask.size()) * 2;*/
+    rendering.lastMask.reset();
+    rendering.lastMask.addValues(&mask[0], mask.size());
+
     for (int i = 0; i < data.size(); i++) {
         res1[i] = {magnitude(data[i]) * mask[i], phase(data[i])};
         res2[i] = {magnitude(data[i]) * (2 - mask[i]), phase(data[i])};
@@ -206,7 +209,7 @@ void MainProcessor::generateMask(vecfft& data, univector<f32, 0> mask) {
     static univector<f32, FFT_RES_SZ> mediumMagnitude(0);
     float weight = *params.attack;
     float otherWeight = 1 - weight;
-   for (int i = 0; i < data.size(); i++) {
+    for (int i = 0; i < data.size(); i++) {
         mediumMagnitude[i] = weight * mediumMagnitude[i] + otherWeight * magnitude(data[i]);
     }
   /* if (weight < 0.5) {
@@ -216,7 +219,7 @@ void MainProcessor::generateMask(vecfft& data, univector<f32, 0> mask) {
    }*/
 
     float sineX = 0.f;
-    float sineStretch = *params.sineStretch;
+    float sineStretch = *params.frequencySpread;
     for (int i = 0; i < data.size(); i++) {
         sineX += mediumMagnitude[i] / sineStretch / 100;
         float sineY = cos(sineX);

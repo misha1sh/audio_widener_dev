@@ -204,13 +204,13 @@ void PluginProcessor::processBlock (juce::AudioBuffer<float>& buffer, juce::Midi
     }
 */
     rendering.lastSampleRate = buffer.getNumSamples();
-    sendChangeMessage();
+   // sendChangeMessage();
 }
 
 void PluginProcessor::processBlockBypassed(juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midiMessages)
 {
     juce::ScopedNoDenormals noDenormals;
-    sendChangeMessage();
+   // sendChangeMessage();
 
 }
 
