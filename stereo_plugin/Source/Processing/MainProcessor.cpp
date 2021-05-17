@@ -9,7 +9,8 @@ MainProcessor::MainProcessor(ProcessingParams& _params, ProcessingRendering& _re
     rendering(_rendering),
     dftPlan(FFT_SZ),
     dftPlanTemp(dftPlan.temp_size),
-    dftWindow(window_hann(FFT_SZ)) {
+    dftWindow(window_hann(FFT_SZ)),
+    perlinNoise(1) {
 }
 
 
@@ -161,23 +162,12 @@ void MainProcessor::applyConversionsToFFT(vecfft& fftData, vecfft& res1, vecfft&
 
     processSplit(fftData, res1, res2);
 
-    int leftFreq = freqToFFTIndex(*params.leftCutoff);
-    int rightFreq = freqToFFTIndex(*params.rightCutoff);
 
-    for (size_t i = 0; i < leftFreq; i++) {
-        res1[i] = res2[i] = convertToCartesian(fftData[i]);
-    }
 
-    for (size_t i = leftFreq; i < rightFreq; i++) {
+    for (size_t i = 0; i < res1.size(); i++) {
         res1[i] = convertToCartesian(res1[i]);
         res2[i] = convertToCartesian(res2[i]);
     }
-
-    for (size_t i = rightFreq; i < fftData.size(); i++) {
-        res1[i] = res2[i] = convertToCartesian(fftData[i]);
-    }
-
-
 }
 
 void MainProcessor::processSplit(vecfft& data, vecfft& res1, vecfft& res2) {
@@ -186,15 +176,9 @@ void MainProcessor::processSplit(vecfft& data, vecfft& res1, vecfft& res2) {
 
     mask += 1;
 
-    /*static univector<f32, FFT_RES_SZ> oldMask;
-    float diff = 0;
-    for (int i = 0; i < data.size(); i++) {
-        diff += fabs(oldMask[i] - mask[i]);
-        oldMask[i] = mask[i];
-    }
-    rendering.lastMaskDiff = diff ;*/
 
-    rendering.lastMask.reset();
+
+
     rendering.lastMask.addValues(&mask[0], mask.size());
 
     for (int i = 0; i < data.size(); i++) {
@@ -212,25 +196,53 @@ void MainProcessor::generateMask(vecfft& data, univector<f32, 0> mask) {
     for (int i = 0; i < data.size(); i++) {
         mediumMagnitude[i] = weight * mediumMagnitude[i] + otherWeight * magnitude(data[i]);
     }
-  /* if (weight < 0.5) {
-       for (int i = 0; i < data.size(); i++) {
-           mediumMagnitude[i] = magnitude(data[i]);
-       }
-   }*/
+
+    int leftFreq = freqToFFTIndex(*params.leftCutoff);
+    int rightFreq = freqToFFTIndex(*params.rightCutoff);
+
 
     float sineX = 0.f;
-    float sineStretch = *params.frequencySpread;
-    for (int i = 0; i < data.size(); i++) {
-        sineX += mediumMagnitude[i] / sineStretch / 100;
-        float sineY = cos(sineX);
-        mask[i] = sineY;
+    float sineStretch = 1 - *params.frequencySpread;
+    bool dynamicSpreadEnabled = *params.dynamicSplitEnabled > 0.5f;
+    if (dynamicSpreadEnabled) {
+        for (int i = leftFreq; i < rightFreq; i++) {
+            sineX += mediumMagnitude[i] / sineStretch / 100;
+            float sineY = cos(sineX);
+            mask[i] = sineY;
+        }
+    } else {
+        for (int i = leftFreq; i < rightFreq; i++) {
+            float sineY = sin(log2f(FFTIndexToFreq(i) + 1) / sineStretch / 2.5);
+            mask[i] = sineY;
+        }
     }
+
+    float noiseCount = *params.noise;
+    if (noiseCount != 0) {
+        static float timeStamp = 0;
+        static float direction = 1.f;
+        timeStamp += direction;
+        if (timeStamp > 100000 || timeStamp < -10000) {
+            direction = -direction;
+        }
+        for (int i = leftFreq; i < rightFreq; i++) {
+            float x = log2f(FFTIndexToFreq(i) + 1);
+            mask[i] = perlinNoise.noise2D(x / 25.f, timeStamp / 100.f);
+        }
+    }
+
+    std::fill(mask.begin(), mask.begin() + leftFreq, 0);
+    std::fill(mask.begin() + rightFreq, mask.end(), 0);
 }
 
 //           N:  0, 1, 2,   3    ..  FFT_RES_SZ - 1
 // frequencies:  0, x, 2*x  3*x  ..  sample_rate / 2 (Nyquist frequency)
 int MainProcessor::freqToFFTIndex(int frequency) const {
     return (int)((float)frequency / params.sampleRate * 2 * (FFT_RES_SZ - 1));
+}
+
+int MainProcessor::FFTIndexToFreq(int index) const {
+    return (int)((float)index * params.sampleRate / 2 / (FFT_RES_SZ - 1));
 }
 
 int MainProcessor::getLatencyInSamples() {

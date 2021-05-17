@@ -38,6 +38,7 @@
                                                                     //[/Comments]
 */
 class PluginEditor  : public juce::AudioProcessorEditor,
+                      public juce::AudioProcessorValueTreeState::Listener,
                       public juce::ChangeListener
 {
 public:
@@ -47,6 +48,8 @@ public:
 
     //==============================================================================
     //[UserMethods]     -- You can add your own custom methods in this section.
+
+    void parameterChanged (const String& parameterID, float newValue) override;
     void changeListenerCallback(juce::ChangeBroadcaster* source) override;
     //[/UserMethods]
 

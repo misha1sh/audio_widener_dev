@@ -4,11 +4,11 @@
 
 #include "DynamicTextureRenderer/DynamicTextureRenderer.h"
 #include "../Processing/ProcessingRendering.h"
-
+#include "../Processing/ProcessingParams.h"
 class SpectrumCanvas : public juce::Component, private juce::Timer
 {
 public:
-    SpectrumCanvas(ProcessingRendering& _rendering);
+    SpectrumCanvas(ProcessingParams& _params, ProcessingRendering& _rendering);
     ~SpectrumCanvas() override;
 
     void timerCallback() override;
@@ -17,6 +17,7 @@ public:
     void resized() override;
 
 private:
+    ProcessingParams& params;
     ProcessingRendering& rendering;
 
     Path maskPath[2];

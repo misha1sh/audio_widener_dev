@@ -32,6 +32,8 @@ private:
     kfr::univector<kfr::u8> dftPlanTemp;
     kfr::univector<kfr::f32> dftWindow;
 
+    siv::PerlinNoise perlinNoise;
+
     typedef kfr::univector<kfr::complex<kfr::f32>, FFT_RES_SZ> vecfft;
     typedef kfr::univector<kfr::complex<kfr::f32>, 0> vecfft_ref;
     void processFFTForAccumulator(DataAccumulator& inAccumulator, DataAccumulator& outAccumulator1,
@@ -44,4 +46,6 @@ private:
     void generateMask(vecfft& data,
                       kfr::univector<kfr::f32, 0> mask);
     int freqToFFTIndex(int frequency) const;
+    int FFTIndexToFreq(int index) const;
+
 };

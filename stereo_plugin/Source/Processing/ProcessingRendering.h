@@ -11,7 +11,7 @@ public:
     SyncedArray<float> lastSound;
 
     ProcessingRendering() : lastSampleRate(), lastMaskDiff(),
-                            lastMask(0.9f), lastSound(0.97f) {
+                            lastMask(0.7f), lastSound(0.9f) {
 
     }
 };

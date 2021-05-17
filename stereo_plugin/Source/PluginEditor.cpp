@@ -37,7 +37,7 @@ PluginEditor::PluginEditor (PluginProcessor& processor)
     //[Constructor_pre] You can add your own custom stuff here..
     //[/Constructor_pre]
 
-    spectrum_canvas.reset (new SpectrumCanvas (processor.rendering));
+    spectrum_canvas.reset (new SpectrumCanvas (processor.params, processor.rendering));
     addAndMakeVisible (spectrum_canvas.get());
     spectrum_canvas->setName ("spectrum_canvas");
 
@@ -204,13 +204,20 @@ PluginEditor::PluginEditor (PluginProcessor& processor)
     setResizable(false, false);
     audioProcessor.addChangeListener(this);
 
-    leftCutoffAttachment = std::make_unique<SliderAttachment>(audioProcessor.params.tree, "leftCutoff", *leftCutoffSlider);
-    rightCutoffAttachment = std::make_unique<SliderAttachment>(audioProcessor.params.tree, "rightCutoff", *rightCutoffSlider);
-    strengthAttachment = std::make_unique<SliderAttachment>(audioProcessor.params.tree, "strength", *strengthSlider);
-    frequencySpreadAttachment = std::make_unique<SliderAttachment>(audioProcessor.params.tree, "frequencySpread", *frequencySpreadSlider);
-    attackAttachment = std::make_unique<SliderAttachment>(audioProcessor.params.tree, "attack", *attackSlider);
-    noiseAttachment = std::make_unique<SliderAttachment>(audioProcessor.params.tree, "noise", *noiseSlider);
-    dynamicSplitEnabledAttachment = std::make_unique<ButtonAttachment>(audioProcessor.params.tree, "dynamicSplitEnabled", *dynamicSplitEnabledButton);
+
+    leftCutoffAttachment = std::make_unique<SliderAttachment>(*audioProcessor.params.tree, "leftCutoff", *leftCutoffSlider);
+    rightCutoffAttachment = std::make_unique<SliderAttachment>(*audioProcessor.params.tree, "rightCutoff", *rightCutoffSlider);
+    strengthAttachment = std::make_unique<SliderAttachment>(*audioProcessor.params.tree, "strength", *strengthSlider);
+    frequencySpreadAttachment = std::make_unique<SliderAttachment>(*audioProcessor.params.tree, "frequencySpread", *frequencySpreadSlider);
+    attackAttachment = std::make_unique<SliderAttachment>(*audioProcessor.params.tree, "attack", *attackSlider);
+    noiseAttachment = std::make_unique<SliderAttachment>(*audioProcessor.params.tree, "noise", *noiseSlider);
+    dynamicSplitEnabledAttachment = std::make_unique<ButtonAttachment>(*audioProcessor.params.tree, "dynamicSplitEnabled", *dynamicSplitEnabledButton);
+
+    leftCutoffSlider->setSkewFactorFromMidPoint(1024);
+    rightCutoffSlider->setSkewFactorFromMidPoint(1024);
+
+    audioProcessor.params.tree->addParameterListener("dynamicSplitEnabled", this);
+
     //[/Constructor]
 }
 
@@ -226,6 +233,10 @@ PluginEditor::~PluginEditor()
     attackAttachment = nullptr;
     noiseAttachment = nullptr;
     dynamicSplitEnabledAttachment = nullptr;
+
+    audioProcessor.removeChangeListener(this);
+    audioProcessor.params.tree->removeParameterListener("dynamicSplitEnabled", this);
+
     //[/Destructor_pre]
 
     spectrum_canvas = nullptr;
@@ -247,7 +258,7 @@ PluginEditor::~PluginEditor()
 
 
     //[Destructor]. You can add your own custom destruction code here..
-    audioProcessor.removeChangeListener(this);
+
     //[/Destructor]
 }
 
@@ -290,6 +301,12 @@ void PluginEditor::changeListenerCallback(juce::ChangeBroadcaster* source)
     blockSize2->setText(juce::String(audioProcessor.rendering.lastMaskDiff.get()), juce::sendNotificationAsync);
 }
 
+
+void PluginEditor::parameterChanged (const String& parameterID, float newValue) {
+    if (parameterID == "dynamicSplitEnabled") {
+        attackSlider->setEnabled(newValue > 0.5f);
+    }
+}
 //[/MiscUserCode]
 
 
@@ -303,7 +320,7 @@ void PluginEditor::changeListenerCallback(juce::ChangeBroadcaster* source)
 BEGIN_JUCER_METADATA
 
 <JUCER_COMPONENT documentType="Component" className="PluginEditor" componentName=""
-                 parentClasses="public juce::AudioProcessorEditor, public juce::ChangeListener"
+                 parentClasses="public juce::AudioProcessorEditor, public juce::AudioProcessorValueTreeState::Listener, public juce::ChangeListener"
                  constructorParams="PluginProcessor&amp; processor" variableInitialisers="juce::AudioProcessorEditor(processor), audioProcessor(processor)"
                  snapPixels="8" snapActive="1" snapShown="1" overlayOpacity="0.330"
                  fixedSize="1" initialWidth="444" initialHeight="348">
@@ -312,7 +329,7 @@ BEGIN_JUCER_METADATA
   </BACKGROUND>
   <GENERICCOMPONENT name="spectrum_canvas" id="c28ba59d3075a746" memberName="spectrum_canvas"
                     virtualName="" explicitFocusOrder="0" pos="144 32 272 192" class="SpectrumCanvas"
-                    params="processor.rendering"/>
+                    params="processor.params, processor.rendering"/>
   <LABEL name="new label" id="41486794b98566e2" memberName="blockSize"
          virtualName="" explicitFocusOrder="0" pos="208 0 150 24" edTextCol="ff000000"
          edBkgCol="0" labelText="label text" editableSingleClick="0" editableDoubleClick="0"

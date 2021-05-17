@@ -29,8 +29,7 @@ public:
     void getValues(std::vector<T>& array) {
         juce::CriticalSection::ScopedLockType locker(valuesLock);
 
-        values.swap(array);
-        values.resize(0);
+        array.assign(values.begin(), values.end());
     }
 
     void reset() {

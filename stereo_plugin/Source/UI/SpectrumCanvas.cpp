@@ -14,7 +14,8 @@
 
 
 //==============================================================================
-SpectrumCanvas::SpectrumCanvas(ProcessingRendering& _rendering) :
+SpectrumCanvas::SpectrumCanvas(ProcessingParams& _params, ProcessingRendering& _rendering) :
+    params(_params),
     rendering(_rendering)
 {
     setOpaque(false);
@@ -38,14 +39,16 @@ void SpectrumCanvas::timerCallback() {
 void SpectrumCanvas::paint (juce::Graphics& g) {
     g.fillAll(Colour::fromRGB(0, 0, 0));
 
+    g.setColour(Colour::fromRGBA(255, 255, 255, 100));
+    g.fillPath(soundPath);
+
     g.setColour(Colour::fromRGB(255, 0, 0));
     g.strokePath(maskPath[0],  juce::PathStrokeType (2.0) );
 
     g.setColour(Colour::fromRGB(0, 0, 255));
     g.strokePath(maskPath[1],  juce::PathStrokeType (2.0) );
 
-    g.setColour(Colour::fromRGBA(255, 255, 255, 128));
-    g.fillPath(soundPath);
+
 }
 
 void SpectrumCanvas::resized()
@@ -77,6 +80,8 @@ void SpectrumCanvas::createMaskPath() {
 
         float f = powf(realCnt, 1.f / cnt); //  j ** cnt = realCount111
         float j = 1;
+
+
         for (int i = 0; i < cnt; i++) {
             float x = i * perSegment;
             float y;
@@ -121,7 +126,7 @@ void SpectrumCanvas::createSoundPath() {
     path.startNewSubPath(-50, height + 50);
     for (int i = 0; i < cnt; i++) {
         float x = i * perSegment;
-        float y = juce::Decibels::gainToDecibels(sound[j] / 50.f, -60.f) / -60.f * height;
+        float y = juce::Decibels::gainToDecibels(sound[j] / 150.f, -60.f) / -60.f * height;
 
       //  if (i == 0) {
             path.lineTo(x, y);
