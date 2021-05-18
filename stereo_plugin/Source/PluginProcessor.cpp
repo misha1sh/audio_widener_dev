@@ -141,37 +141,10 @@ void PluginProcessor::processBlock (juce::AudioBuffer<float>& buffer, juce::Midi
     auto totalNumInputChannels  = getTotalNumInputChannels();
     auto totalNumOutputChannels = getTotalNumOutputChannels();
 
-    // In case we have more outputs than inputs, this code clears any output
-    // channels that didn't contain input data, (because these aren't
-    // guaranteed to be empty - they may contain garbage).
-    // This is here to avoid people getting screaming feedback
-    // when they first compile a plugin, but obviously you don't need to keep
-    // this code if your algorithm always overwrites all the output channels.
     for (auto i = totalNumInputChannels; i < totalNumOutputChannels; ++i)
         buffer.clear (i, 0, buffer.getNumSamples());
     lastValues.resize(buffer.getNumChannels());
-    // This is the place where you'd normally do the guts of your plugin's
-    // audio processing...
-    // Make sure to reset the state if your inner loop is processing
-    // the samples and the outer loop is handling the channels.
-    // Alternatively, you can process the samples with the channels
-    // interleaved by keeping the same state.
- /*   for (int channel = 0; channel < totalNumInputChannels; ++channel)
-    {
-        auto* channelData = buffer.getWritePointer (channel);
-    	for (int j = 0; j < buffer.getNumSamples(); j++)
-    	{
-            lastValues[channel].push(channelData[j]);
-    		if (lastValues[channel].size() >= latency)
-    		{
-                channelData[j] = lastValues[channel].front();
-                lastValues[channel].pop();
-    		} else
-    		{
-                channelData[j] = 0;
-    		}
-    	}
-    }*/
+
     kfr::univector<kfr::univector<kfr::f32, 0>, 2> data({
             kfr::make_array_ref(buffer.getWritePointer(0),
                                 buffer.getNumSamples()),
@@ -179,39 +152,11 @@ void PluginProcessor::processBlock (juce::AudioBuffer<float>& buffer, juce::Midi
                                 buffer.getNumSamples())
     });
 
-   /* for (int i = 0; i < data[0].size(); i++) {
-        data[0][i] = 0;
-        data[1][i] = 0;
-        if (0 <= i && i <= data[0].size()) {
-            float f = rand() % 100 / 100.f;
-            data[0][i] = f;
-            data[1][i] = f;
-        }
-    }
-
-    kfr::univector<kfr::f32> dataCopy(data[0]);*/
-
-
-
     mainProcessor.process(data);
-  /*  kfr::univector<kfr::f32> processedDataCopy(data[0]);
-
-    for (int i = 0; i + FFT_SZ < data[0].size(); i++) {
-        if (fabs(data[0][i + FFT_SZ] - dataCopy[i]) > 0.0001) {
-            DBG("kek" + std::to_string(data[0][i + FFT_SZ]) + " " + std::to_string(dataCopy[i]));
-            jassertfalse;
-        }
-    }
-*/
-    rendering.lastSampleRate = buffer.getNumSamples();
-   // sendChangeMessage();
 }
 
 void PluginProcessor::processBlockBypassed(juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midiMessages)
 {
-    juce::ScopedNoDenormals noDenormals;
-   // sendChangeMessage();
-
 }
 
 bool PluginProcessor::hasEditor() const

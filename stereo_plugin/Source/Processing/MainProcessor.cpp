@@ -9,8 +9,7 @@ MainProcessor::MainProcessor(ProcessingParams& _params, ProcessingRendering& _re
     rendering(_rendering),
     dftPlan(FFT_SZ),
     dftPlanTemp(dftPlan.temp_size),
-    dftWindow(window_hann(FFT_SZ)),
-    perlinNoise(1) {
+    dftWindow(window_hann(FFT_SZ)) {
 }
 
 
@@ -109,48 +108,6 @@ inline complex<f32> convertToCartesian(const complex<f32>& a) {
 
 
 void MainProcessor::applyConversionsToFFT(vecfft& fftData, vecfft& res1, vecfft& res2) {
-    /*res1 = fftData;
-    res2 = fftData;
-    return;*/
-    /*   fill(fftData.begin(), fftData.end(), 0);
-
-   /*
-
-
-       for (int i = 320; i < 430; i++) {
-           fftData[freqToFFTIndex(i)] = {10, 10};
-       }
-       res1 = fftData;
-       res2 = fftData;*/
-
-
-/*    static univector<complex<f32>, FFT_RES_SZ> oldRes;
-    float diff = 0;
-    for (int i = 0; i < fftData.size(); i++) {
-        diff += fabs(cabs(oldRes[i]) - cabs(fftData[i]));
-        oldRes[i] = fftData[i];
-    }
-    rendering.lastMaskDiff = diff * 0.05f +  0.95f * rendering.lastMaskDiff.get();
-
-    res1 = fftData;
-    res2 = fftData;
-    static univector<f32, FFT_RES_SZ> mask;// = window_hann(FFT_RES_SZ) * 2;
-
-    for (int i = 0; i < min(mask.size(), 50); i++) {
-        mask[i] = 0;
-    }
-    for (int j = 50; j < mask.size(); j++) {
-        mask[j] = 2;
-    }
-
-    for (int i = 0; i < min(fftData.size(), 100);res1.size() i++) {
-      /*  if (cabs(fftData[i]) < 0.1) {
-            continue;
-        }*/
-  /*     res1[i] = {res1[i].real() * mask[i], res1[i].imag() * mask[i]};
-        res2[i] = {res2[i].real() * (2 - mask[i]), res2[i].imag() * (2 - mask[i])};
-    }*/
-
     fftData = kfr::polar(fftData);
 
     static univector<f32, FFT_RES_SZ> lastSound;
@@ -189,7 +146,6 @@ void MainProcessor::processSplit(vecfft& data, vecfft& res1, vecfft& res2) {
 
 // mask [-1, 1]
 void MainProcessor::generateMask(vecfft& data, univector<f32, 0> mask) {
-    //f32 magSum = sum(magintudes(data));
     static univector<f32, FFT_RES_SZ> mediumMagnitude(0);
     float weight = *params.attack;
     float otherWeight = 1 - weight;
@@ -207,7 +163,7 @@ void MainProcessor::generateMask(vecfft& data, univector<f32, 0> mask) {
     if (dynamicSpreadEnabled) {
         for (int i = leftFreq; i < rightFreq; i++) {
             sineX += mediumMagnitude[i] / sineStretch / 100;
-            float sineY = cos(sineX);
+            float sineY = sin(sineX);
             mask[i] = sineY;
         }
     } else {
@@ -219,15 +175,30 @@ void MainProcessor::generateMask(vecfft& data, univector<f32, 0> mask) {
 
     float noiseCount = *params.noise;
     if (noiseCount != 0) {
-        static float timeStamp = 0;
-        static float direction = 1.f;
-        timeStamp += direction;
-        if (timeStamp > 100000 || timeStamp < -10000) {
-            direction = -direction;
-        }
+        noiseGenerator.nextGenerate(0.0f, 0.6f);
+        float minX =  log2f(FFTIndexToFreq(0) + 1);
+        float maxX = log2f(FFTIndexToFreq(data.size() - 1) + 1);
         for (int i = leftFreq; i < rightFreq; i++) {
             float x = log2f(FFTIndexToFreq(i) + 1);
-            mask[i] = perlinNoise.noise2D(x / 25.f, timeStamp / 100.f);
+            mask[i] = noiseGenerator.getValue((x - minX) / (maxX - minX) * 2048) * noiseCount +
+                        mask[i] * (1 - noiseCount);
+        }
+    }
+
+    float effectStrength = *params.strength;
+    if (effectStrength < 1) {
+        for (int i = leftFreq; i < rightFreq; i++) {
+            mask[i] *= effectStrength;
+        }
+    } else {
+        for (int i = leftFreq; i < rightFreq; i++) {
+            mask[i] *= effectStrength;
+            if (mask[i] > 1) {
+                mask[i] = 1;
+            }
+            if (mask[i] < -1) {
+                mask[i] = -1;
+            }
         }
     }
 

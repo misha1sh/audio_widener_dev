@@ -51,13 +51,6 @@ void SpectrumCanvas::paint (juce::Graphics& g) {
 
 }
 
-void SpectrumCanvas::resized()
-{
-    // This method is where you should set the bounds of any child
-    // components that your component contains..
-
-}
-
 void SpectrumCanvas::createMaskPath() {
     if (rendering.lastMask.size() != 0) {
         rendering.lastMask.getValues(mask);

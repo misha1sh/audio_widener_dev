@@ -5,6 +5,7 @@
 #include "ProcessingParams.h"
 #include "DataAccumulator.h"
 #include "ProcessingRendering.h"
+#include "NoiseGenerator.h"
 
 #define FFT_SZ 2048
 #define FFT_RES_SZ (FFT_SZ / 2 + 1)
@@ -32,7 +33,7 @@ private:
     kfr::univector<kfr::u8> dftPlanTemp;
     kfr::univector<kfr::f32> dftWindow;
 
-    siv::PerlinNoise perlinNoise;
+    NoiseGenerator<float, 2048> noiseGenerator;
 
     typedef kfr::univector<kfr::complex<kfr::f32>, FFT_RES_SZ> vecfft;
     typedef kfr::univector<kfr::complex<kfr::f32>, 0> vecfft_ref;

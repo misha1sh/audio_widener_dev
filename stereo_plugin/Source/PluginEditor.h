@@ -24,7 +24,6 @@
 
 
 #include "UI/SpectrumCanvas.h"
-#include "TestComponent.h"
 //[/Headers]
 
 
@@ -38,8 +37,7 @@
                                                                     //[/Comments]
 */
 class PluginEditor  : public juce::AudioProcessorEditor,
-                      public juce::AudioProcessorValueTreeState::Listener,
-                      public juce::ChangeListener
+                      public juce::AudioProcessorValueTreeState::Listener
 {
 public:
     //==============================================================================
@@ -50,7 +48,6 @@ public:
     //[UserMethods]     -- You can add your own custom methods in this section.
 
     void parameterChanged (const String& parameterID, float newValue) override;
-    void changeListenerCallback(juce::ChangeBroadcaster* source) override;
     //[/UserMethods]
 
     void paint (juce::Graphics& g) override;
@@ -65,7 +62,7 @@ private:
     typedef juce::AudioProcessorValueTreeState::SliderAttachment SliderAttachment;
     typedef juce::AudioProcessorValueTreeState::ButtonAttachment ButtonAttachment;
 
-    std::unique_ptr<SliderAttachment> leftCutoffAttachment, rightCutoffAttachment,
+        std::unique_ptr<SliderAttachment> leftCutoffAttachment, rightCutoffAttachment,
             strengthAttachment, frequencySpreadAttachment, attackAttachment, noiseAttachment;
     std::unique_ptr<ButtonAttachment> dynamicSplitEnabledAttachment;
     std::unique_ptr<TooltipWindow> tooltipWindow;
@@ -73,8 +70,6 @@ private:
 
     //==============================================================================
     std::unique_ptr<SpectrumCanvas> spectrum_canvas;
-    std::unique_ptr<juce::Label> blockSize;
-    std::unique_ptr<juce::Label> blockSize2;
     std::unique_ptr<juce::Slider> leftCutoffSlider;
     std::unique_ptr<juce::Slider> rightCutoffSlider;
     std::unique_ptr<juce::Slider> strengthSlider;

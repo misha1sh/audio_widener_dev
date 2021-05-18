@@ -43,28 +43,6 @@ PluginEditor::PluginEditor (PluginProcessor& processor)
 
     spectrum_canvas->setBounds (144, 32, 272, 192);
 
-    blockSize.reset (new juce::Label ("new label",
-                                      TRANS("label text")));
-    addAndMakeVisible (blockSize.get());
-    blockSize->setFont (juce::Font (15.00f, juce::Font::plain).withTypefaceStyle ("Regular"));
-    blockSize->setJustificationType (juce::Justification::centredLeft);
-    blockSize->setEditable (false, false, false);
-    blockSize->setColour (juce::TextEditor::textColourId, juce::Colours::black);
-    blockSize->setColour (juce::TextEditor::backgroundColourId, juce::Colour (0x00000000));
-
-    blockSize->setBounds (208, 0, 150, 24);
-
-    blockSize2.reset (new juce::Label ("new label",
-                                       TRANS("label text")));
-    addAndMakeVisible (blockSize2.get());
-    blockSize2->setFont (juce::Font (15.00f, juce::Font::plain).withTypefaceStyle ("Regular"));
-    blockSize2->setJustificationType (juce::Justification::centredLeft);
-    blockSize2->setEditable (false, false, false);
-    blockSize2->setColour (juce::TextEditor::textColourId, juce::Colours::black);
-    blockSize2->setColour (juce::TextEditor::backgroundColourId, juce::Colour (0x00000000));
-
-    blockSize2->setBounds (360, 0, 150, 24);
-
     leftCutoffSlider.reset (new juce::Slider ("leftCutoffSlider"));
     addAndMakeVisible (leftCutoffSlider.get());
     leftCutoffSlider->setRange (1, 15000, 0);
@@ -202,7 +180,6 @@ PluginEditor::PluginEditor (PluginProcessor& processor)
     setResizeLimits(100, 100, 1000, 1000);
     */
     setResizable(false, false);
-    audioProcessor.addChangeListener(this);
 
 
     leftCutoffAttachment = std::make_unique<SliderAttachment>(*audioProcessor.params.tree, "leftCutoff", *leftCutoffSlider);
@@ -233,15 +210,11 @@ PluginEditor::~PluginEditor()
     attackAttachment = nullptr;
     noiseAttachment = nullptr;
     dynamicSplitEnabledAttachment = nullptr;
-
-    audioProcessor.removeChangeListener(this);
     audioProcessor.params.tree->removeParameterListener("dynamicSplitEnabled", this);
 
     //[/Destructor_pre]
 
     spectrum_canvas = nullptr;
-    blockSize = nullptr;
-    blockSize2 = nullptr;
     leftCutoffSlider = nullptr;
     rightCutoffSlider = nullptr;
     strengthSlider = nullptr;
@@ -295,13 +268,6 @@ void PluginEditor::resized()
 
 
 //[MiscUserCode] You can add your own definitions of your custom methods or any other code here...
-void PluginEditor::changeListenerCallback(juce::ChangeBroadcaster* source)
-{
-    blockSize->setText(juce::String(audioProcessor.rendering.lastSampleRate.get()), juce::sendNotificationAsync);
-    blockSize2->setText(juce::String(audioProcessor.rendering.lastMaskDiff.get()), juce::sendNotificationAsync);
-}
-
-
 void PluginEditor::parameterChanged (const String& parameterID, float newValue) {
     if (parameterID == "dynamicSplitEnabled") {
         attackSlider->setEnabled(newValue > 0.5f);
@@ -320,7 +286,7 @@ void PluginEditor::parameterChanged (const String& parameterID, float newValue) 
 BEGIN_JUCER_METADATA
 
 <JUCER_COMPONENT documentType="Component" className="PluginEditor" componentName=""
-                 parentClasses="public juce::AudioProcessorEditor, public juce::AudioProcessorValueTreeState::Listener, public juce::ChangeListener"
+                 parentClasses="public juce::AudioProcessorEditor, public juce::AudioProcessorValueTreeState::Listener"
                  constructorParams="PluginProcessor&amp; processor" variableInitialisers="juce::AudioProcessorEditor(processor), audioProcessor(processor)"
                  snapPixels="8" snapActive="1" snapShown="1" overlayOpacity="0.330"
                  fixedSize="1" initialWidth="444" initialHeight="348">
@@ -330,16 +296,6 @@ BEGIN_JUCER_METADATA
   <GENERICCOMPONENT name="spectrum_canvas" id="c28ba59d3075a746" memberName="spectrum_canvas"
                     virtualName="" explicitFocusOrder="0" pos="144 32 272 192" class="SpectrumCanvas"
                     params="processor.params, processor.rendering"/>
-  <LABEL name="new label" id="41486794b98566e2" memberName="blockSize"
-         virtualName="" explicitFocusOrder="0" pos="208 0 150 24" edTextCol="ff000000"
-         edBkgCol="0" labelText="label text" editableSingleClick="0" editableDoubleClick="0"
-         focusDiscardsChanges="0" fontname="Default font" fontsize="15.0"
-         kerning="0.0" bold="0" italic="0" justification="33"/>
-  <LABEL name="new label" id="fd9332144ef16970" memberName="blockSize2"
-         virtualName="" explicitFocusOrder="0" pos="360 0 150 24" edTextCol="ff000000"
-         edBkgCol="0" labelText="label text" editableSingleClick="0" editableDoubleClick="0"
-         focusDiscardsChanges="0" fontname="Default font" fontsize="15.0"
-         kerning="0.0" bold="0" italic="0" justification="33"/>
   <SLIDER name="leftCutoffSlider" id="110eb12e1151856" memberName="leftCutoffSlider"
           virtualName="" explicitFocusOrder="0" pos="216 232 128 88" min="1.0"
           max="15000.0" int="0.0" style="RotaryVerticalDrag" textBoxPos="NoTextBox"

@@ -5,9 +5,10 @@
 class DataAccumulator {
 public:
     DataAccumulator();
+    void addDataSamples(const kfr::univector_ref<kfr::f32>& data) ;
+
     void reset(int maxSamplesPerBlock, int maxRequestLength);
 
-    void addDataSamples(const kfr::univector_ref<kfr::f32>& data) ;
     // returns [pos-left, pos+right]
     // left samples will be dropped
     kfr::univector_ref<kfr::f32> getData(int left, int right);

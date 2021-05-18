@@ -2,7 +2,6 @@
 
 #include <JuceHeader.h>
 
-#include "DynamicTextureRenderer/DynamicTextureRenderer.h"
 #include "../Processing/ProcessingRendering.h"
 #include "../Processing/ProcessingParams.h"
 class SpectrumCanvas : public juce::Component, private juce::Timer
@@ -14,7 +13,6 @@ public:
     void timerCallback() override;
 	
     void paint (juce::Graphics&) override;
-    void resized() override;
 
 private:
     ProcessingParams& params;

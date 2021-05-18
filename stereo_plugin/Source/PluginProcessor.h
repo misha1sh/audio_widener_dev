@@ -15,7 +15,7 @@
 //==============================================================================
 /**
 */
-class PluginProcessor  : public juce::AudioProcessor, public juce::ChangeBroadcaster
+class PluginProcessor  : public juce::AudioProcessor
 {
 public:
     //==============================================================================
@@ -57,8 +57,8 @@ public:
 
     ProcessingRendering rendering;
     ProcessingParams params;
+    MainProcessor mainProcessor;
 private:
-	MainProcessor mainProcessor;
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (PluginProcessor)
 };
