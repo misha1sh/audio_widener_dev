@@ -45,6 +45,7 @@ PluginEditor::PluginEditor (PluginProcessor& processor)
 
     leftCutoffSlider.reset (new juce::Slider ("leftCutoffSlider"));
     addAndMakeVisible (leftCutoffSlider.get());
+    leftCutoffSlider->setTooltip (TRANS("Filter begining freq"));
     leftCutoffSlider->setRange (1, 15000, 0);
     leftCutoffSlider->setSliderStyle (juce::Slider::RotaryVerticalDrag);
     leftCutoffSlider->setTextBoxStyle (juce::Slider::NoTextBox, false, 80, 20);
@@ -53,6 +54,7 @@ PluginEditor::PluginEditor (PluginProcessor& processor)
 
     rightCutoffSlider.reset (new juce::Slider ("rightCutoffSlider"));
     addAndMakeVisible (rightCutoffSlider.get());
+    rightCutoffSlider->setTooltip (TRANS("Filter ending frequency"));
     rightCutoffSlider->setRange (1, 15000, 0);
     rightCutoffSlider->setSliderStyle (juce::Slider::RotaryVerticalDrag);
     rightCutoffSlider->setTextBoxStyle (juce::Slider::NoTextBox, false, 80, 20);
@@ -70,6 +72,7 @@ PluginEditor::PluginEditor (PluginProcessor& processor)
 
     frequencySpreadSlider.reset (new juce::Slider ("frequencySpreadSlider"));
     addAndMakeVisible (frequencySpreadSlider.get());
+    frequencySpreadSlider->setTooltip (TRANS("How often frequency changes"));
     frequencySpreadSlider->setRange (0.1, 0.999, 0);
     frequencySpreadSlider->setSliderStyle (juce::Slider::RotaryVerticalDrag);
     frequencySpreadSlider->setTextBoxStyle (juce::Slider::NoTextBox, false, 80, 20);
@@ -78,6 +81,7 @@ PluginEditor::PluginEditor (PluginProcessor& processor)
 
     dynamicSplitEnabledButton.reset (new juce::ToggleButton ("dynamicSplitEnabledButton"));
     addAndMakeVisible (dynamicSplitEnabledButton.get());
+    dynamicSplitEnabledButton->setTooltip (TRANS("Split into frequencies depending on audio volume"));
     dynamicSplitEnabledButton->setButtonText (TRANS("Dynamic split"));
     dynamicSplitEnabledButton->setToggleState (true, juce::dontSendNotification);
 
@@ -85,7 +89,7 @@ PluginEditor::PluginEditor (PluginProcessor& processor)
 
     attackSlider.reset (new juce::Slider ("attackSlider"));
     addAndMakeVisible (attackSlider.get());
-    attackSlider->setTooltip (TRANS("few ew few few few fwe fewf wef ewf ew"));
+    attackSlider->setTooltip (TRANS("How fast filter reacts to changes in sound"));
     attackSlider->setRange (0, 1, 0);
     attackSlider->setSliderStyle (juce::Slider::RotaryVerticalDrag);
     attackSlider->setTextBoxStyle (juce::Slider::NoTextBox, false, 80, 20);
@@ -149,7 +153,7 @@ PluginEditor::PluginEditor (PluginProcessor& processor)
 
     noiseSlider.reset (new juce::Slider ("noiseSlider"));
     addAndMakeVisible (noiseSlider.get());
-    noiseSlider->setTooltip (TRANS("few ew few few few fwe fewf wef ewf ew"));
+    noiseSlider->setTooltip (TRANS("Adds random noise to filter"));
     noiseSlider->setRange (0, 1, 0);
     noiseSlider->setSliderStyle (juce::Slider::RotaryVerticalDrag);
     noiseSlider->setTextBoxStyle (juce::Slider::NoTextBox, false, 80, 20);
@@ -166,6 +170,14 @@ PluginEditor::PluginEditor (PluginProcessor& processor)
     juce__label6->setColour (juce::TextEditor::backgroundColourId, juce::Colour (0x00000000));
 
     juce__label6->setBounds (128, 312, 96, 24);
+
+    bypassButton.reset (new juce::ToggleButton ("bypassButton"));
+    addAndMakeVisible (bypassButton.get());
+    bypassButton->setTooltip (TRANS("Temporary disables audioplugin"));
+    bypassButton->setButtonText (TRANS("bypass"));
+    bypassButton->addListener (this);
+
+    bypassButton->setBounds (376, 0, 64, 16);
 
 
     //[UserPreSize]
@@ -189,6 +201,7 @@ PluginEditor::PluginEditor (PluginProcessor& processor)
     attackAttachment = std::make_unique<SliderAttachment>(*audioProcessor.params.tree, "attack", *attackSlider);
     noiseAttachment = std::make_unique<SliderAttachment>(*audioProcessor.params.tree, "noise", *noiseSlider);
     dynamicSplitEnabledAttachment = std::make_unique<ButtonAttachment>(*audioProcessor.params.tree, "dynamicSplitEnabled", *dynamicSplitEnabledButton);
+    bypassEnabledAttachment = std::make_unique<ButtonAttachment>(*audioProcessor.params.tree, "bypassEnabled", *bypassButton);
 
     leftCutoffSlider->setSkewFactorFromMidPoint(1024);
     rightCutoffSlider->setSkewFactorFromMidPoint(1024);
@@ -210,6 +223,7 @@ PluginEditor::~PluginEditor()
     attackAttachment = nullptr;
     noiseAttachment = nullptr;
     dynamicSplitEnabledAttachment = nullptr;
+    bypassEnabledAttachment = nullptr;
     audioProcessor.params.tree->removeParameterListener("dynamicSplitEnabled", this);
 
     //[/Destructor_pre]
@@ -228,6 +242,7 @@ PluginEditor::~PluginEditor()
     juce__label5 = nullptr;
     noiseSlider = nullptr;
     juce__label6 = nullptr;
+    bypassButton = nullptr;
 
 
     //[Destructor]. You can add your own custom destruction code here..
@@ -265,6 +280,21 @@ void PluginEditor::resized()
     //[/UserResized]
 }
 
+void PluginEditor::buttonClicked (juce::Button* buttonThatWasClicked)
+{
+    //[UserbuttonClicked_Pre]
+    //[/UserbuttonClicked_Pre]
+
+    if (buttonThatWasClicked == bypassButton.get())
+    {
+        //[UserButtonCode_bypassButton] -- add your button handler code here..
+        //[/UserButtonCode_bypassButton]
+    }
+
+    //[UserbuttonClicked_Post]
+    //[/UserbuttonClicked_Post]
+}
+
 
 
 //[MiscUserCode] You can add your own definitions of your custom methods or any other code here...
@@ -297,30 +327,31 @@ BEGIN_JUCER_METADATA
                     virtualName="" explicitFocusOrder="0" pos="144 32 272 192" class="SpectrumCanvas"
                     params="processor.params, processor.rendering"/>
   <SLIDER name="leftCutoffSlider" id="110eb12e1151856" memberName="leftCutoffSlider"
-          virtualName="" explicitFocusOrder="0" pos="216 232 128 88" min="1.0"
-          max="15000.0" int="0.0" style="RotaryVerticalDrag" textBoxPos="NoTextBox"
-          textBoxEditable="1" textBoxWidth="80" textBoxHeight="20" skewFactor="1.0"
-          needsCallback="0"/>
+          virtualName="" explicitFocusOrder="0" pos="216 232 128 88" tooltip="Filter begining freq"
+          min="1.0" max="15000.0" int="0.0" style="RotaryVerticalDrag"
+          textBoxPos="NoTextBox" textBoxEditable="1" textBoxWidth="80"
+          textBoxHeight="20" skewFactor="1.0" needsCallback="0"/>
   <SLIDER name="rightCutoffSlider" id="f5f11eb2404957fc" memberName="rightCutoffSlider"
-          virtualName="" explicitFocusOrder="0" pos="320 232 128 88" min="1.0"
-          max="15000.0" int="0.0" style="RotaryVerticalDrag" textBoxPos="NoTextBox"
-          textBoxEditable="1" textBoxWidth="80" textBoxHeight="20" skewFactor="1.0"
-          needsCallback="0"/>
+          virtualName="" explicitFocusOrder="0" pos="320 232 128 88" tooltip="Filter ending frequency"
+          min="1.0" max="15000.0" int="0.0" style="RotaryVerticalDrag"
+          textBoxPos="NoTextBox" textBoxEditable="1" textBoxWidth="80"
+          textBoxHeight="20" skewFactor="1.0" needsCallback="0"/>
   <SLIDER name="strengthSlider" id="f56ba4a089565a1e" memberName="strengthSlider"
           virtualName="" explicitFocusOrder="0" pos="0 8 128 88" tooltip="Strength of stereo effect"
           min="0.0" max="2.0" int="0.0" style="RotaryVerticalDrag" textBoxPos="NoTextBox"
           textBoxEditable="1" textBoxWidth="80" textBoxHeight="20" skewFactor="1.0"
           needsCallback="0"/>
   <SLIDER name="frequencySpreadSlider" id="ab103c844f994ea3" memberName="frequencySpreadSlider"
-          virtualName="" explicitFocusOrder="0" pos="0 104 128 88" min="0.1"
-          max="0.999" int="0.0" style="RotaryVerticalDrag" textBoxPos="NoTextBox"
+          virtualName="" explicitFocusOrder="0" pos="0 104 128 88" tooltip="How often frequency changes"
+          min="0.1" max="0.999" int="0.0" style="RotaryVerticalDrag" textBoxPos="NoTextBox"
           textBoxEditable="1" textBoxWidth="80" textBoxHeight="20" skewFactor="1.0"
           needsCallback="0"/>
   <TOGGLEBUTTON name="dynamicSplitEnabledButton" id="1d2e5d0b4ed829bd" memberName="dynamicSplitEnabledButton"
-                virtualName="" explicitFocusOrder="0" pos="8 216 112 24" buttonText="Dynamic split"
-                connectedEdges="0" needsCallback="0" radioGroupId="0" state="1"/>
+                virtualName="" explicitFocusOrder="0" pos="8 216 112 24" tooltip="Split into frequencies depending on audio volume"
+                buttonText="Dynamic split" connectedEdges="0" needsCallback="0"
+                radioGroupId="0" state="1"/>
   <SLIDER name="attackSlider" id="8781b1d7d0cf8163" memberName="attackSlider"
-          virtualName="" explicitFocusOrder="0" pos="0 232 128 88" tooltip="few ew few few few fwe fewf wef ewf ew"
+          virtualName="" explicitFocusOrder="0" pos="0 232 128 88" tooltip="How fast filter reacts to changes in sound"
           min="0.0" max="1.0" int="0.0" style="RotaryVerticalDrag" textBoxPos="NoTextBox"
           textBoxEditable="1" textBoxWidth="80" textBoxHeight="20" skewFactor="1.0"
           needsCallback="0"/>
@@ -350,7 +381,7 @@ BEGIN_JUCER_METADATA
          focusDiscardsChanges="0" fontname="Default font" fontsize="15.0"
          kerning="0.0" bold="0" italic="0" justification="36"/>
   <SLIDER name="noiseSlider" id="cdc302d03b5071d1" memberName="noiseSlider"
-          virtualName="" explicitFocusOrder="0" pos="112 232 128 88" tooltip="few ew few few few fwe fewf wef ewf ew"
+          virtualName="" explicitFocusOrder="0" pos="112 232 128 88" tooltip="Adds random noise to filter"
           min="0.0" max="1.0" int="0.0" style="RotaryVerticalDrag" textBoxPos="NoTextBox"
           textBoxEditable="1" textBoxWidth="80" textBoxHeight="20" skewFactor="1.0"
           needsCallback="0"/>
@@ -359,6 +390,10 @@ BEGIN_JUCER_METADATA
          edBkgCol="0" labelText="Noise" editableSingleClick="0" editableDoubleClick="0"
          focusDiscardsChanges="0" fontname="Default font" fontsize="15.0"
          kerning="0.0" bold="0" italic="0" justification="36"/>
+  <TOGGLEBUTTON name="bypassButton" id="d736abf09da68e44" memberName="bypassButton"
+                virtualName="" explicitFocusOrder="0" pos="376 0 64 16" tooltip="Temporary disables audioplugin"
+                buttonText="bypass" connectedEdges="0" needsCallback="1" radioGroupId="0"
+                state="0"/>
 </JUCER_COMPONENT>
 
 END_JUCER_METADATA

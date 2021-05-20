@@ -44,6 +44,11 @@ ProcessingParams::ProcessingParams(AudioProcessor& processor)
                                                              0,   // minimum value
                                                              1,   // maximum value
                                                              1),
+                 std::make_unique<juce::AudioParameterFloat>("bypassEnabled", // parameterID
+                                                             "Bypass", // parameter name
+                                                             0,   // minimum value
+                                                             1,   // maximum value
+                                                             0),
          }));
 
     leftCutoff = tree->getRawParameterValue("leftCutoff");
@@ -53,5 +58,6 @@ ProcessingParams::ProcessingParams(AudioProcessor& processor)
     attack = tree->getRawParameterValue("attack");
     noise = tree->getRawParameterValue("noise");
     dynamicSplitEnabled = tree->getRawParameterValue("dynamicSplitEnabled");
+    bypassEnabled = tree->getRawParameterValue("bypassEnabled");
 }
 

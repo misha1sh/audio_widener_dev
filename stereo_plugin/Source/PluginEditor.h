@@ -37,7 +37,8 @@
                                                                     //[/Comments]
 */
 class PluginEditor  : public juce::AudioProcessorEditor,
-                      public juce::AudioProcessorValueTreeState::Listener
+                      public juce::AudioProcessorValueTreeState::Listener,
+                      public juce::Button::Listener
 {
 public:
     //==============================================================================
@@ -52,6 +53,7 @@ public:
 
     void paint (juce::Graphics& g) override;
     void resized() override;
+    void buttonClicked (juce::Button* buttonThatWasClicked) override;
 
 
 
@@ -64,7 +66,7 @@ private:
 
         std::unique_ptr<SliderAttachment> leftCutoffAttachment, rightCutoffAttachment,
             strengthAttachment, frequencySpreadAttachment, attackAttachment, noiseAttachment;
-    std::unique_ptr<ButtonAttachment> dynamicSplitEnabledAttachment;
+    std::unique_ptr<ButtonAttachment> dynamicSplitEnabledAttachment, bypassEnabledAttachment;
     std::unique_ptr<TooltipWindow> tooltipWindow;
     //[/UserVariables]
 
@@ -83,6 +85,7 @@ private:
     std::unique_ptr<juce::Label> juce__label5;
     std::unique_ptr<juce::Slider> noiseSlider;
     std::unique_ptr<juce::Label> juce__label6;
+    std::unique_ptr<juce::ToggleButton> bypassButton;
 
 
     //==============================================================================

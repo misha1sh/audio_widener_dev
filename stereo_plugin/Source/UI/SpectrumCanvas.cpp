@@ -119,7 +119,8 @@ void SpectrumCanvas::createSoundPath() {
     path.startNewSubPath(-50, height + 50);
     for (int i = 0; i < cnt; i++) {
         float x = i * perSegment;
-        float y = juce::Decibels::gainToDecibels(sound[j] / 150.f, -60.f) / -60.f * height;
+        float y = juce::Decibels::gainToDecibels(sound[j] / 150.f, -60.f) / -60.f * height
+                /** log2f(i)*/;
 
       //  if (i == 0) {
             path.lineTo(x, y);

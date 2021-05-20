@@ -137,6 +137,11 @@ bool PluginProcessor::isBusesLayoutSupported (const BusesLayout& layouts) const
 
 void PluginProcessor::processBlock (juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midiMessages)
 {
+    if (*params.bypassEnabled) {
+        processBlockBypassed(buffer, midiMessages);
+        return;
+    }
+
     juce::ScopedNoDenormals noDenormals;
     auto totalNumInputChannels  = getTotalNumInputChannels();
     auto totalNumOutputChannels = getTotalNumOutputChannels();

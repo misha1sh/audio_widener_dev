@@ -15,7 +15,7 @@ public:
     std::atomic<float>* frequencySpread;
     std::atomic<float>* attack;
     std::atomic<float>* noise;
-    std::atomic<float>* dynamicSplitEnabled;
+    std::atomic<float>* dynamicSplitEnabled, * bypassEnabled;
 
 
     float sampleRate;

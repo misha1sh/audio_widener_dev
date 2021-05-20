@@ -134,8 +134,6 @@ void MainProcessor::processSplit(vecfft& data, vecfft& res1, vecfft& res2) {
     mask += 1;
 
 
-
-
     rendering.lastMask.addValues(&mask[0], mask.size());
 
     for (int i = 0; i < data.size(); i++) {
